@@ -1,0 +1,23 @@
+{
+  "name": "TasteOfDecor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "json:server": "json-server --watch data/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anax291/TasteOfDecor.git"
+  },
+  "keywords": [],
+  "author": "Anas, Nouman, Usama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anax291/TasteOfDecor/issues"
+  },
+  "homepage": "https://github.com/anax291/TasteOfDecor#readme",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/collection.css">
+  <link rel="stylesheet" href="./css/card.css">
+  <title>Design Harvest | Collection</title>
+</head>
+
+<body id="collection">
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="./index.html" class="logo">Taste of Décor.</a>
+      <button class="hamburger" id="hamburger">
+        <span class="inner"></span>
+      </button>
+      <div class="nav-wrapper">
+        <ul class="nav__items">
+          <li class="nav__item"><a class="nav__link" href="./index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="./about.html">About</a></li>
+          <li class="nav__item"><a class="nav__link active" href="#">Collection</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">FAQs</a></li>
+          <li class="nav__item"><a class="nav__link" href="./contactUs.html">Contact us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Collection -->
+  <main class="collection">
+    <div class="container">
+      <div class="main-grid">
+        <p class="collection__header">our products</p>
+        <ul class="categories"></ul>
+        <div class="products"></div>
+      </div>
+    </div>
+  </main>
+
+  <custom-footer></custom-footer>
+
+  <!-- card template -->
+  <template id="card-template">
+    <div class="card">
+      <div class="container">
+        <div class="top">
+          <img src="" alt="">
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="details">
+              <h1 class="name"></h1>
+              <p class="price"></p>
+            </div>
+            <div class="buy"><i class="material-icons">add_shopping_cart</i></div>
+          </div>
+          <div class="right">
+            <div class="done"><i class="material-icons">done</i></div>
+            <div class="details">
+              <h1 class="name"></h1>
+              <p>Added to your cart</p>
+            </div>
+            <div class="remove"><i class="material-icons">clear</i></div>
+          </div>
+        </div>
+      </div>
+      <div class="inside">
+        <div class="icon"><i class="material-icons">info_outline</i></div>
+        <div class="contents">
+          <p class="name">Product Name</p>
+          <p class="price">$999</p>
+          <ul class="details"></ul>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+</body>
+<script src="./js/common.js"></script>
+<script src="./js/collection.js" type="module"></script>
+
+</html>

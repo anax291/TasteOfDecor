@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/productDetail.css">
+  <link rel="stylesheet" href="./css/card.css">
+  <title>Design Harvest</title>
+</head>
+
+<body id="prod-detail">
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="./index.html" class="logo">Taste of Décor.</a>
+      <button class="hamburger" id="hamburger">
+        <span class="inner"></span>
+      </button>
+      <div class="nav-wrapper">
+        <ul class="nav__items">
+          <li class="nav__item"><a class="nav__link" href="./index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="./about.html">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="./collection.html">Collection</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">FAQs</a></li>
+          <li class="nav__item"><a class="nav__link" href="./contactUs.html">Contact us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- product details -->
+  <main class="product mb-2">
+    <div class="container">
+    </div>
+  </main>
+
+  <!-- Similar Products -->
+  <section class="similar-products mb-2">
+    <div class="container">
+      <h3 class="title">Similar Products</h3>
+      <div class="flex"></div>
+    </div>
+  </section>
+
+  <!-- Write Your Review -->
+  <section class="section-review-form mb-2">
+    <div class="container">
+      <h2 class="form-title">Write Your Reviews</h2>
+      <div class="review-form">
+        <form class="form1 content1">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" placeholder="John Doe">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder="johndoe@gmail.com">
+          <input type="submit" value="Submit" class="btn slide-form">
+        </form>
+        <form class="form2 content2">
+          <p>Your Ratings</p>
+          <div class="ratings">
+            <i class="far fa-star" data-rating="5"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="1"></i>
+          </div>
+          <label for="review">Review</label>
+          <textarea name="review" id="review"></textarea>
+          <input type="submit" class="btn submit-form" value="Submit">
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Display Reviews -->
+  <section class="display-reviews mb-2">
+    <div class="container">
+      <h2 class="review-title">Reviews</h2>
+      <div class="reviews">
+      </div>
+    </div>
+  </section>
+
+  <custom-footer></custom-footer>
+
+  <!-- detail template -->
+  <template id="prod-detail-template">
+    <div class="grid">
+      <div class="product__image">
+        <div class="image-grid">
+          <img src="" alt="" class="primary__image">
+        </div>
+      </div>
+      <div class="product__details flow">
+        <h2 class="product__name"></h2>
+        <p class="product__price"></p>
+        <div class="product__ratings">
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="reviews-number"></span>
+        </div>
+        <ul class="product__description"></ul>
+        <div class="delivery__details">
+          <p>
+            <span><i class="fas fa-map-pin"></i></span>
+            Delivered by 19 August, Monday | Sale
+          </p>
+          <p>Seller: Taste of Decor</p>
+        </div>
+        <div class="buttons">
+          <button class="btn add-to-cart">Add to Cart</button>
+          <button class="btn add-to-wishlist">Add to Wishlist</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- card template -->
+  <template id="card-template">
+    <div class="card">
+      <div class="container">
+        <div class="top">
+          <img src="" alt="">
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="details">
+              <h1 class="name"></h1>
+              <p class="price"></p>
+            </div>
+            <div class="buy"><i class="material-icons">add_shopping_cart</i></div>
+          </div>
+          <div class="right">
+            <div class="done"><i class="material-icons">done</i></div>
+            <div class="details">
+              <h1 class="name"></h1>
+              <p>Added to your cart</p>
+            </div>
+            <div class="remove"><i class="material-icons">clear</i></div>
+          </div>
+        </div>
+      </div>
+      <div class="inside">
+        <div class="icon"><i class="material-icons">info_outline</i></div>
+        <div class="contents">
+          <p class="name">Product Name</p>
+          <p class="price">$999</p>
+          <ul class="details"></ul>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Review Template -->
+  <template id="review-template">
+    <div class="review flow">
+      <div class="flex">
+        <img class="user-image" src="" alt="">
+        <div class="user-info">
+          <h3 class="user-name"></h3>
+          <p class="user-email"></p>
+        </div>
+      </div>
+      <div>
+        <div class="stars-outer">
+          <div class="stars-inner"></div>
+        </div>
+        <span class="reviews-number"></span>
+      </div>
+      <div class="review__body">
+        <p></p>
+      </div>
+    </div>
+  </template>
+
+  <!-- If reviews not found -->
+  <template id="no-reviews">
+    <div class="not-found">
+      <p class="l-font">No Reviews Found</p>
+      <img src="./assets/notfound.svg">
+    </div>
+  </template>
+
+</body>
+<script src="./js/common.js"></script>
+<script src="./js/productDetail.js" type="module"></script>
+
+</html>

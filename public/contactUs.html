@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/contactUs.css">
+  <title>Design Harvest | Contact Us</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="#" class="logo">Taste of Décor.</a>
+      <button class="hamburger" id="hamburger">
+        <span class="inner"></span>
+      </button>
+      <div class="nav-wrapper">
+        <ul class="nav__items">
+          <li class="nav__item"><a class="nav__link" href="./index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="./about.html">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="./collection.html">Collection</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">FAQs</a></li>
+          <li class="nav__item"><a class="nav__link active" href="#">Contact us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="l-font main-title">Contact Us</h1>
+      <div id="map" class="mb-3"></div>
+      <section class="mb-3">
+        <div class="grid">
+          <div class="left">
+            <h2>Find Us</h2>
+            <div class="wrapper">
+              <i class="material-icons-round">home</i>
+              <p>Address</p>
+              <div>xyz sec-62 North Karachi</div>
+            </div>
+            <div class="wrapper">
+              <i class="material-icons-round">email</i>
+              <p>Email</p>
+              <div>
+                <a href="mailto:anax291@gmail.com">anax291@gmail.com</a>
+                <a href="mailto:nshariq562@gmail.com">nshariq562@gmail.com</a>
+              </div>
+            </div>
+            <div class="wrapper">
+              <i class="material-icons-round">phone</i>
+              <p>Phone</p>
+              <div>
+                <a href="tel:+923333107559">03333107559</a>
+                <a href="tel:+923343696831">03343696831</a>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <h2>Tell Us Your Message</h2>
+            <form>
+              <div class="field-wrapper">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+              </div>
+              <div class="field-wrapper">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+              </div>
+              <div class="field-wrapper">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="subject" required>
+              </div>
+              <div class="field-wrapper">
+                <label for="message">Message</label>
+                <textarea name="message" id="message"></textarea>
+              </div>
+              <input class="btn" type="submit" value="Send Message">
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <custom-footer></custom-footer>
+</body>
+<script src="./js/contactUs.js"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAG7IsWWNe2IfDQGBpQ2sZJeibxVqKyb4&callback=initMap"></script>
+<script src="./js/common.js"></script>
+
+</html>

@@ -1,0 +1,298 @@
+.header {
+  margin-bottom: 1rem;
+}
+
+/* product detail */
+.product {
+  background: #fff;
+  padding: 0 1rem;
+}
+
+.product .grid {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  gap: 2rem;
+}
+
+.image-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(300px, 100%) 100px;
+  gap: 0.5rem;
+}
+
+.image-grid img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.15rem;
+}
+
+.primary__image {
+  grid-column: 1 / span 3;
+  cursor: default !important;
+  height: 500px !important;
+  object-fit: contain !important;
+  transition: opacity 150ms ease;
+}
+
+.image-grid img.active {
+  opacity: 0.3;
+}
+
+.product__details {
+  --flow-space: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product__name {
+  font-size: clamp(2rem, 1rem + 3vw, 4rem);
+  text-transform: capitalize;
+}
+
+.product__price {
+  font-size: clamp(1.5rem, 0.8rem + 1vw, 2.5rem);
+}
+
+.product__ratings > * {
+  user-select: none;
+}
+
+.stars-outer {
+  position: relative;
+  display: inline-block;
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before,
+.stars-inner::before {
+  content: '\f005 \f005 \f005 \f005 \f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  color: #f8ce0b;
+}
+
+.reviews-number {
+  color: #aaa;
+}
+
+.product__description {
+  --flow-space: 2.5rem;
+  font-size: clamp(1.2rem, 0.4rem + 1vw, 2.15rem);
+  list-style: revert;
+}
+
+.delivery__details {
+  --flow-space: 2rem;
+  font-size: clamp(1.5rem, 0.8rem + 1vw, 2.5rem);
+}
+
+.add-to-cart {
+  background: #3b5161;
+  color: #fff;
+}
+
+.add-to-wishlist {
+  color: #fff;
+  background: #ffbe5c;
+}
+@media (max-width: 700px) {
+  .product .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Similar Products */
+
+.similar-products .container {
+  overflow: hidden;
+}
+.similar-products .title {
+  font-size: clamp(2rem, 1rem + 3vw, 4rem);
+  text-align: center;
+}
+.similar-products .flex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.similar-products .card {
+  width: 100%;
+}
+
+/* Review Form */
+
+.section-review-form .container {
+  overflow: hidden;
+}
+
+.form-title {
+  font-size: clamp(2rem, 1rem + 3vw, 4rem);
+  text-align: center;
+}
+
+.review-form {
+  width: 200%;
+  overflow: hidden;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.content1,
+.content2 {
+  width: 50%;
+  padding: 1rem;
+}
+
+.content1 {
+  float: left;
+}
+
+.content2 {
+  float: right;
+}
+
+input[type='text'],
+input[type='email'],
+.ratings,
+textarea {
+  margin-bottom: 1rem;
+}
+
+input[type='text'],
+input[type='email'],
+textarea {
+  padding: 0.45rem 1rem;
+  font-size: inherit;
+}
+
+.form :is(label, p) {
+  font-size: 1.125rem;
+}
+
+.review-form .btn {
+  background: #ccc;
+}
+
+.review-form .ratings {
+  width: max-content;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.review-form .fa-star {
+  font-size: 1.5rem;
+}
+.review-form .fa-star:not(:last-child) {
+  margin-left: 0.25rem;
+}
+
+.review-form
+  :is(.fa-star:hover, .fa-star:hover
+    ~ .fa-star, .fa-star.active, .fa-star.active ~ .fa-star) {
+  color: #f8ce0b;
+  font-weight: 900;
+}
+
+/* Reviews */
+
+.review-title {
+  font-size: clamp(2rem, 1rem + 3vw, 4rem);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 0.75rem;
+}
+
+.review {
+  --flow-space: 0.75rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.review .flex {
+  display: flex;
+  align-items: center;
+}
+
+.user-image {
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.user-name {
+  font-size: clamp(1.5rem, 0.8rem + 1vw, 2.5rem);
+}
+.user-email {
+  user-select: none;
+  opacity: 0.8;
+}
+
+.review__body {
+  font-size: clamp(1.2rem, 0.4rem + 1vw, 2rem);
+}
+
+.reviews .not-found .l-font {
+  text-align: center;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+.reviews .not-found img {
+  margin: auto;
+  height: 300px;
+}
+.loading-gif {
+  margin: auto;
+}
+
+/* form animations */
+@keyframes slideIn {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

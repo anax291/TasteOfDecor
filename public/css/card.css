@@ -1,0 +1,225 @@
+.card {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.card:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+.card .container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.card .container .top {
+  height: 75%;
+  width: 100%;
+}
+.card .container .top img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.card .container .bottom {
+  width: 200%;
+  height: 25%;
+  transition: transform 0.5s;
+}
+.card .container .bottom.clicked {
+  transform: translateX(-50%);
+}
+.card .container .bottom h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+.card .container .bottom p {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card .container .bottom .left {
+  height: 100%;
+  width: 50%;
+  background: #f4f4f4;
+  position: relative;
+  float: left;
+}
+.card .container .bottom .left .name,
+.card .container .bottom .right .name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.card .container .bottom .left .price {
+  font-size: 1rem;
+}
+.card .container .bottom .left .details {
+  padding: 20px;
+  float: left;
+  width: calc(70% - 40px);
+}
+.card .container .bottom .left .buy {
+  float: right;
+  width: calc(30% - 2px);
+  height: 100%;
+  background: #f1f1f1;
+  transition: background 0.5s;
+  border-left: solid thin rgba(0, 0, 0, 0.1);
+}
+.card .container .bottom .left .buy i {
+  font-size: 30px;
+  padding: 30px;
+  color: #254053;
+  transition: transform 0.5s;
+}
+.card .container .bottom .left .buy:hover {
+  background: #a6cdde;
+}
+.card .container .bottom .left .buy:hover i {
+  transform: translateY(5px);
+  color: #00394b;
+}
+.card .container .bottom .right {
+  width: 50%;
+  background: #a6cdde;
+  color: white;
+  float: right;
+  height: 200%;
+  overflow: hidden;
+}
+.card .container .bottom .right .details {
+  padding: 20px;
+  float: right;
+  width: calc(70% - 40px);
+}
+.card .container .bottom .right .done {
+  width: calc(30% - 2px);
+  float: left;
+  transition: transform 0.5s;
+  border-right: solid thin rgba(255, 255, 255, 0.3);
+  height: 50%;
+}
+.card .container .bottom .right .done i {
+  font-size: 30px;
+  padding: 30px;
+  color: white;
+}
+.card .container .bottom .right .remove {
+  width: calc(30% - 1px);
+  clear: both;
+  border-right: solid thin rgba(255, 255, 255, 0.3);
+  height: 50%;
+  background: #bc3b59;
+  transition: transform 0.5s, background 0.5s;
+}
+.card .container .bottom .right .remove:hover {
+  background: #9b2847;
+}
+.card .container .bottom .right .remove:hover i {
+  transform: translateY(5px);
+}
+.card .container .bottom .right .remove i {
+  transition: transform 0.5s;
+  font-size: 30px;
+  padding: 30px;
+  color: white;
+}
+.card .container .bottom .right:hover .remove,
+.card .container .bottom .right:hover .done {
+  transform: translateY(-100%);
+}
+.card .inside {
+  z-index: 9;
+  background: #92879b;
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  border-radius: 0px 0px 200px 200px;
+  transition: all 0.5s, border-radius 2s, top 1s;
+  overflow: hidden;
+}
+.card .inside .icon {
+  position: absolute;
+  right: 85px;
+  top: 85px;
+  color: white;
+  opacity: 1;
+}
+.card .inside:hover {
+  width: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 0;
+  height: 80%;
+}
+
+/* typography */
+.card .inside .name {
+  font-size: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .inside .price {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.card .inside .details {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.card .inside .details li {
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.card .inside .btn {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  background: #66606d;
+  color: #f4f4f4;
+}
+/* ends */
+
+.card .inside:hover .icon {
+  opacity: 0;
+  right: 15px;
+  top: 15px;
+}
+.card .inside:hover .contents {
+  opacity: 1;
+  transform: scale(1);
+  transform: translateY(0);
+}
+.card .inside .contents {
+  padding: 5%;
+  opacity: 0;
+  transform: scale(0.5);
+  transform: translateY(-200%);
+  transition: opacity 0.2s, transform 0.8s;
+}
+
+.card .inside .contents :is(h1, p, ul) {
+  color: white;
+}
