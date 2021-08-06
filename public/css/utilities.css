@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Questrial&display=swap');
+
 :root {
   --clr-secondary: hsl(0, 88%, 37%);
 }
@@ -9,10 +10,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nanum Myeongjo', serif;
 }
 *:focus {
   outline: none;
+}
+
+.fas,
+.fab,
+.far {
+  font-family: 'Font Awesome 5 Free' !important;
 }
 /*  Core Styling */
 
@@ -22,10 +28,11 @@ body {
   color: #333;
   margin-top: 80px;
   overflow-x: hidden;
+  font-family: 'Nanum Myeongjo', serif;
   animation: transitionIn 0.75s;
 }
 
-@keyframes transitionIn{
+@keyframes transitionIn {
   from {
     opacity: 0;
     transform: rotateX(-10deg);
@@ -55,6 +62,14 @@ ul {
 img {
   display: block;
   max-width: 100%;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
 }
 
 label,
@@ -260,9 +275,193 @@ header {
   opacity: 1;
 }
 
+/* cart Styles */
+.cart-wrapper {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: auto;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background: var(--clr-secondary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 370px;
+  height: 100vh;
+  padding: 1rem;
+  background: #f4f4f4;
+  overflow: auto;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 0.75rem;
+}
+
+.close-icon {
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  width: 1.5rem;
+}
+
+.close-icon::before,
+.close-icon::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  transform: rotate(45deg);
+  transform-origin: center;
+  left: 10px;
+  width: 2px;
+  height: 20px;
+  background: #000;
+}
+
+.close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.close-icon:hover::before,
+.close-icon:hover::after {
+  background: var(--clr-secondary);
+}
+
+.remove-all {
+  font-size: 0.85rem;
+  color: var(--clr-secondary);
+  height: 25px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.remove-all .close-icon::before,
+.remove-all .close-icon::after {
+  height: 15px !important;
+  top: 20%;
+  background: currentColor;
+}
+
+.remove-all::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform-origin: right;
+  transition: transform 200ms ease;
+}
+
+.remove-all:hover {
+  color: hsl(0, 79%, 26%);
+}
+
+.remove-all:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.cart-items > *:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.item {
+  padding: 0.5rem;
+  max-height: 150px;
+  border-radius: 0.25rem;
+  display: grid;
+  grid-template-columns: 6rem auto auto;
+  gap: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.item__info > *:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.item__name {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.item__price {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.qty-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-info > * {
+  font-size: 1.1rem;
+}
+
+.increament,
+.decreament {
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.delete-item .far {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.delete-item .far:hover {
+  color: var(--clr-secondary);
+}
+
 @media (max-width: 800px) {
+  .logo {
+    order: 2;
+  }
+
   .hamburger {
     display: block;
+    order: 1;
+  }
+
+  .cart-wrapper {
+    order: 3;
   }
 
   .nav-wrapper {
