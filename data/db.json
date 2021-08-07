@@ -195,9 +195,7 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 11500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod5/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod5/img1.jpg"],
       "description": [
         "Made From Metal In Grey & Brown Finish. Comes With White Linen Shade.",
         "Material: Metal",
@@ -210,9 +208,7 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 16500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod6/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod6/img1.jpg"],
       "description": [
         "Made From Marble & Metal In Classic Finish. Comes With White Linen Shade.",
         "Material: Metal & Marble",
@@ -225,9 +221,7 @@
       "categoryId": 2,
       "name": "Allure Table Lamp",
       "price": 13500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod7/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod7/img1.jpg"],
       "description": [
         "Made From Metal & Crystal. Clear Crystal Flower Body & Gold Metal Base. Comes With Oat Linen Shade.",
         "Material: Metal & Crystal",
@@ -240,9 +234,7 @@
       "categoryId": 2,
       "name": "Down Bridge Table Lamp",
       "price": 9500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod8/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod8/img1.jpg"],
       "description": [
         "Made From Metal & Wood in black colour",
         "Material: Metal & Wood",
@@ -357,9 +349,7 @@
       "categoryId": 3,
       "name": "Indoor Live Houseplant - Brussel's Bonsai",
       "price": 6700,
-      "imgSrc": [
-        "./assets/outdoor/prod2/img1.webp"
-      ],
+      "imgSrc": ["./assets/outdoor/prod2/img1.webp"],
       "description": [
         "Large jade indoor houseplant dresses up any indoor decor arrangement",
         "Lush green foliage and star-shaped leaf clusters add a pretty pop to your tabletop or desk",
@@ -499,9 +489,7 @@
       "categoryId": 4,
       "name": "Legato White 3 Door Mirrored Wardrobe",
       "price": 70000,
-      "imgSrc": [
-        "./assets/wardrobes/prod1/img1.jpg"
-      ],
+      "imgSrc": ["./assets/wardrobes/prod1/img1.jpg"],
       "description": [
         "The Legato 3 Door Mirrored Wardrobe features a contemporary style with a unique handle-less design and a high gloss finish.",
         "Constructed from high quality components this 3 door mirrored wardrobe makes for a practical and stylish storage solution for your bedroom.",

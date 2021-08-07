@@ -11,7 +11,7 @@ export const emptyContainer = (container) => {
 export const addLoadingAnimation = (container) => {
   const image = document.createElement('img');
   image.classList.add('loading-gif');
-  image.src = './assets/loadingSvg.svg';
+  image.src = './assets/misc/loadingSvg.svg';
   container.appendChild(image);
 };
 
