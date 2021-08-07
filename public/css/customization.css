@@ -1,0 +1,89 @@
+body {
+  font-family: helvetica, arial, sans-serif;
+}
+
+h1 {
+  color: #3a241d;
+  text-align: center;
+}
+
+section {
+  min-height: 100vh;
+  position: relative;
+}
+
+#left-container {
+  left: 0px;
+}
+
+#right-container {
+  right: 0px;
+}
+
+.container {
+  background-color: #eee;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  width: 15%;
+}
+
+.prod-holder {
+  height: 13%;
+  left: -10px;
+  position: relative;
+}
+
+.prod {
+  max-width: 150%;
+  max-height: 150%;
+  position: absolute;
+  z-index: 2;
+}
+.prod:hover {
+  cursor: grab;
+}
+
+.jar-walls {
+  background: #d1e1df;
+  border-radius: 1rem;
+  bottom: 0.5%;
+  height: 80%;
+  left: 20%;
+  opacity: 0.5;
+  position: absolute;
+  width: 60%;
+  z-index: 1;
+}
+
+.jar-top {
+  background: #d1e1df;
+  bottom: 80.5%;
+  height: 5%;
+  left: 25%;
+  opacity: 0.7;
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+}
+
+.jar-glossy-long {
+  background: #ddfbff;
+  border-radius: 2rem;
+  bottom: 20%;
+  height: 20%;
+  left: 5%;
+  position: absolute;
+  width: 3%;
+}
+
+.jar-glossy-short {
+  background: #ddfbff;
+  border-radius: 2rem;
+  bottom: 45%;
+  height: 5%;
+  left: 5%;
+  position: absolute;
+  width: 3%;
+}
