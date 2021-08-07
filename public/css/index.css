@@ -255,6 +255,136 @@
   vertical-align: middle;
 }
 
+/* Services */
+.services__header {
+  text-align: center;
+}
+
+.services .sub-title {
+  font-size: clamp(1.15rem, 0.5rem + 1vw, 1.5rem);
+  color: #9f9e9e;
+  margin-bottom: 1rem;
+}
+
+.services .main-title {
+  font-size: clamp(2rem, 1rem + 3vw, 3rem);
+  text-transform: capitalize;
+  width: max-content;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.services .main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 20%;
+  right: 20%;
+  border-bottom: 2px dotted #333;
+}
+
+.services .layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.services .box {
+  width: 350px;
+  max-width: 400px;
+  padding: 1.5rem;
+  background-image: url(../assets/services/bg1.jpg);
+  position: relative;
+  transition: all 200ms ease;
+}
+
+.services .box::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 0;
+  height: 1px;
+  background: #000;
+  transition: width 400ms ease;
+}
+
+.services .box::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 20px;
+  height: 0;
+  width: 1px;
+  background: #000;
+  transition: height 400ms ease;
+}
+
+.services .box:hover {
+  background-color: #333;
+  background-blend-mode: multiply;
+  color: #f4f4f4;
+}
+
+.services .box:hover::before {
+  width: 100%;
+}
+
+.services .box:hover::after {
+  height: 100%;
+}
+
+.services .box__img {
+  margin-bottom: 1.5rem;
+}
+
+.services .box__img img {
+  margin: auto;
+}
+
+.services .box__content {
+  --flow-space: 1.5rem;
+  padding: 0 1.75rem;
+  text-align: center;
+}
+
+.services .box__content h3 {
+  font-size: clamp(1.5rem, 0.75rem + 1vw, 2rem);
+}
+
+.services .box__content p {
+  font-size: clamp(1rem, 0.25rem + 1vw, 1.25rem);
+}
+
+.services .box__content .box__link {
+  font-size: 1.15rem;
+  font-weight: 900;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.services .box__content .box__link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  height: 50%;
+  background: #ddd;
+  z-index: -1;
+  transition: width 200ms ease;
+}
+
+.services .box__content .box__link:hover::before {
+  width: 100%;
+}
+
+.services .box:hover .box__link::before {
+  background: #505050;
+}
+
 @media (max-width: 700px) {
   .about {
     grid-template-columns: 1fr;
