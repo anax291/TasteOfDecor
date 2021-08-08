@@ -403,3 +403,13 @@
     text-align: center;
   }
 }
+
+/* Testimonials */
+
+.testimonials {
+  width: max(340px, 70vw);
+  margin: auto;
+  height: 400px;
+  background: #000;
+  margin-bottom: 3rem;
+}

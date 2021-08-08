@@ -23,7 +23,7 @@
 /*  Core Styling */
 
 html {
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 body {
@@ -307,6 +307,8 @@ header {
   background: #f4f4f4;
   overflow: auto;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+
+  display: none;
 }
 
 .close {

@@ -59,6 +59,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  display: none;
 }
 
 .carousel__btn--left {
@@ -83,6 +85,8 @@
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.5);
+
+  display: none;
 }
 
 .carousel__indicator {
