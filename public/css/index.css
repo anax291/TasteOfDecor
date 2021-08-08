@@ -292,11 +292,20 @@
 
 .services .box {
   width: 350px;
-  max-width: 400px;
+  max-width: 550px;
+  flex-grow: 1;
   padding: 1.5rem;
   background-image: url(../assets/services/bg1.jpg);
   position: relative;
   transition: all 200ms ease;
+}
+
+.services .box:nth-child(2) {
+  background-image: url(../assets/services/bg2.jpg);
+}
+
+.services .box:nth-child(3) {
+  background-image: url(../assets/services/bg3.jpg);
 }
 
 .services .box::before {

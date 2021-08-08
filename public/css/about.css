@@ -118,9 +118,95 @@
   font-size: clamp(1rem, 0.5rem + 1vw, 1.5rem);
 }
 
+/* Our Skills */
+
+.skills .layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1rem;
+}
+
+.skills .left {
+  padding: 0 4rem 0 2rem;
+}
+
+.skills .sub-title {
+  font-size: clamp(1.15rem, 0.5rem + 1vw, 1.5rem);
+  color: #9f9e9e;
+  margin-bottom: 1rem;
+}
+
+.skills .main-title {
+  font-size: clamp(2rem, 1rem + 3vw, 3rem);
+  text-transform: capitalize;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.skills .main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 40%;
+  border-bottom: 2px dotted #333;
+}
+
+.skills .left p {
+  font-size: clamp(1.125rem, 0.5rem + 1vw, 1.5rem);
+  margin-bottom: 2rem;
+}
+
+.skills__bar {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.skills__bar:nth-child(1) {
+  width: 65%;
+}
+
+.skills__bar:nth-child(2) {
+  width: 85%;
+}
+
+.skills__bar:nth-child(3) {
+  width: 55%;
+}
+
+.skills__bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  height: 2px;
+}
+
+.skills__bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  width: 2px;
+  height: 1.25rem;
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.skills__bar .lead {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+}
+
+.skills__bar .lead span {
+  float: right;
+}
+
 /* section 3 */
 .section-3 {
-  margin: 2rem 0;
   height: max(500px, 50vh);
 }
 .section-3 .grid {
