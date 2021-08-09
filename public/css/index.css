@@ -35,6 +35,7 @@
   background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
   background-size: cover;
   background-position: 0% 0%;
+  background-clip: text;
   -webkit-background-clip: text;
   animation: shine 5s linear infinite;
   width: fit-content;

@@ -3,7 +3,7 @@ const mapContainer = document.getElementById('map');
 // init map
 function initMap() {
   const options = {
-    zoom: 10,
+    zoom: 12,
     center: { lat: 24.8607, lng: 67.0011 },
   };
   const map = new google.maps.Map(mapContainer, options);
@@ -30,22 +30,22 @@ function initMap() {
   // markers array
   const markers = [
     {
-      coords: { lat: 24.8607, lng: 67.0011 },
-      content: '<h3>Karachi</h3>',
-    },
-    {
-      coords: { lat: 25.396, lng: 68.3578 },
-      content: '<h3>Hyderabad</h3>',
+      coords: { lat: 24.927610864825557, lng: 67.03295043729749 },
+      content: `
+        <div style="padding: 0.5rem">
+          <h2>Aptech</h2>
+        </div>
+      `,
     },
   ];
 
   // adding marker on map for each marker in array
   markers.forEach((marker) => addMarker(marker));
 
-  // adding marker where user clicks
-  google.maps.event.addListener(map, 'click', (e) => {
-    addMarker({ coords: e.latLng });
-  });
+  // // adding marker where user clicks
+  // google.maps.event.addListener(map, 'click', (e) => {
+  //   addMarker({ coords: e.latLng });
+  // });
 }
 
 /* const svgMarker = {
