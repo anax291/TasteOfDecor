@@ -2,6 +2,7 @@
 
 :root {
   --clr-secondary: hsl(0, 88%, 37%);
+  --btn-primary: #333;
 }
 /* CSS Reset */
 *,
@@ -259,6 +260,7 @@ header {
   padding: 0.25rem;
   font-size: 1.25rem;
   opacity: 0.8;
+  text-transform: capitalize;
 }
 
 .nav__link:hover,

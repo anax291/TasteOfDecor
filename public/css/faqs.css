@@ -7,6 +7,12 @@
   width: fit-content;
   position: relative;
   margin: 0 auto 3rem;
+  color: rgba(65, 43, 43, 0.3);
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+  background-size: cover;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  animation: shine 5s linear infinite;
 }
 
 .title::before,
@@ -23,6 +29,15 @@
   width: 30%;
   margin: auto;
   background: #ffa600;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 650px;
+  }
 }
 
 .faqs > *:not(:last-child) {

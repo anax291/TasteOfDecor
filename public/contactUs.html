@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Intro.js files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/intro.min.js"
+    integrity="sha512-vpRYyG0wwpTzFdMa1fWEV6GLWfJiiKG1W7dCPuIuvm2kbZMUA8jnokV84rdUft8AF6ih83/ItbmP/fDzNjVxsA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/introjs.min.css"
+    integrity="sha512-631ugrjzlQYCOP9P8BOLEMFspr5ooQwY3rgt8SMUa+QqtVMbY/tniEUOcABHDGjK50VExB4CNc61g5oopGqCEw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- intro.js files ends -->
   <link rel="stylesheet" href="./css/utilities.css">
   <link rel="stylesheet" href="./css/contactUs.css">
   <title>Design Harvest | Contact Us</title>
@@ -36,7 +44,7 @@
 
   <main>
     <div class="container">
-      <h1 class="l-font main-title">Contact Us</h1>
+      <h1 class="l-font main-title" data-step="1" data-intro="Hello">Contact Us</h1>
       <div id="map" class="mb-3"></div>
       <section class="mb-3">
         <div class="grid">
@@ -66,18 +74,18 @@
           </div>
           <div class="right">
             <h2>Tell Us Your Message</h2>
-            <form>
+            <form id="contact-form">
               <div class="field-wrapper">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" id="name">
               </div>
               <div class="field-wrapper">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email">
               </div>
               <div class="field-wrapper">
                 <label for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" required>
+                <input type="text" name="subject" id="subject">
               </div>
               <div class="field-wrapper">
                 <label for="message">Message</label>
@@ -93,9 +101,10 @@
 
   <custom-footer></custom-footer>
 </body>
-<script src="./js/contactUs.js"></script>
+<script src="./js/googleMap.js"></script>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAG7IsWWNe2IfDQGBpQ2sZJeibxVqKyb4&callback=initMap"></script>
 <script src="./js/common.js"></script>
+<script src="./js/contactUs.js" type="module"></script>
 
 </html>

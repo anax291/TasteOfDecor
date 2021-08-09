@@ -42,11 +42,12 @@
     background-position: 0px;
   }
   100% {
-    background-position: 400px;
+    background-position: 600px;
   }
 }
 
-.about__content h2::after {
+.about__content h2::after,
+.skills .main-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -67,8 +68,8 @@
 }
 
 .about__container .btn {
-  background: #202e42;
-  color: #f4f4f4;
+  background: var(--btn-primary);
+  color: #fff;
   padding: 0.75em 1.25em;
   font-size: clamp(1rem, 0.35rem + 1vw, 1.75rem);
   margin-top: 2rem;
@@ -143,14 +144,14 @@
   position: relative;
 }
 
-.skills .main-title::after {
+/* .skills .main-title::after {
   content: '';
   position: absolute;
   bottom: -1rem;
   left: 0;
   width: 40%;
   border-bottom: 2px dotted #333;
-}
+} */
 
 .skills .left p {
   font-size: clamp(1.125rem, 0.5rem + 1vw, 1.5rem);

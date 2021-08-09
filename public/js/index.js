@@ -10,6 +10,7 @@ import {
 //  On page load
 document.addEventListener('DOMContentLoaded', () => {
   populateCategories();
+  populateTestimonials();
 });
 
 // populate categories
@@ -96,3 +97,63 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(factsContainer);
+
+/* Testimonials */
+
+const testimonialContainer = document.querySelector('.testimonials__container');
+const testimonialNav = testimonialContainer.querySelector('.testimonial__nav');
+
+const populateTestimonials = async () => {
+  const testimonialTemplate = document.getElementById('testimonial-template');
+  let url = `http://localhost:3000/testimonials`;
+  const testimonials = await getDataFromDb(url);
+  createTestimonialNav(testimonialNav, testimonials);
+  const testimonialElement = document.importNode(
+    testimonialTemplate.content,
+    true
+  );
+  const quote = testimonialElement.querySelector('.testimonial__content');
+  const clientName = testimonialElement.querySelector('.client__name');
+  quote.textContent = testimonials[0].message;
+  clientName.textContent = ` - ${testimonials[0].name}`;
+  testimonialContainer.appendChild(testimonialElement);
+};
+
+const createTestimonialNav = (container, testimonials) => {
+  emptyContainer(container);
+  testimonials.forEach((testimonial) => {
+    const btn = document.createElement('button');
+    btn.classList.add('testimonial__indicator');
+    btn.setAttribute('data-nav-id', testimonial.id);
+    container.appendChild(btn);
+  });
+  container
+    .querySelector('.testimonial__indicator:nth-child(1)')
+    .classList.add('current');
+  return container.querySelector('.current').getAttribute('data-nav-id');
+};
+
+/* btn Interaction */
+testimonialNav.addEventListener('click', async (e) => {
+  const target = e.target.closest('button.testimonial__indicator');
+  if (!target) return;
+  const targetId = target.getAttribute('data-nav-id');
+  testimonialNav.querySelector('.current').classList.remove('current');
+  target.classList.add('current');
+  testimonialContainer.removeChild(
+    testimonialContainer.querySelector('.testimonial')
+  );
+  // changing testimonial
+  let url = `http://localhost:3000/testimonials/${targetId}`;
+  const testimonial = await getDataFromDb(url);
+  const testimonialTemplate = document.getElementById('testimonial-template');
+  const testimonialElement = document.importNode(
+    testimonialTemplate.content,
+    true
+  );
+  const quote = testimonialElement.querySelector('.testimonial__content');
+  const clientName = testimonialElement.querySelector('.client__name');
+  quote.textContent = testimonial.message;
+  clientName.textContent = `- ${testimonial.name}`;
+  testimonialContainer.appendChild(testimonialElement);
+});

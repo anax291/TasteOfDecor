@@ -10,6 +10,12 @@
   font-size: clamp(1.5rem, 1rem + 3vw, 4rem);
   width: fit-content;
   margin: auto;
+  color: rgba(65, 43, 43, 0.3);
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+  background-size: cover;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  animation: shine 5s linear infinite;
   position: relative;
 }
 
@@ -22,6 +28,15 @@
   right: 0;
   height: 2px;
   background: #ccc;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 400px;
+  }
 }
 
 .collection__header::after {
