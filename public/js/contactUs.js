@@ -76,15 +76,11 @@ introJs()
       {
         element: subjectField,
         intro: `
-          <h2>Want to post a review for us???</h2>
-          <br>
-          <p> Make "testimonial" the subject of your form and then submit</p>
-          <br>
-          <p> Like this </p>
-          <br>
-          <input style="padding: 0.5rem 1rem" type="text" value="Testimonial">
-          <br>
-          <h3>Thank You </h3>
+          <h2 style="margin-bottom: 0.75rem">Want to post a review for us???</h2>
+          <p style="margin-bottom: 0.75rem"> Make "testimonial" the subject of your form and then submit</p>
+          <p style="margin-bottom: 0.75rem"> Like this </p>
+          <input style="padding: 0.5rem 1rem; margin-bottom: 0.75rem" type="text" value="Testimonial">
+          <h3 style="margin-bottom: 0.75rem">Thank You </h3>
       `,
       },
     ],
