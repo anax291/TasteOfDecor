@@ -636,5 +636,22 @@
       "reviews": []
     }
   ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Shaykh Anas",
+      "message": "I just love their design for all stunning details. You must know what can you do for a project before taking it, but with Archo, the sky is the limit."
+    },
+    {
+      "id": 2,
+      "name": "Syed Noman Shariq",
+      "message": "Not able to tell you how happy I am with interior..."
+    },
+    {
+      "id": 3,
+      "name": "Muhammad Usama",
+      "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
+    }
+  ],
   "cart": []
 }

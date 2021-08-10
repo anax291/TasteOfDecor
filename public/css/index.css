@@ -35,6 +35,7 @@
   background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
   background-size: cover;
   background-position: 0% 0%;
+  background-clip: text;
   -webkit-background-clip: text;
   animation: shine 5s linear infinite;
   width: fit-content;
@@ -42,7 +43,9 @@
 }
 
 .about__title::before,
-.about__title::after {
+.about__title::after,
+:is(.services, .testimonials) .main-title::before,
+:is(.services, .testimonials) .main-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -51,11 +54,14 @@
   height: 2px;
   background: #ccc;
 }
-.about__title::after {
+
+.about__title::after,
+:is(.services, .testimonials) .main-title::after {
   width: 30%;
   margin: auto;
   background: #ffa600;
 }
+
 @keyframes shine {
   0% {
     background-position: 0px;
@@ -76,11 +82,10 @@
 
 .about .btn {
   color: #fff;
-  background: hsl(0, 0%, 37%);
+  background: var(--btn-primary);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 0.5px;
-  border-radius: 1rem;
   transition: background 500ms ease;
 }
 
@@ -256,31 +261,23 @@
 }
 
 /* Services */
-.services__header {
+.services__header,
+.testimonials__header {
   text-align: center;
 }
 
-.services .sub-title {
+:is(.services, .testimonials) .sub-title {
   font-size: clamp(1.15rem, 0.5rem + 1vw, 1.5rem);
   color: #9f9e9e;
   margin-bottom: 1rem;
 }
 
-.services .main-title {
+:is(.services, .testimonials) .main-title {
   font-size: clamp(2rem, 1rem + 3vw, 3rem);
   text-transform: capitalize;
   width: max-content;
   margin: 0 auto 3rem;
   position: relative;
-}
-
-.services .main-title::after {
-  content: '';
-  position: absolute;
-  bottom: -1rem;
-  left: 20%;
-  right: 20%;
-  border-bottom: 2px dotted #333;
 }
 
 .services .layout {
@@ -297,7 +294,7 @@
   padding: 1.5rem;
   background-image: url(../assets/services/bg1.jpg);
   position: relative;
-  transition: all 200ms ease;
+  transition: all 700ms ease;
 }
 
 .services .box:nth-child(2) {
@@ -316,7 +313,7 @@
   width: 0;
   height: 1px;
   background: #000;
-  transition: width 400ms ease;
+  transition: width 700ms ease;
 }
 
 .services .box::after {
@@ -327,7 +324,7 @@
   height: 0;
   width: 1px;
   background: #000;
-  transition: height 400ms ease;
+  transition: height 700ms ease;
 }
 
 .services .box:hover {
@@ -406,10 +403,77 @@
 
 /* Testimonials */
 
-.testimonials {
+.testimonials__container {
   width: max(340px, 70vw);
   margin: auto;
-  height: 400px;
   background: #000;
-  margin-bottom: 3rem;
+  color: #fff;
+  padding: 5rem 7rem;
+  min-height: 350px;
+  position: relative;
+}
+
+.testimonial__content {
+  font-size: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+  max-width: 500px;
+  margin: 0 auto 4em;
+  position: relative;
+  animation: slideIn 1000ms ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.testimonial__content::before {
+  content: open-quote;
+  position: absolute;
+  top: -3.125rem;
+  left: -5rem;
+  font-size: 7em;
+}
+
+.testimonial__content::after {
+  content: close-quote;
+  position: absolute;
+  font-size: 7em;
+  right: -3.75rem;
+  bottom: -10rem;
+}
+
+.client__name {
+  text-align: center;
+  font-size: clamp(1rem, 0.5rem + 1vw, 1.5rem);
+}
+
+.testimonial__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.testimonial__indicator {
+  border: 0;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background: #f4f4f4;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.testimonial__indicator.current {
+  background: #a10000;
 }

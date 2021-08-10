@@ -7,6 +7,7 @@ import {
   injectProducts,
   validateEmail,
   postReviewToDb,
+  clearFields,
 } from './dataFunctions.js';
 
 /* Running Functions on Page Load */
@@ -195,8 +196,7 @@ form1.addEventListener('submit', (e) => {
     reviewObj.name = userName;
     reviewObj.email = userEmail;
     formsContainer.style.animation = `slideIn 2000ms ease-out forwards`;
-    name.value = '';
-    email.value = '';
+    clearFields(name, email);
   } else {
     window.alert('Fill the fields correctly');
   }
@@ -228,7 +228,7 @@ form2.addEventListener('submit', (e) => {
     reviewObj.description = userReview;
     postReview(reviewObj);
     formsContainer.style.animation = `slideOut 2000ms ease-out forwards`;
-    review.value = '';
+    clearFields(review);
     ratingsContainer.querySelector('.active').classList.remove('active');
   } else {
     window.alert('please rate the prod');

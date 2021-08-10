@@ -245,8 +245,17 @@
 
   <!-- Testimonials -->
 
-  <section class="testimonials">
-
+  <section class="testimonials mb-3">
+    <div class="container">
+      <div class="testimonials__header">
+        <p class="sub-title">[ Testimonials ]</p>
+        <h2 class="main-title">Words of our potential clients</h2>
+      </div>
+      <div class="testimonials__container">
+        <div class="testimonial__nav">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -288,6 +297,16 @@
       </div>
     </div>
   </template>
+
+  <!-- Testimonials Template -->
+
+  <template id="testimonial-template">
+    <div class="testimonial">
+      <blockquote class="testimonial__content"></blockquote>
+      <p class="client__name"></p>
+    </div>
+  </template>
+
 
 </body>
 <script src="./js/common.js"></script>
