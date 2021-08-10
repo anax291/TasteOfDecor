@@ -77,21 +77,22 @@
 
 .about-us {
   --flow-space: 3rem;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
 }
 
 .about .btn {
   color: #fff;
   background: var(--btn-primary);
   font-size: 1.25rem;
-  font-weight: 800;
   letter-spacing: 0.5px;
+  border: 1px solid currentColor;
   transition: background 500ms ease;
 }
 
 .about .btn:hover,
 .about .btn:focus {
-  background: hsl(39, 100%, 50%);
+  background: #fff;
+  color: var(--btn-primary);
 }
 
 /* facts */
