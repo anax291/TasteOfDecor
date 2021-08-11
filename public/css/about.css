@@ -71,9 +71,15 @@
 .about__container .btn {
   background: var(--btn-primary);
   color: #fff;
-  padding: 0.75em 1.25em;
   font-size: clamp(1rem, 0.35rem + 1vw, 1.75rem);
   margin-top: 2rem;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+}
+
+.about__container :is(.btn:hover, .btn:focus){
+  background: #fff;
+  color: var(--btn-primary);
 }
 
 /* our legacy */
@@ -145,14 +151,11 @@
   position: relative;
 }
 
-/* .skills .main-title::after {
-  content: '';
-  position: absolute;
+.skills .main-title::after {
   bottom: -1rem;
   left: 0;
   width: 40%;
-  border-bottom: 2px dotted #333;
-} */
+}
 
 .skills .left p {
   font-size: clamp(1.125rem, 0.5rem + 1vw, 1.5rem);
