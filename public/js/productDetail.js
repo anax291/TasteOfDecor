@@ -171,7 +171,7 @@ const observer = new IntersectionObserver(
       observer.unobserve(entries[0].target);
     }
   },
-  { threshold: 0.8 }
+  { threshold: 1 }
 );
 observer.observe(reviewsContainer);
 
