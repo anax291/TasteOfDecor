@@ -34,11 +34,31 @@
           <li class="nav__item"><a class="nav__link" href="./contactUs.html">Contact us</a></li>
         </ul>
       </div>
+      <div class="cart-wrapper">
+        <div class="cart-badge">0</div>
+        <img class="cart-icon" src="./assets/misc/shopping-cart.svg" alt="">
+      </div>
+      <div class="cart-container">
+        <div class="close"><span class="close-icon"></span></div>
+        <div class="cart-head">
+          <p class="total-price">Total: <span>Rs. 95000</span></p>
+          <div class="remove-all"><span class="close-icon"></span>Remove all</div>
+        </div>
+        <div class="cart-items"></div>
+        <div class="empty-cart">
+          <div class="message">
+            <p>Your shopping Cart is empty</p>
+            <p>Stay Connected with us...</p>
+          </div>
+          <img src="./assets/misc/empty-cart.svg" alt="">
+          <p>@Taste Of Decor</p>
+        </div>
+      </div>
     </nav>
   </header>
 
   <!-- banner -->
-  <div class="showcase">
+  <div class=" showcase">
     <div class="carousel">
       <button class="carousel__btn carousel__btn--left">
         <img src="./assets/chevrons/left.svg" alt="">
@@ -54,7 +74,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -71,7 +92,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -88,7 +110,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -122,7 +145,8 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, nesciunt.
           </p>
           <p class="about-us">
-            Taste Of Decor is a 'Wholistic' studio, specializing in residential architecture and interiors. From foundation to furnishings, everything we do, we do for the love of home.
+            Taste Of Decor is a 'Wholistic' studio, specializing in residential architecture and interiors. From
+            foundation to furnishings, everything we do, we do for the love of home.
           </p>
           <a href="./about.html" class="btn">Read More</a>
         </div>
@@ -305,9 +329,27 @@
     </div>
   </template>
 
+  <!-- Cart item template -->
+  <template id="cart-item">
+    <div class="item">
+      <img src="" alt="" class="item__img">
+      <div class="item__info">
+        <p class="item__name"></p>
+        <p class="item__price"></p>
+        <div class="qty-info">
+          <button class="decreament"><i class="fas fa-minus"></i></button>
+          <span class="item__qty">1</span>
+          <button class="increament"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="delete-item">
+        <i class="far fa-trash-alt"></i>
+      </div>
+    </div>
+  </template>
 
 </body>
-<script src="./js/common.js"></script>
+<script src="./js/common.js" type="module"></script>
 <script src="./js/index.js" type="module"></script>
 <script src="./js/carousel.js"></script>
 

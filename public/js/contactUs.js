@@ -3,7 +3,7 @@ import {
   validateEmail,
   validateSubject,
   validateMessage,
-  postTestimonailToDb,
+  postDataToDb,
   clearFields,
 } from './dataFunctions.js';
 
@@ -47,7 +47,6 @@ const validateForm = (name, email, subject, message) => {
     throwError('please enter a proper message', textArea);
     return false;
   }
-  console.log(132);
   return true;
 };
 
@@ -66,7 +65,7 @@ const createTestimonialObj = (userName, desc) => {
     name: userName,
     message: desc,
   };
-  postTestimonailToDb(obj);
+  postDataToDb(obj, 'testimonials');
 };
 
 /* Intro js */
