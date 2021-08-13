@@ -6,6 +6,7 @@ import {
   updateBadge,
   updateCart,
   updateData,
+  updateTotalPrice,
 } from './dataFunctions.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -331,8 +332,9 @@ const changeProdQty = async (e, mode) => {
   if (mode === 'increase') {
     obj = { qty: parseInt(prodQty.textContent) + 1 };
   } else {
-    if (parseInt(prodQty.textContent) === 1) {
+    if (parseInt(prodQty.textContent) == 1) {
       deleteItem(e);
+      return;
     } else {
       obj = { qty: parseInt(prodQty.textContent) - 1 };
     }
