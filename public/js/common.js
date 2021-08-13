@@ -1,6 +1,7 @@
 import {
   addProdToCartInDb,
   deleteDataFromDb,
+  deletingCartItemAnimation,
   getDataFromDb,
   updateBadge,
   updateCart,
@@ -313,10 +314,13 @@ const deleteItem = async (e) => {
   const targetId = targetCard.getAttribute('data-id');
   let url = `http://localhost:3000/cart/${targetId}`;
   const success = await deleteDataFromDb(url);
-  if (success) {
-    updateCart();
-    updateBadge();
-  }
+  deletingCartItemAnimation(targetCard);
+  setTimeout(() => {
+    if (success) {
+      updateCart();
+      updateBadge();
+    }
+  }, 2000);
 };
 
 const changeProdQty = async (e, mode) => {
@@ -342,13 +346,19 @@ const changeProdQty = async (e, mode) => {
 };
 
 const removeAll = async (e) => {
-  const items = await getDataFromDb(`http://localhost:3000/cart`);
+  const cartItems = e.target.closest('.cart-head').nextElementSibling;
+  const items = Array.from(cartItems.children);
+  let success;
   items.forEach((item) => {
-    let url = `http://localhost:3000/cart/${item.id}`;
-    const success = deleteDataFromDb(url);
-    if (success) {
-      updateBadge();
-      updateCart();
-    }
+    const id = item.getAttribute('data-id');
+    let url = `http://localhost:3000/cart/${id}`;
+    success = deleteDataFromDb(url);
+    deletingCartItemAnimation(item);
   });
+  setTimeout(() => {
+    if (success) {
+      updateCart();
+      updateBadge();
+    }
+  }, 2000);
 };

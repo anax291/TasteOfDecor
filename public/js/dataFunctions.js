@@ -1,3 +1,9 @@
+import {
+  cartDeletingTemplate,
+  cartItemTemplate,
+  emptyCartTemplate,
+} from './cartTemplates.js';
+
 /* Helper Functions */
 
 // function to empty Container
@@ -18,6 +24,17 @@ export const addLoadingAnimation = (container) => {
 // function to remove loading animation
 export const removeLoadingAnimation = (container) =>
   container.removeChild(container.firstChild);
+
+// deleting cart item animation
+export const deletingCartItemAnimation = (card) => {
+  const deletingCard =
+    cartDeletingTemplate.content.firstElementChild.cloneNode(true);
+  const parent = card.parentElement;
+  parent.replaceChild(deletingCard, card);
+  setTimeout(() => {
+    parent.removeChild(parent.querySelector('.deleting'));
+  }, 2000);
+};
 
 /* fetch functions */
 export const getDataFromDb = async (url) => {
@@ -163,7 +180,6 @@ const sendProdToCart = async (prodCard, targetId) => {
     price: prodPrice,
     qty: 1,
   };
-  console.log(prodObj);
   postDataToDb(prodObj, 'cart');
   return true;
 };
@@ -204,28 +220,29 @@ export const updateCart = async () => {
   if (!cartItems.length) {
     cartContainer.querySelector('.cart-head').style.display = 'none';
     emptyContainer(cartContainer.querySelector('.cart-items'));
-    displayEmptyCartMsg();
+    displayEmptyCartMsg(cartContainer);
   } else {
     cartContainer.querySelector('.cart-head').style.display = '';
-    populateCart(cartItems);
+    populateCart(cartItems, cartContainer);
   }
 };
 
 // empty cart display
 const displayEmptyCartMsg = (container) => {
-  document.querySelector('.empty-cart').style.display = 'flex';
+  const emptyCart = emptyCartTemplate.content.firstElementChild.cloneNode(true);
+  container.appendChild(emptyCart);
 };
 
 // populating cart
-const populateCart = async (items) => {
-  document.querySelector('.empty-cart').style.display = '';
-  const cartItemsContainer = document.querySelector(
-    '.cart-container .cart-items'
-  );
+const populateCart = async (items, container) => {
+  if (container.querySelector('.empty-cart')) {
+    container.removeChild(container.querySelector('.empty-cart'));
+  }
+  const cartItemsContainer = container.querySelector('.cart-items');
   emptyContainer(cartItemsContainer);
-  const template = document.getElementById('cart-item');
   items.forEach((item) => {
-    const cartElement = template.content.firstElementChild.cloneNode(true);
+    const cartElement =
+      cartItemTemplate.content.firstElementChild.cloneNode(true);
     const prodImg = cartElement.querySelector('.item__img');
     const prodName = cartElement.querySelector('.item__name');
     const prodPrice = cartElement.querySelector('.item__price');
