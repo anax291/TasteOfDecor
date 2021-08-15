@@ -71,7 +71,7 @@ body {
 }
 
 .category.active {
-  background: var(--clr-secondary);
+  background: var(--clr-primary-300);
   color: #f5f5f5;
 }
 

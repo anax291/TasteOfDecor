@@ -3,7 +3,23 @@
 :root {
   --clr-secondary: hsl(0, 88%, 37%);
   --btn-primary: #333;
+  --clr-primary-300:hsl(205, 24%, 30%);
+  --clr-primary-600:hsl(205, 24%, 50%);
+  --clr-primary-500:hsl(205, 24%, 55%);
 }
+/* custom scroll bar */
+::-webkit-scrollbar-track{
+  border:1px solid #f9f8fe;
+  background-color: #f9f8fe;
+}
+::-webkit-scrollbar{
+  width:1rem;
+  background-color:#f9f8fe ;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #000;
+}
+/* custom scroll bar */
 /* CSS Reset */
 *,
 *::before,

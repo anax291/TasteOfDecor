@@ -91,7 +91,7 @@
 }
 .card .container .bottom .right {
   width: 50%;
-  background: #a6cdde;
+  background: var(--clr-primary-500);
   color: white;
   float: right;
   height: 200%;
@@ -140,7 +140,7 @@
 }
 .card .inside {
   z-index: 9;
-  background: #92879b;
+  background: var(--clr-primary-600);
   width: 140px;
   height: 140px;
   position: absolute;
@@ -197,7 +197,7 @@
   display: block;
   width: max-content;
   margin-left: auto;
-  background: #66606d;
+  background: var(--clr-primary-300);
   color: #f4f4f4;
 }
 /* ends */

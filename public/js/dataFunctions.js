@@ -186,9 +186,9 @@ const sendProdToCart = async (prodCard, targetId) => {
 
 // displaying message
 const displayMsg = (msg, bool) => {
-  const color = bool ? '#155724' : '#0c5460';
-  const bgColor = bool ? '#d4edda' : '#d1ecf1';
-  const borderColor = bool ? '#c3e6cb' : '#bee5eb';
+  const color = bool ? '#155724' : '#856404';
+  const bgColor = bool ? '#d4edda' : '#fff3cd';
+  const borderColor = bool ? '#c3e6cb' : '#ffeeba';
   const popUp = document.createElement('p');
   popUp.classList.add('alert');
   popUp.style.cssText = `
