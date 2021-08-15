@@ -7,6 +7,10 @@ import {
   injectProducts,
   validateEmail,
   postReviewToDb,
+  clearFields,
+  addProdToCartInDb,
+  updateBadge,
+  updateCart,
 } from './dataFunctions.js';
 
 /* Running Functions on Page Load */
@@ -32,7 +36,7 @@ const injectProductDetails = async () => {
   emptyContainer(prodContainer);
   const prodTemplate = document.getElementById('prod-detail-template');
   // grabbing reqd fields from product template
-  const product = document.importNode(prodTemplate.content, true);
+  const product = prodTemplate.content.firstElementChild.cloneNode(true);
   const imageGrid = product.querySelector('.image-grid');
   const primaryImage = product.querySelector('.primary__image');
   const prodName = product.querySelector('.product__name');
@@ -41,6 +45,7 @@ const injectProductDetails = async () => {
   const reviewsNumber = product.querySelector('.reviews-number');
   const productDescription = product.querySelector('.product__description');
   // assigning values
+  product.setAttribute('data-id', productObj.id);
   primaryImage.src = productObj.imgSrc[0];
   imageGrid.appendChild(primaryImage);
   let imageList = [];
@@ -49,7 +54,7 @@ const injectProductDetails = async () => {
     imageGrid.appendChild(image);
   });
   prodName.textContent = productObj.name;
-  prodPrice.textContent = `Rs. ${productObj.price} / piece`;
+  prodPrice.textContent = `Rs. ${productObj.price}`;
   if (productObj.reviews.length) {
     const ratingsInfo = getRatingsInfo(productObj.reviews);
     reviewsNumber.textContent = `${productObj.reviews.length} reviews (${ratingsInfo[1]} avg. ratings)`;
@@ -111,6 +116,24 @@ const changePrimaryImage = () => {
   });
 };
 
+/* Add prod to cart from prod details */
+
+const prodContainer = document.querySelector('main.product .container');
+prodContainer.addEventListener('click', (e) => {
+  const cardBtn = e.target.closest('.add-to-cart');
+  if (!cardBtn) return;
+  const card = prodContainer.querySelector('[data-prod-card]');
+  cartFunctions(card);
+});
+
+const cartFunctions = async (card) => {
+  const success = await addProdToCartInDb(card);
+  if (success) {
+    updateBadge();
+    updateCart();
+  }
+};
+
 /* populate Similar Products */
 
 const populateSimilarProducts = async () => {
@@ -170,7 +193,7 @@ const observer = new IntersectionObserver(
       observer.unobserve(entries[0].target);
     }
   },
-  { threshold: 0.8 }
+  { threshold: 1 }
 );
 observer.observe(reviewsContainer);
 
@@ -195,8 +218,7 @@ form1.addEventListener('submit', (e) => {
     reviewObj.name = userName;
     reviewObj.email = userEmail;
     formsContainer.style.animation = `slideIn 2000ms ease-out forwards`;
-    name.value = '';
-    email.value = '';
+    clearFields(name, email);
   } else {
     window.alert('Fill the fields correctly');
   }
@@ -228,7 +250,7 @@ form2.addEventListener('submit', (e) => {
     reviewObj.description = userReview;
     postReview(reviewObj);
     formsContainer.style.animation = `slideOut 2000ms ease-out forwards`;
-    review.value = '';
+    clearFields(review);
     ratingsContainer.querySelector('.active').classList.remove('active');
   } else {
     window.alert('please rate the prod');

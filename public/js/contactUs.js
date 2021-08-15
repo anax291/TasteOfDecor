@@ -1,59 +1,87 @@
-/* Google Map */
-const mapContainer = document.getElementById('map');
-// init map
-function initMap() {
-  const options = {
-    zoom: 10,
-    center: { lat: 24.8607, lng: 67.0011 },
+import {
+  validateName,
+  validateEmail,
+  validateSubject,
+  validateMessage,
+  postDataToDb,
+  clearFields,
+} from './dataFunctions.js';
+
+// Grabbing UI Elements
+const contactForm = document.getElementById('contact-form');
+const nameField = document.getElementById('name');
+const emailField = document.getElementById('email');
+const subjectField = document.getElementById('subject');
+const textArea = document.getElementById('message');
+
+// Submit Event
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = nameField.value;
+  const email = emailField.value;
+  let subject = subjectField.value;
+  const message = textArea.value;
+  if (!validateForm(name, email, subject, message)) return;
+  // check if subject is testimonial
+  subject = subject.trim();
+  if (subject.toLowerCase() === 'testimonial') {
+    createTestimonialObj(name, message);
+  }
+  clearFields(nameField, emailField, subjectField, textArea);
+});
+
+const validateForm = (name, email, subject, message) => {
+  if (!validateName(name)) {
+    throwError('Please enter a valid name', nameField);
+    return false;
+  }
+  if (!validateEmail(email)) {
+    throwError('Please enter a valid email', emailField);
+    return false;
+  }
+  if (!validateSubject(subject)) {
+    throwError('Please enter a valid subject', subjectField);
+    return false;
+  }
+  if (!validateMessage(message)) {
+    throwError('please enter a proper message', textArea);
+    return false;
+  }
+  return true;
+};
+
+const throwError = (message, element) => {
+  const err = document.createElement('span');
+  err.classList.add('err');
+  err.textContent = message;
+  element.parentElement.appendChild(err);
+  setTimeout(() => {
+    element.parentElement.removeChild(element.parentElement.lastChild);
+  }, 3000);
+};
+
+const createTestimonialObj = (userName, desc) => {
+  let obj = {
+    name: userName,
+    message: desc,
   };
-  const map = new google.maps.Map(mapContainer, options);
+  postDataToDb(obj, 'testimonials');
+};
 
-  // add markers function
-  const addMarker = (props) => {
-    const marker = new google.maps.Marker({
-      position: props.coords,
-      map: map,
-    });
-    if (props.iconImg) {
-      marker.setIcon(props.iconImg);
-    }
-    if (props.content) {
-      const infoWindow = new google.maps.InfoWindow({
-        content: props.content,
-      });
-      marker.addListener('click', () => {
-        infoWindow.open(map, marker);
-      });
-    }
-  };
-
-  // markers array
-  const markers = [
-    {
-      coords: { lat: 24.8607, lng: 67.0011 },
-      content: '<h3>Karachi</h3>',
-    },
-    {
-      coords: { lat: 25.396, lng: 68.3578 },
-      content: '<h3>Hyderabad</h3>',
-    },
-  ];
-
-  // adding marker on map for each marker in array
-  markers.forEach((marker) => addMarker(marker));
-
-  // adding marker where user clicks
-  google.maps.event.addListener(map, 'click', (e) => {
-    addMarker({ coords: e.latLng });
-  });
-}
-
-/* const svgMarker = {
-  path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
-  fillColor: 'blue',
-  fillOpacity: 0.6,
-  strokeWeight: 0,
-  rotation: 0,
-  scale: 2,
-  anchor: new google.maps.Point(15, 30),
-}; */
+/* Intro js */
+introJs()
+  .setOptions({
+    steps: [
+      {
+        element: subjectField,
+        intro: `
+          <h2 style="margin-bottom: 0.75rem">Want to post a review for us???</h2>
+          <p style="margin-bottom: 0.75rem"> Make "testimonial" the subject of your form and then submit</p>
+          <p style="margin-bottom: 0.75rem"> Like this </p>
+          <input style="padding: 0.5rem 1rem; margin-bottom: 0.75rem" type="text" value="Testimonial">
+          <h3 style="margin-bottom: 0.75rem">Thank You </h3>
+      `,
+      },
+    ],
+  })
+  .start();

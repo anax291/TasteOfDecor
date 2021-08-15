@@ -34,11 +34,23 @@
           <li class="nav__item"><a class="nav__link" href="./contactUs.html">Contact us</a></li>
         </ul>
       </div>
+      <div class="cart-wrapper">
+        <div class="cart-badge">0</div>
+        <img class="cart-icon" src="./assets/misc/shopping-cart.svg" alt="">
+      </div>
+      <div class="cart-container">
+        <div class="close"><span class="close-icon"></span></div>
+        <div class="cart-head">
+          <p class="total-price">Total: <span>Rs. 95000</span></p>
+          <div class="remove-all"><span class="close-icon"></span>Remove all</div>
+        </div>
+        <div class="cart-items"></div>
+      </div>
     </nav>
   </header>
 
   <!-- banner -->
-  <div class="showcase">
+  <div class=" showcase">
     <div class="carousel">
       <button class="carousel__btn carousel__btn--left">
         <img src="./assets/chevrons/left.svg" alt="">
@@ -54,7 +66,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -71,7 +84,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -88,7 +102,8 @@
                   for stylish living
                 </h1>
                 <p class="banner__lead">
-                  If you are looking at blank cassettes on the web, you may be very confused at the difference in price.
+                  If you are looking at blank cassettes on the web, you may be very confused at the difference in
+                  price.
                   You may
                   see some for as low as $.17 each. You may be saying to yourself.
                 </p>
@@ -122,11 +137,10 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, nesciunt.
           </p>
           <p class="about-us">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae tenetur laborum dolore incidunt ab
-            pariatur aliquam hic accusamus vel enim quos optio, nostrum saepe praesentium recusandae sequi odio nulla
-            nihil!
+            Taste Of Decor is a 'Wholistic' studio, specializing in residential architecture and interiors. From
+            foundation to furnishings, everything we do, we do for the love of home.
           </p>
-          <a href="#" class="btn">Read More</a>
+          <a href="./about.html" class="btn">Read More</a>
         </div>
       </div>
     </div>
@@ -175,7 +189,7 @@
   </section>
 
   <!-- Advertisement -->
-  <section class="advertisement">
+  <section class="advertisement mb-3">
     <div class="flex">
       <div class="ads">
         <p class="ads__title">Cyber Monday</p>
@@ -201,40 +215,64 @@
     </div>
   </section>
 
-  <!-- services -->
-  <section class="services">
-    <div class="container flow">
-      <div class="heading">Some features that make us unique</div>
-      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae voluptate temporibus, amet
-        ut nostrum suscipit at dolorem sequi, iure eveniet rerum. Aliquid iusto consectetur eveniet!</p>
-      <div class="main-card">
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+  <!-- Our Services -->
+  <section class="services mb-3">
+    <div class="container">
+      <div class="services__header">
+        <p class="sub-title">[ Our Services ]</p>
+        <h2 class="main-title">What can we offer</h2>
+      </div>
+      <div class="layout">
+        <div class="box">
+          <div class="box__img">
+            <img src="./assets/services/img1.png" alt="">
+          </div>
+          <div class="box__content flow">
+            <h3><a href="#">Design & Planning</a></h3>
+            <p>We will help you to get the result you dreamed of.</p>
+            <a class="box__link" href="#">Read More</a>
+          </div>
         </div>
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        <div class="box">
+          <div class="box__img">
+            <img src="./assets/services/img2.png" alt="">
+          </div>
+          <div class="box__content flow">
+            <h3><a href="#">Custom Solutions</a></h3>
+            <p>Individual, aesthetically stunning solutions for customers.</p>
+            <a class="box__link" href="#">Read More</a>
+          </div>
         </div>
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
-        </div>
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
-        </div>
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
-        </div>
-        <div class="items flow">
-          <h2>XYZ</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        <div class="box">
+          <div class="box__img">
+            <img src="./assets/services/img3.png" alt="">
+          </div>
+          <div class="box__content flow">
+            <h3><a href="#">Furniture & Decor</a></h3>
+            <p>We create and produce our product design lines.</p>
+            <a class="box__link" href="#">Read More</a>
+          </div>
         </div>
       </div>
+    </div>
   </section>
 
+  <!-- Testimonials -->
+
+  <section class="testimonials mb-3">
+    <div class="container">
+      <div class="testimonials__header">
+        <p class="sub-title">[ Testimonials ]</p>
+        <h2 class="main-title">Words of our potential clients</h2>
+      </div>
+      <div class="testimonials__container">
+        <div class="testimonial__nav">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <custom-footer></custom-footer>
 
   <!-- Card Template -->
@@ -274,8 +312,19 @@
     </div>
   </template>
 
+  <!-- Testimonials Template -->
+
+  <template id="testimonial-template">
+    <div class="testimonial">
+      <blockquote class="testimonial__content"></blockquote>
+      <p class="client__name"></p>
+    </div>
+  </template>
+
+
+
 </body>
-<script src="./js/common.js"></script>
+<script src="./js/common.js" type="module"></script>
 <script src="./js/index.js" type="module"></script>
 <script src="./js/carousel.js"></script>
 

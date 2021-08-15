@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
   slides.forEach((slide, index) => {
     slide.style.left = slideWidth * index + 'px';
   });
-  // if (document.hasFocus) {
-  //   setInterval(moveToNextSlide, 3000);
-  // }
+  if (document.hasFocus) {
+    setInterval(moveToNextSlide, 3000);
+  }
 });
 
 //when click left, move slides to left.

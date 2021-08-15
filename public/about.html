@@ -9,7 +9,7 @@
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/utilities.css">
   <link rel="stylesheet" href="./css/about.css">
-  <title>Design harvest | About</title>
+  <title>Taste of Décor | About Us</title>
 </head>
 
 <body>
@@ -29,6 +29,19 @@
           <li class="nav__item"><a class="nav__link" href="./faqs.html">FAQs</a></li>
           <li class="nav__item"><a class="nav__link" href="./contactUs.html">Contact us</a></li>
         </ul>
+      </div>
+      <div class="cart-wrapper">
+        <div class="cart-badge">0</div>
+        <img class="cart-icon" src="./assets/misc/shopping-cart.svg" alt="">
+      </div>
+      <div class="cart-container">
+        <div class="close"><span class="close-icon"></span></div>
+        <div class="cart-head">
+          <p class="total-price">Total: <span>Rs. 95000</span></p>
+          <div class="remove-all"><span class="close-icon"></span>Remove all</div>
+        </div>
+        <div class="cart-items">
+        </div>
       </div>
     </nav>
   </header>
@@ -57,7 +70,7 @@
   </section>
 
   <!-- our legacy -->
-  <section class="our-legacy">
+  <section class="our-legacy mb-3">
     <div class="grid">
       <img src="./assets/about/img2.jpg" alt="" class="bg-image">
       <div class="content">
@@ -72,6 +85,34 @@
       </div>
     </div>
   </section>
+
+  <section class="skills mb-3">
+    <div class="layout">
+      <div class="left">
+        <div class="skills__header">
+          <p class="sub-title">[ Our Skills ]</p>
+          <h2 class="main-title">The core company values</h2>
+        </div>
+        <p>We are constantly growing, learning, and improving and our partners are steadily increasing. 200 projects is
+          a sizable number.</p>
+        <div class="skills__bars">
+          <div class="skills__bar">
+            <div class="lead">Interior Sketch <span>65%</span> </div>
+          </div>
+          <div class="skills__bar">
+            <div class="lead">3D Modelling <span>85%</span> </div>
+          </div>
+          <div class="skills__bar">
+            <div class="lead">2D Planning <span>55%</span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="./assets/about/img4.png" alt="">
+      </div>
+    </div>
+  </section>
+
   <section class="section-3">
     <div class="grid">
       <div class="image">
@@ -84,9 +125,44 @@
       </div>
     </div>
   </section>
+
+  <!-- services -->
+  <section class="services">
+    <div class="container flow">
+      <div class="heading">Some features that make us unique</div>
+      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae voluptate temporibus, amet
+        ut nostrum suscipit at dolorem sequi, iure eveniet rerum. Aliquid iusto consectetur eveniet!</p>
+      <div class="main-card">
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+        <div class="items flow">
+          <h2>XYZ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam.</p>
+        </div>
+      </div>
+  </section>
+  <!-- Footer -->
   <custom-footer></custom-footer>
 </body>
-<script src="./js/common.js"></script>
-<script src="./js/about.js"></script>
+<script src="./js/common.js" type="module"></script>
+<script src="./js/about.js" type="module"></script>
 
 </html>

@@ -1,3 +1,9 @@
+import {
+  cartDeletingTemplate,
+  cartItemTemplate,
+  emptyCartTemplate,
+} from './cartTemplates.js';
+
 /* Helper Functions */
 
 // function to empty Container
@@ -11,13 +17,24 @@ export const emptyContainer = (container) => {
 export const addLoadingAnimation = (container) => {
   const image = document.createElement('img');
   image.classList.add('loading-gif');
-  image.src = './assets/loadingSvg.svg';
+  image.src = './assets/misc/loadingSvg.svg';
   container.appendChild(image);
 };
 
 // function to remove loading animation
 export const removeLoadingAnimation = (container) =>
   container.removeChild(container.firstChild);
+
+// deleting cart item animation
+export const deletingCartItemAnimation = (card) => {
+  const deletingCard =
+    cartDeletingTemplate.content.firstElementChild.cloneNode(true);
+  const parent = card.parentElement;
+  parent.replaceChild(deletingCard, card);
+  setTimeout(() => {
+    parent.removeChild(parent.querySelector('.deleting'));
+  }, 2000);
+};
 
 /* fetch functions */
 export const getDataFromDb = async (url) => {
@@ -26,7 +43,7 @@ export const getDataFromDb = async (url) => {
   return categories;
 };
 
-/* patch function */
+/* patch Reviews function */
 export const postReviewToDb = async (url, reviewsArr) => {
   const body = { reviews: reviewsArr };
   const obj = {
@@ -37,10 +54,38 @@ export const postReviewToDb = async (url, reviewsArr) => {
   await fetch(url, obj);
 };
 
+/* Patch cart items */
+export const updateData = async (url, obj) => {
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify(obj),
+    headers: { 'Content-Type': 'application/json' },
+  };
+  await fetch(url, options);
+};
+
+/* send data [testimonials, cart-items] to db */
+export const postDataToDb = async (dataObj, dbArr) => {
+  const url = `http://localhost:3000/${dbArr}`;
+  const optionObj = {
+    method: 'POST',
+    body: JSON.stringify(dataObj),
+    headers: { 'Content-Type': 'application/json' },
+  };
+  await fetch(url, optionObj);
+};
+
+/* Delete data from db */
+export const deleteDataFromDb = async (url) => {
+  const optionObj = { method: 'DELETE' };
+  await fetch(url, optionObj);
+  return true;
+};
+
 /* Inject Prodouct Cards */
 export const injectProducts = (cardTemplate, products, productContainer) => {
   products.forEach((product) => {
-    const card = document.importNode(cardTemplate.content, true);
+    const card = cardTemplate.content.firstElementChild.cloneNode(true);
     const prodImage = card.querySelector('img');
     const names = card.querySelectorAll('.name');
     const prices = card.querySelectorAll('.price');
@@ -48,6 +93,7 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
     const ctaBtn = card.querySelector('.inside .btn');
     prodImage.src = product.imgSrc[0];
     prodImage.alt = product.name;
+    card.setAttribute('data-id', product.id);
     names.forEach((name) => {
       name.textContent = product.name;
     });
@@ -65,9 +111,163 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
   });
 };
 
-// Email validation
+/* Email validation */
 export const validateEmail = (email) => {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
+};
+
+/* Name Validation */
+export const validateName = (name) => {
+  const re = /^[A-Za-z. ]{3,20}$/;
+  return re.test(name);
+};
+
+/* Subject Validation */
+export const validateSubject = (text) => {
+  const re = /^[A-Za-z. ]{3,}$/;
+  return re.test(text);
+};
+
+/* Validte Message */
+export const validateMessage = (text) => {
+  const re = /^[A-Za-z. ]{5,}$/;
+  return re.test(text);
+};
+
+/* Clear Form Fields */
+export const clearFields = (...fields) => {
+  fields.forEach((field) => {
+    field.value = '';
+  });
+};
+
+/* Add Prod to cart in database */
+export const addProdToCartInDb = async (card) => {
+  const targetId = card.getAttribute('data-id');
+  const url = `http://localhost:3000/cart`;
+  const cartItems = await getDataFromDb(url);
+  const flag = cartItems.find((item) => item.prodId === targetId);
+  if (flag) {
+    displayMsg('Product had already been added', false);
+  } else {
+    const success = await sendProdToCart(card, targetId);
+    if (success) {
+      displayMsg('Product is successfully added', true);
+      updateBadge();
+    }
+  }
+  return true;
+};
+
+// sending cart obj to database
+const sendProdToCart = async (prodCard, targetId) => {
+  let prodImg = prodCard.querySelector('img').src;
+  prodImg = prodImg.replace('http://localhost:3000', '.');
+  let prodName =
+    prodCard.querySelector('.name') || prodCard.querySelector('.product__name');
+  prodName = prodName.textContent;
+  let prodPrice =
+    prodCard.querySelector('.price') ||
+    prodCard.querySelector('.product__price');
+  prodPrice = prodPrice.textContent;
+  prodPrice = prodPrice.replace('Rs. ', '');
+  const prodObj = {
+    prodId: targetId,
+    name: prodName,
+    imgSrc: prodImg,
+    price: prodPrice,
+    qty: 1,
+  };
+  postDataToDb(prodObj, 'cart');
+  return true;
+};
+
+// displaying message
+const displayMsg = (msg, bool) => {
+  const color = bool ? '#155724' : '#0c5460';
+  const bgColor = bool ? '#d4edda' : '#d1ecf1';
+  const borderColor = bool ? '#c3e6cb' : '#bee5eb';
+  const popUp = document.createElement('p');
+  popUp.classList.add('alert');
+  popUp.style.cssText = `
+    background-color: ${bgColor};
+    color: ${color};
+    border-color: ${borderColor}
+  `;
+  popUp.appendChild(document.createTextNode(msg));
+  document.body.appendChild(popUp);
+  setTimeout(() => {
+    document.body.removeChild(document.querySelector('.alert'));
+  }, 4000);
+};
+
+/* update badge */
+export const updateBadge = async () => {
+  const badge = document.querySelector('.cart-badge');
+  const cartItems = await getDataFromDb('http://localhost:3000/cart');
+  const totalItems = cartItems.reduce((total, item) => {
+    return (total += item.qty);
+  }, 0);
+  badge.textContent = totalItems;
+};
+
+/* update cart */
+export const updateCart = async () => {
+  const cartContainer = document.querySelector('.cart-container');
+  const cartItems = await getDataFromDb('http://localhost:3000/cart');
+  if (!cartItems.length) {
+    cartContainer.querySelector('.cart-head').style.display = 'none';
+    emptyContainer(cartContainer.querySelector('.cart-items'));
+    displayEmptyCartMsg(cartContainer);
+  } else {
+    cartContainer.querySelector('.cart-head').style.display = '';
+    populateCart(cartItems, cartContainer);
+  }
+};
+
+// empty cart display
+const displayEmptyCartMsg = (container) => {
+  const emptyCart = emptyCartTemplate.content.firstElementChild.cloneNode(true);
+  container.appendChild(emptyCart);
+};
+
+// populating cart
+const populateCart = async (items, container) => {
+  if (container.querySelector('.empty-cart')) {
+    container.removeChild(container.querySelector('.empty-cart'));
+  }
+  const cartItemsContainer = container.querySelector('.cart-items');
+  emptyContainer(cartItemsContainer);
+  items.forEach((item) => {
+    const cartElement =
+      cartItemTemplate.content.firstElementChild.cloneNode(true);
+    const prodImg = cartElement.querySelector('.item__img');
+    const prodName = cartElement.querySelector('.item__name');
+    const prodPrice = cartElement.querySelector('.item__price');
+    const prodQty = cartElement.querySelector('.item__qty');
+    cartElement.setAttribute('data-id', item.id);
+    prodImg.src = item.imgSrc;
+    prodName.textContent = item.name;
+    prodQty.textContent = item.qty;
+    prodPrice.textContent = `Rs. ${item.price}`;
+    cartItemsContainer.appendChild(cartElement);
+  });
+  updateTotalPrice();
+};
+
+/* update price header */
+export const updateTotalPrice = async () => {
+  const priceElement = document.querySelector(
+    '.cart-container .total-price span'
+  );
+  const cartItems = await getDataFromDb('http://localhost:3000/cart');
+  const priceArr = cartItems.map((item) => {
+    return parseInt(item.price) * parseInt(item.qty);
+  });
+  const totalPrice = priceArr.reduce((total, price) => {
+    return (total += price);
+  }, 0);
+  priceElement.textContent = totalPrice;
 };
