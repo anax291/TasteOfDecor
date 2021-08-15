@@ -1,4 +1,9 @@
 /* about us */
+
+body {
+  animation: transitionIn 0.75s;
+}
+
 .about-us {
   margin: 1.5rem 0;
 }
@@ -77,7 +82,7 @@
   transition: background 500ms ease;
 }
 
-.about__container :is(.btn:hover, .btn:focus){
+.about__container :is(.btn:hover, .btn:focus) {
   background: #fff;
   color: var(--btn-primary);
 }

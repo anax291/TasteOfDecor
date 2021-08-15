@@ -34,7 +34,6 @@ body {
   margin-top: 80px;
   overflow-x: hidden;
   font-family: 'Nanum Myeongjo', serif;
-  animation: transitionIn 0.75s;
 }
 
 @keyframes transitionIn {

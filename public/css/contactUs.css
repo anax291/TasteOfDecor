@@ -1,3 +1,7 @@
+body {
+  animation: transitionIn 0.75s;
+}
+
 .main-title {
   text-align: center;
   text-transform: capitalize;

@@ -1,3 +1,7 @@
+body {
+  animation: transitionIn 0.75s;
+}
+
 .main-grid {
   display: grid;
   grid-template-columns: 1fr;

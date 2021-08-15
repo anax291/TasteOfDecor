@@ -1,4 +1,7 @@
 body {
+  animation: transitionIn 0.75s;
+}
+/* body {
   font-family: helvetica, arial, sans-serif;
 }
 
@@ -86,4 +89,108 @@ section {
   left: 5%;
   position: absolute;
   width: 3%;
+} */
+
+section {
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-areas:
+    ' head head head '
+    'left terrarium right';
+}
+
+.grid h1 {
+  grid-area: head;
+  text-align: center;
+}
+
+.left-container {
+  grid-area: left;
+  padding: 1rem;
+  background: #f4f4f4;
+}
+
+.left-container h4 {
+  margin-bottom: 0.5rem;
+}
+
+.left-container form {
+  margin-bottom: 1rem;
+}
+
+.left-container select {
+  width: 100%;
+  padding: 0.25rem;
+}
+
+:is(.left-container, .right-container) .prods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  position: relative;
+}
+
+:is(.left-container, .right-container) .prod {
+  width: 150px;
+  z-index: 2;
+}
+
+:is(.left-container, .right-container) .prod:hover {
+  cursor: grab;
+}
+
+.terrarium {
+  grid-area: terrarium;
+  min-height: 100vh;
+  background: #ccc;
+  position: relative;
+}
+
+.jar-walls {
+  position: absolute;
+  inset: 0;
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  background: #d1e1df;
+  border-radius: 1rem;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.jar-top {
+  background: #d1e1df;
+  bottom: 80.5%;
+  height: 5%;
+  left: 25%;
+  opacity: 0.7;
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+}
+
+.right-container {
+  grid-area: right;
+  background: #f4f4f4;
+  padding: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-areas:
+      ' head head head '
+      'left left left'
+      ' terrarium terrarium terrarium'
+      'right right right';
+  }
+
+  :is(.left-container, .right-container) .prods {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

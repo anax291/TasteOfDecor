@@ -1,3 +1,28 @@
+/* Start Up animation */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.intro-container {
+  width: max(300px, 80%);
+  height: 70%;
+}
+
+.slide {
+  background: rgb(97, 105, 109);
+  position: fixed;
+  inset: 0;
+  transform: translateY(100%);
+  z-index: 9999;
+}
+
 /* About us */
 
 .section-about {
