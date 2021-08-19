@@ -33,21 +33,7 @@
         "A table is an item of furniture with a flat top"
       ],
       "featured": true,
-      "reviews": [
-        {
-          "name": "Siddiq Ahmed",
-          "email": "siddiqahmed882@gmail.com",
-          "ratings": "3",
-          "description": "",
-          "id": 1
-        },
-        {
-          "name": "zZ",
-          "email": "nshariq562@gmail.com",
-          "ratings": "5",
-          "description": "nice",
-          "id": 2
-        }
+      "reviews": [        
       ]
     },
     {
@@ -65,20 +51,6 @@
       ],
       "featured": true,
       "reviews": [
-        {
-          "name": "ibrahim imaduddin",
-          "email": "ibrahimimaduddin82@gmail.com",
-          "ratings": "3",
-          "description": "You have some great collection.",
-          "id": 1
-        },
-        {
-          "name": "zZ",
-          "email": "SYEDNOMANSHARIQ@HOTMAIL.COM",
-          "ratings": "4",
-          "description": "nive\n",
-          "id": 2
-        }
       ]
     },
     {
@@ -96,20 +68,7 @@
       ],
       "featured": true,
       "reviews": [
-        {
-          "name": "Ezan Asif",
-          "email": "Ezanasif02@gmail.com",
-          "ratings": "5",
-          "description": "Great Product",
-          "id": 1
-        },
-        {
-          "name": "zaryab",
-          "email": "zaryab.rk12@gmail.com",
-          "ratings": "3",
-          "description": "Bad",
-          "id": 2
-        }
+
       ]
     },
     {
@@ -142,13 +101,7 @@
         "A sofa is similar to a couch"
       ],
       "reviews": [
-        {
-          "name": "Shaykh Anas",
-          "email": "anasaslam877@gmail.com",
-          "ratings": "5",
-          "description": "The best review page i've ever seen in my life.",
-          "id": 1
-        }
+        
       ]
     },
     {
@@ -666,6 +619,7 @@
       "name": "Muhammad Usama",
       "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
     }
+    
   ],
   "cart": []
 }
