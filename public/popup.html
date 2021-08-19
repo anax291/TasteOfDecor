@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <title>Document</title>
+  <style>
+    button {
+      font-size: 3rem;
+      padding: 0.25em 1em;
+      background-color: #f1f1f1;
+      border: 1px solid #aaa;
+      cursor: pointer;
+    }
+
+    .popup-overlay {
+      position: absolute;
+      inset: 0;
+      background: #555;
+      padding: 0.75rem;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 150ms ease;
+    }
+
+    .popup-overlay.visible {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup.container {
+      width: max(280px, 70vw);
+    }
+
+    .popup {
+      background: #fff;
+      height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      border-radius: 0.25rem 0 0 0.25rem;
+      transform: translateY(80%);
+      opacity: 0;
+      display: none;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        transform: translateY(80%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .popup .sub-title {
+      margin-bottom: 0.75rem;
+    }
+
+    .popup .lead {
+      max-width: 300px;
+    }
+
+    .popup .header {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .popup .header .cross {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+    }
+
+    .popup .header .cross span {
+      position: relative;
+    }
+
+    .popup .header .cross span::before,
+    .popup .header .cross span::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 20px;
+      background: currentColor;
+      transform: rotate(45deg);
+      transition: transform 200ms ease;
+    }
+
+    .popup .header .cross span::after {
+      transform: rotate(-45deg);
+    }
+
+    .popup .header .cross:hover {
+      color: var(--clr-secondary);
+    }
+
+    .popup .header .cross:hover span::before {
+      transform: rotate(90deg);
+    }
+
+    .popup .header .cross:hover span::after {
+      transform: rotate(-90deg);
+    }
+
+    .popup .content h2 {
+      color: var(--clr-secondary);
+      font-size: clamp(2rem, 1rem + 3vw, 4rem);
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .popup .content p {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .popup .content> :is(.images, img) {
+      margin-bottom: 1rem;
+    }
+
+    .popup .content .images img:nth-child(1) {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .popup .content .images {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .popup .content .images img {
+        max-width: 48%;
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">Click me</button>
+  <div class="popup-overlay" aria-expanded="false">
+    <div class="popup container">
+      <div class="header">
+        <div class="cross"><span></span></div>
+        <p class="sub-title">[ What We Offer ]</p>
+        <h3 class="lead">All Kinds of Buildings in Chematic or Working Design</h3>
+      </div>
+      <div class="content">
+        <h2>Design & planning</h2>
+        <p>The interior design of your dream begins with a concept that is reflected in the blueprints, project plans,
+          in 3D visualizations. It is possible to make any place more interesting, attractive and functional, for this
+          it is worth to trust the real professionals and then the money will not be spent in a vain.
+        </p>
+        <div class="images">
+          <img src="./assets/popUp/img1.jpg" alt="">
+          <img src="./assets/popUp/img2.jpg" alt="">
+        </div>
+        <p>In design, we bring characteristics of the natural world into built spaces, such as water, greenery, and
+          natural light, or elements like wood and stone. Encouraging the use of natural systems and processes in design
+          allows for exposure to nature, and in turn, these design approaches improve health and wellbeing. There are a
+          number of possible benefits, including reduced heart rate variability and pulse rates, decreased blood
+          pressure, and increased activity in our nervous systems, to name a few.
+        </p>
+        <img src="./assets/popUp/img3.jpg" alt="">
+        <p>Over time, our connections to the natural world diverged in parallel with technological developments.
+          Advances in the 19th and 20th centuries fundamentally changed how people interact with nature. Sheltered from
+          the elements, we spent more and more time indoors. Today, the majority of people spend almost 80-90% of their
+          time indoors, moving between their homes and workplaces. As interior designers embrace biophilia.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  btn.addEventListener('click', () => {
+    const modalOverlay = document.querySelector('.popup-overlay');
+    const modal = modalOverlay.querySelector('.popup')
+    if (modalOverlay.getAttribute('aria-expanded') === 'false') {
+      // modalOverlay.classList.add('visible');
+      // modalOverlay.setAttribute('aria-expanded', true);
+      modal.style.display = 'block'
+      modal.style.animation = `fadeUp 400ms ease forwards`;
+    }
+  })
+  const closeModalBtn = document.querySelector('.popup-overlay .cross');
+  closeModalBtn.addEventListener('click', () => {
+    const modalOverlay = document.querySelector('.popup-overlay');
+    const modal = modalOverlay.querySelector('.popup')
+    if (modalOverlay.getAttribute('aria-expanded') === 'true') {
+      modalOverlay.setAttribute('aria-expanded', false);
+      modal.style.transform = 'scaleY(0)';
+      setTimeout(() => {
+        modalOverlay.classList.remove('visible');
+      }, 350)
+    }
+  })
+</script>
+
+</html>

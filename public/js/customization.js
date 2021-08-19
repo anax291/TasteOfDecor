@@ -32,3 +32,13 @@ function dragElement(terrariumElement) {
     document.onpointermove = null;
   }
 }
+
+/* Populate products with selected category */
+
+products.forEach((prod) => {
+  prod.addEventListener('dblclick', (e) => {
+    let x = prod.style.left;
+    let y = prod.style.top;
+    
+  });
+});
