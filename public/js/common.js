@@ -318,7 +318,13 @@ const deleteItem = async (e) => {
   deletingCartItemAnimation(targetCard);
   setTimeout(() => {
     if (success) {
-      updateCart();
+      if (document.querySelector('.cart-items > *')) {
+        console.log(123);
+        updateTotalPrice();
+      } else {
+        console.log(456);
+        updateCart();
+      }
       updateBadge();
     }
   }, 2000);

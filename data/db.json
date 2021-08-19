@@ -621,5 +621,14 @@
     }
     
   ],
-  "cart": []
+  "cart": [
+    {
+      "prodId": "1",
+      "name": "Fendi Casa Tables",
+      "imgSrc": "./assets/furniture/furniture1/img1.jpg",
+      "price": "10000",
+      "qty": 1,
+      "id": 1
+    }
+  ]
 }
