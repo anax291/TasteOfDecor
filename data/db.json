@@ -33,8 +33,7 @@
         "A table is an item of furniture with a flat top"
       ],
       "featured": true,
-      "reviews": [        
-      ]
+      "reviews": []
     },
     {
       "id": 2,
@@ -50,8 +49,7 @@
         "A bedroom is a room in a house for the bed, so it's mainly used for sleeping. If your home has three bedrooms, you can describe it as a three-bedroom house"
       ],
       "featured": true,
-      "reviews": [
-      ]
+      "reviews": []
     },
     {
       "id": 3,
@@ -67,9 +65,7 @@
         "The wireless design means the Control Hub can be placed out of sight in a cupboard or on a rack."
       ],
       "featured": true,
-      "reviews": [
-
-      ]
+      "reviews": []
     },
     {
       "id": 4,
@@ -100,9 +96,7 @@
         "A sofa is a piece of furniture that a few people can comfortably sit on together.",
         "A sofa is similar to a couch"
       ],
-      "reviews": [
-        
-      ]
+      "reviews": []
     },
     {
       "id": 6,
@@ -594,23 +588,25 @@
   "messages": [
     {
       "id": 1,
-      "subject": "testimonial",
       "name": "Shaykh Anas",
+      "email": "anax291@gmail.com",
+      "subject": "testimonial",
       "message": "I just love their design for all stunning details. You must know what can you do for a project before taking it, but with Archo, the sky is the limit."
     },
     {
       "id": 2,
-      "subject": "testimonial",
       "name": "Syed Noman Shariq",
+      "email": "nshariq@gmail.com",
+      "subject": "testimonial",
       "message": "Not able to tell you how happy I am with interior..."
     },
     {
       "id": 3,
-      "subject": "testimonial",
       "name": "Muhammad Usama",
+      "email": "usama@gmail.com",
+      "subject": "testimonial",
       "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
     }
-    
   ],
   "cart": []
 }

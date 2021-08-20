@@ -150,11 +150,11 @@ export const addProdToCartInDb = async (card) => {
   const cartItems = await getDataFromDb(url);
   const flag = cartItems.find((item) => item.prodId === targetId);
   if (flag) {
-    displayMsg('Product had already been added', false);
+    displayMsg('Product had already been added', 'alert');
   } else {
     const success = await sendProdToCart(card, targetId);
     if (success) {
-      displayMsg('Product is successfully added', true);
+      displayMsg('Product is successfully added', 'success');
       updateBadge();
     }
   }
@@ -185,10 +185,26 @@ const sendProdToCart = async (prodCard, targetId) => {
 };
 
 // displaying message
-export const displayMsg = (msg, bool) => {
-  const color = bool ? '#155724' : '#856404';
-  const bgColor = bool ? '#d4edda' : '#fff3cd';
-  const borderColor = bool ? '#c3e6cb' : '#ffeeba';
+export const displayMsg = (msg, msgType) => {
+  let color, bgColor, borderColor;
+  switch (msgType) {
+    case 'success':
+      color = '#155724';
+      bgColor = '#d4edda';
+      borderColor = '#c3e6cb';
+      break;
+    case 'alert':
+      color = '#856404';
+      bgColor = '#fff3cd';
+      borderColor = '#ffeeba';
+      break;
+    case 'danger':
+      color = '#721c24';
+      bgColor = '#f8d7da';
+      borderColor = '#f5c6cb';
+      break;
+  }
+
   const popUp = document.createElement('p');
   popUp.classList.add('alert');
   popUp.style.cssText = `

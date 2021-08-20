@@ -6,6 +6,7 @@ import {
   postDataToDb,
   clearFields,
   displayMsg,
+  getDataFromDb,
 } from './dataFunctions.js';
 
 // Grabbing UI Elements
@@ -16,21 +17,26 @@ const subjectField = document.getElementById('subject');
 const textArea = document.getElementById('message');
 
 // Submit Event
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const name = nameField.value;
   const email = emailField.value;
   let subject = subjectField.value;
   const message = textArea.value;
   if (!validateForm(name, email, subject, message)) return;
-  // check if subject is testimonial
-  subject = subject.trim();
-  // if (subject.toLowerCase() === 'testimonial') {
-  //   createTestimonialObj(name, message);
-  // }
-  createMessageObj(name, subject, message);
-  displayMsg('Your message has been recorded', true);
-  clearFields(nameField, emailField, subjectField, textArea);
+
+  subject = subject.trim().toLowerCase();
+  let isEmailAlreadyTaken = false;
+  if (subject === 'testimonial') {
+    isEmailAlreadyTaken = await checkEmail(email);
+  }
+  if (isEmailAlreadyTaken) {
+    displayMsg('Please choose another email', 'danger');
+  } else {
+    createMessageObj(name, email, subject, message);
+    displayMsg('Your message has been recorded', 'success');
+    clearFields(nameField, emailField, subjectField, textArea);
+  }
 });
 
 const validateForm = (name, email, subject, message) => {
@@ -63,13 +69,23 @@ const throwError = (message, element) => {
   }, 3000);
 };
 
-const createMessageObj = (userName, title, desc) => {
+const createMessageObj = (userName, userEmail, title, desc) => {
   let obj = {
     name: userName,
+    email: userEmail,
     subject: title,
     message: desc,
   };
   postDataToDb(obj, 'messages');
+};
+
+const checkEmail = async (email) => {
+  const data = await getDataFromDb('http://localhost:3000/messages');
+  const res = data.find(
+    (obj) => obj.email === email && obj.subject === 'testimonial'
+  );
+  console.log(res);
+  return res;
 };
 
 /* Intro js */

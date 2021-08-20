@@ -39,6 +39,5 @@ products.forEach((prod) => {
   prod.addEventListener('dblclick', (e) => {
     let x = prod.style.left;
     let y = prod.style.top;
-    
   });
 });

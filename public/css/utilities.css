@@ -3,20 +3,20 @@
 :root {
   --clr-secondary: hsl(0, 88%, 37%);
   --btn-primary: #333;
-  --clr-primary-300:hsl(205, 24%, 30%);
-  --clr-primary-600:hsl(205, 24%, 50%);
-  --clr-primary-500:hsl(205, 24%, 55%);
+  --clr-primary-300: hsl(205, 24%, 30%);
+  --clr-primary-600: hsl(205, 24%, 50%);
+  --clr-primary-500: hsl(205, 24%, 55%);
 }
 /* custom scroll bar */
-::-webkit-scrollbar-track{
-  border:1px solid #f9f8fe;
+::-webkit-scrollbar-track {
+  border: 1px solid #f9f8fe;
   background-color: #f9f8fe;
 }
-::-webkit-scrollbar{
-  width:1rem;
-  background-color:#f9f8fe ;
+::-webkit-scrollbar {
+  width: 1rem;
+  background-color: #f9f8fe;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #000;
 }
 /* custom scroll bar */
@@ -47,7 +47,7 @@ body {
   background: #f9f9f9;
   line-height: 1.5;
   color: #333;
-  margin-top: 80px;
+  margin-top: 90px;
   overflow-x: hidden;
   font-family: 'Nanum Myeongjo', serif;
 }
@@ -186,9 +186,8 @@ header {
   z-index: 10;
 }
 
-.navbar .logo {
-  font-size: 2rem;
-  opacity: 0.8;
+.navbar .logo img {
+  height: 60px;
 }
 .hamburger {
   display: none;
