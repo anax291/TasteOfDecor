@@ -111,21 +111,21 @@ services.addEventListener('click', (e) => {
   // GSAP
   const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
   timeline.to('body', { overflow: 'hidden' });
-  timeline.to('.popup-overlay', { width: '100%', duration: 0.75 });
-  timeline.to('.popup-overlay', { height: '100%', duration: 0.75 }, '-=0.75');
-  timeline.to('.popup-overlay', { borderRadius: 0, duration: 0.5 });
-  timeline.to('.popup', { y: 0, duration: 0.75 }, '-=0.25');
+  timeline.to('.popup-overlay', { width: '100%', duration: 0.25 });
+  timeline.to('.popup-overlay', { height: '100%', duration: 0.25 }, '-=0.25');
+  timeline.to('.popup-overlay', { borderRadius: 0, duration: 0.2 });
+  timeline.to('.popup', { y: 0, duration: 0.75 }, '-=0.2');
 });
 
 const closeModal = async () => {
   const modal = document.querySelector('.popup-overlay');
   //GSAP
   const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
-  timeline.to('.popup', { y: '-20%', duration: 0.25 });
+  timeline.to('.popup', { y: '-20%', duration: 0.15 });
   timeline.to('.popup', { y: '200%', duration: 0.5 });
-  timeline.to('.popup-overlay', { borderRadius: '100%', duration: 0.5 });
-  timeline.to('.popup-overlay', { width: 0, duration: 0.75 });
-  timeline.to('.popup-overlay', { height: 0, duration: 0.75 }, '-=0.75');
+  timeline.to('.popup-overlay', { borderRadius: '100%', duration: 0.2 });
+  timeline.to('.popup-overlay', { width: 0, duration: 0.25 });
+  timeline.to('.popup-overlay', { height: 0, duration: 0.25 }, '-=0.25');
   timeline.to('body', { overflow: '' });
   timeline.then(() => {
     document.body.removeChild(modal);
