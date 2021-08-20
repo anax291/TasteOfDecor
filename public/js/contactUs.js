@@ -5,6 +5,7 @@ import {
   validateMessage,
   postDataToDb,
   clearFields,
+  displayMsg,
 } from './dataFunctions.js';
 
 // Grabbing UI Elements
@@ -24,9 +25,11 @@ contactForm.addEventListener('submit', (e) => {
   if (!validateForm(name, email, subject, message)) return;
   // check if subject is testimonial
   subject = subject.trim();
-  if (subject.toLowerCase() === 'testimonial') {
-    createTestimonialObj(name, message);
-  }
+  // if (subject.toLowerCase() === 'testimonial') {
+  //   createTestimonialObj(name, message);
+  // }
+  createMessageObj(name, subject, message);
+  displayMsg('Your message has been recorded', true);
   clearFields(nameField, emailField, subjectField, textArea);
 });
 
@@ -60,12 +63,13 @@ const throwError = (message, element) => {
   }, 3000);
 };
 
-const createTestimonialObj = (userName, desc) => {
+const createMessageObj = (userName, title, desc) => {
   let obj = {
     name: userName,
+    subject: title,
     message: desc,
   };
-  postDataToDb(obj, 'testimonials');
+  postDataToDb(obj, 'messages');
 };
 
 /* Intro js */

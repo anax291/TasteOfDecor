@@ -319,10 +319,8 @@ const deleteItem = async (e) => {
   setTimeout(() => {
     if (success) {
       if (document.querySelector('.cart-items > *')) {
-        console.log(123);
         updateTotalPrice();
       } else {
-        console.log(456);
         updateCart();
       }
       updateBadge();

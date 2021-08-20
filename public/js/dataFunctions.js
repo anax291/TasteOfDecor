@@ -2,7 +2,7 @@ import {
   cartDeletingTemplate,
   cartItemTemplate,
   emptyCartTemplate,
-} from './cartTemplates.js';
+} from './templates.js';
 
 /* Helper Functions */
 
@@ -185,7 +185,7 @@ const sendProdToCart = async (prodCard, targetId) => {
 };
 
 // displaying message
-const displayMsg = (msg, bool) => {
+export const displayMsg = (msg, bool) => {
   const color = bool ? '#155724' : '#856404';
   const bgColor = bool ? '#d4edda' : '#fff3cd';
   const borderColor = bool ? '#c3e6cb' : '#ffeeba';

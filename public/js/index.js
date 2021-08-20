@@ -6,6 +6,7 @@ import {
   getDataFromDb,
   injectProducts,
 } from './dataFunctions.js';
+import { modal } from './templates.js';
 
 //  On page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -98,6 +99,62 @@ const observer = new IntersectionObserver(
 
 observer.observe(factsContainer);
 
+/* Modal */
+const services = document.querySelector('.services');
+services.addEventListener('click', (e) => {
+  const target = e.target.closest('.box__link');
+  if (!target) return;
+  let modalElement = modal.content.firstElementChild.cloneNode(true);
+  modalElement = injectImages(modalElement, target);
+  modalElement.querySelector('.cross').addEventListener('click', closeModal);
+  document.body.insertBefore(modalElement, services.nextElementSibling);
+  // GSAP
+  const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
+  timeline.to('body', { overflow: 'hidden' });
+  timeline.to('.popup-overlay', { width: '100%', duration: 0.75 });
+  timeline.to('.popup-overlay', { height: '100%', duration: 0.75 }, '-=0.75');
+  timeline.to('.popup-overlay', { borderRadius: 0, duration: 0.5 });
+  timeline.to('.popup', { y: 0, duration: 0.75 }, '-=0.25');
+});
+
+const closeModal = async () => {
+  const modal = document.querySelector('.popup-overlay');
+  //GSAP
+  const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
+  timeline.to('.popup', { y: '-20%', duration: 0.25 });
+  timeline.to('.popup', { y: '200%', duration: 0.5 });
+  timeline.to('.popup-overlay', { borderRadius: '100%', duration: 0.5 });
+  timeline.to('.popup-overlay', { width: 0, duration: 0.75 });
+  timeline.to('.popup-overlay', { height: 0, duration: 0.75 }, '-=0.75');
+  timeline.to('body', { overflow: '' });
+  timeline.then(() => {
+    document.body.removeChild(modal);
+  });
+};
+
+const injectImages = (modalElement, target) => {
+  const boxId = parseInt(target.closest('.box').getAttribute('data-id'));
+  const images = modalElement.querySelectorAll('img');
+  switch (boxId) {
+    case 1:
+      images[0].src = './assets/popUp/1.jpg';
+      images[1].src = './assets/popUp/2.jpg';
+      images[2].src = './assets/popUp/3.jpg';
+      break;
+    case 2:
+      images[0].src = './assets/popUp/4.jpg';
+      images[1].src = './assets/popUp/5.jpg';
+      images[2].src = './assets/popUp/6.jpg';
+      break;
+    case 3:
+      images[0].src = './assets/popUp/7.jpg';
+      images[1].src = './assets/popUp/8.jpg';
+      images[2].src = './assets/popUp/9.jpg';
+      break;
+  }
+  return modalElement;
+};
+
 /* Testimonials */
 
 const testimonialContainer = document.querySelector('.testimonials__container');
@@ -105,8 +162,13 @@ const testimonialNav = testimonialContainer.querySelector('.testimonial__nav');
 
 const populateTestimonials = async () => {
   const testimonialTemplate = document.getElementById('testimonial-template');
-  let url = `http://localhost:3000/testimonials`;
-  const testimonials = await getDataFromDb(url);
+  let url = `http://localhost:3000/messages`;
+  const messages = await getDataFromDb(url);
+  console.log(messages);
+  const testimonials = messages.filter(
+    (message) => message.subject.toLowerCase() === 'testimonial'
+  );
+  console.log(testimonials);
   createTestimonialNav(testimonialNav, testimonials);
   const testimonialElement = document.importNode(
     testimonialTemplate.content,
@@ -144,7 +206,7 @@ testimonialNav.addEventListener('click', async (e) => {
     testimonialContainer.querySelector('.testimonial')
   );
   // changing testimonial
-  let url = `http://localhost:3000/testimonials/${targetId}`;
+  let url = `http://localhost:3000/messages/${targetId}`;
   const testimonial = await getDataFromDb(url);
   const testimonialTemplate = document.getElementById('testimonial-template');
   const testimonialElement = document.importNode(

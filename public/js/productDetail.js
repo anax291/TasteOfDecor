@@ -187,7 +187,7 @@ const populateReviews = async () => {
 /* Populating Reviews when in viewport */
 const observer = new IntersectionObserver(
   function (entries) {
-    if (entries[0].isIntersecting) {
+    if (entries[0].isIntersecting && window.scrollY > 0) {
       populateReviews();
       console.log(entries[0]);
       observer.unobserve(entries[0].target);
