@@ -150,7 +150,7 @@ export const addProdToCartInDb = async (card) => {
   const cartItems = await getDataFromDb(url);
   const flag = cartItems.find((item) => item.prodId === targetId);
   if (flag) {
-    displayMsg('Product had already been added', 'alert');
+    displayMsg('Product had already been added', 'warning');
   } else {
     const success = await sendProdToCart(card, targetId);
     if (success) {
@@ -185,33 +185,10 @@ const sendProdToCart = async (prodCard, targetId) => {
 };
 
 // displaying message
-export const displayMsg = (msg, msgType) => {
-  let color, bgColor, borderColor;
-  switch (msgType) {
-    case 'success':
-      color = '#155724';
-      bgColor = '#d4edda';
-      borderColor = '#c3e6cb';
-      break;
-    case 'alert':
-      color = '#856404';
-      bgColor = '#fff3cd';
-      borderColor = '#ffeeba';
-      break;
-    case 'danger':
-      color = '#721c24';
-      bgColor = '#f8d7da';
-      borderColor = '#f5c6cb';
-      break;
-  }
-
+export const displayMsg = (msg, alertType) => {
   const popUp = document.createElement('p');
-  popUp.classList.add('alert');
-  popUp.style.cssText = `
-    background-color: ${bgColor};
-    color: ${color};
-    border-color: ${borderColor}
-  `;
+  popUp.classList.add(`alert`);
+  popUp.classList.add(alertType);
   popUp.appendChild(document.createTextNode(msg));
   document.body.appendChild(popUp);
   setTimeout(() => {

@@ -1,43 +1,105 @@
-const products = document.querySelectorAll('.prod');
-products.forEach((prod) => dragElement(prod));
+const draggables = document.querySelectorAll('.draggable');
+const room = document.querySelector('.room');
+const sideBars = document.querySelectorAll(
+  '.left-container .prods, .right-container .prods'
+);
 
-function dragElement(terrariumElement) {
-  let pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
-  terrariumElement.onpointerdown = pointerDrag;
-
-  function pointerDrag(e) {
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-
-    document.onpointermove = elementDrag;
-    document.onpointerup = stopElementDrag;
-  }
-
-  function elementDrag(e) {
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    terrariumElement.style.position = 'absolute';
-    terrariumElement.style.top = terrariumElement.offsetTop - pos2 + 'px';
-    terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + 'px';
-  }
-
-  function stopElementDrag() {
-    document.onpointerup = null;
-    document.onpointermove = null;
-  }
-}
-
-/* Populate products with selected category */
-
-products.forEach((prod) => {
-  prod.addEventListener('dblclick', (e) => {
-    let x = prod.style.left;
-    let y = prod.style.top;
+draggables.forEach((draggable) => {
+  draggable.addEventListener('dragstart', () => {
+    draggable.classList.add('dragging');
+  });
+  draggable.addEventListener('dragend', () => {
+    draggable.classList.remove('dragging');
   });
 });
+
+room.addEventListener('dragover', (e) => {
+  const draggingElement = document.querySelector('.dragging');
+  let x = e.clientX - room.getBoundingClientRect().x;
+  let y = e.clientY - room.getBoundingClientRect().y;
+  draggingElement.style.left = `${x}px`;
+  draggingElement.style.top = `${y}px`;
+  room.appendChild(draggingElement);
+});
+
+// back to sidebars
+sideBars.forEach((side) => {
+  side.addEventListener('dragover', () => {
+    const dragging = document.querySelector('.dragging');
+    side.appendChild(dragging);
+  });
+});
+
+room.addEventListener('dblclick', (e) => {
+  const target = e.target.closest('img');
+  if (!target) return;
+  target.classList.add('active');
+  displayCustomizationBox(target);
+  customizationInteractivity(target);
+});
+
+const displayCustomizationBox = async (target) => {
+  const template = document.getElementById('customization');
+  const customizationDiv = template.content.firstElementChild.cloneNode(true);
+  customizationDiv.querySelector('#width').value = window
+    .getComputedStyle(target)
+    .width.replace('px', '');
+  customizationDiv.querySelector('#height').value = window
+    .getComputedStyle(target)
+    .height.replace('px', '');
+  document.body.appendChild(customizationDiv);
+};
+
+const customizationInteractivity = (img) => {
+  const widthElement = document.getElementById('width');
+  const heightElement = document.getElementById('height');
+  const reduceZindex = document.getElementById('reduce-z-index');
+  const increaseZindex = document.getElementById('increase-z-index');
+  const closeBtn = document.querySelector('.cta-close');
+
+  widthElement.addEventListener('change', (e) => {
+    changeWidth(img, e.target.value);
+  });
+  widthElement.addEventListener('keyup', (e) => {
+    changeWidth(img, e.target.value);
+  });
+
+  heightElement.addEventListener('change', (e) => {
+    changeHeight(img, e.target.value);
+  });
+
+  heightElement.addEventListener('keyup', (e) => {
+    changeHeight(img, e.target.value);
+  });
+
+  reduceZindex.addEventListener('click', () => {
+    changeZindex(img, false);
+  });
+  increaseZindex.addEventListener('click', () => {
+    changeZindex(img, true);
+  });
+
+  closeBtn.addEventListener('click', () => {
+    closeCustomizationBox(img);
+  });
+};
+
+const changeWidth = (img, width) => {
+  img.style.width = `${width}px`;
+};
+
+const changeHeight = (img, height) => {
+  img.style.width = `${height}px`;
+};
+
+const changeZindex = (img, bool) => {
+  const oldZindex = parseInt(window.getComputedStyle(img).zIndex);
+  const newZindex = bool ? oldZindex + 1 : oldZindex - 1;
+  img.style.zIndex = `${newZindex}`;
+};
+
+const closeCustomizationBox = (img) => {
+  img.classList.remove('active');
+  const customizationDiv = document.querySelector('.customization-box');
+  document.body.removeChild(customizationDiv);
+};

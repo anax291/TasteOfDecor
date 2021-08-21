@@ -15,6 +15,7 @@ import {
 
 /* Running Functions on Page Load */
 document.addEventListener('DOMContentLoaded', () => {
+  updatePageTitle();
   injectProductDetails();
   changePrimaryImage();
   populateSimilarProducts();
@@ -25,6 +26,14 @@ const productId = new URLSearchParams(window.location.search).get('id');
 const categoryId = new URLSearchParams(window.location.search).get(
   'categoryId'
 );
+
+/* Update page title */
+const updatePageTitle = async () => {
+  const prod = await getDataFromDb(
+    `http://localhost:3000/products/${productId}`
+  );
+  document.title = `Taste of Décor | ${prod.name}`;
+};
 
 /* injecting prod details */
 const injectProductDetails = async () => {

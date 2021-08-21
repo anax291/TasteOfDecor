@@ -1,0 +1,258 @@
+.cart-wrapper {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: auto;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background: var(--clr-secondary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 370px;
+  height: 100vh;
+  padding: 1rem;
+  background: #f4f4f4;
+  overflow-y: auto;
+  box-shadow: none;
+  transform: translateX(100%);
+  transition: transform 500ms linear;
+}
+
+.cart-container.cart-open {
+  transform: translateX(0);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 0.75rem;
+}
+
+.close-icon {
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  width: 1.5rem;
+}
+
+.close-icon::before,
+.close-icon::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  transform: rotate(45deg);
+  transform-origin: center;
+  left: 10px;
+  width: 2px;
+  height: 20px;
+  background: #000;
+}
+
+.close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.close-icon:hover::before,
+.close-icon:hover::after {
+  background: var(--clr-secondary);
+}
+
+.cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.cart-head .total-price {
+  font-weight: 700;
+}
+
+.remove-all {
+  font-size: 0.85rem;
+  color: var(--clr-secondary);
+  height: 25px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.remove-all .close-icon::before,
+.remove-all .close-icon::after {
+  height: 15px !important;
+  top: 20%;
+  background: currentColor;
+}
+
+.remove-all::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform-origin: right;
+  transition: transform 200ms ease;
+}
+
+.remove-all:hover {
+  color: hsl(0, 79%, 26%);
+}
+
+.remove-all:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.cart-items {
+  position: relative;
+}
+
+.cart-items > *:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.item {
+  padding: 0.5rem;
+  max-height: 150px;
+  border-radius: 0.25rem;
+  display: grid;
+  grid-template-columns: 6rem auto 1.5rem;
+  gap: 0.75rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.item__info > *:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.item__name {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.item__price {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.qty-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-info > * {
+  font-size: 1.1rem;
+}
+
+.increament,
+.decreament {
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.delete-item .far {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.delete-item .far:hover {
+  color: var(--clr-secondary);
+}
+
+/* Cart Empty Message */
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.empty-cart .message {
+  margin-bottom: 1rem;
+  width: max-content;
+  margin-left: auto;
+}
+
+.empty-cart .message p:first-child {
+  font-size: 1.5rem;
+}
+
+.empty-cart .message p:nth-child(2) {
+  font-size: 1.25rem;
+  color: var(--clr-secondary);
+  width: max-content;
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.empty-cart > p {
+  width: max-content;
+  margin-left: auto;
+  font-weight: 700;
+}
+
+/* cart Item deleting */
+.item.deleting img {
+  height: 100%;
+}
+
+.animate-bg {
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 10%,
+    #f6f6f6 20%,
+    #f6f6f6 100%
+  );
+  background-size: 200% 100%;
+  animation: bgPos 1000ms linear infinite;
+}
+
+.animate-text {
+  border-radius: 50px;
+  display: inline-block;
+  height: 20px;
+  width: 100%;
+}
+
+@keyframes bgPos {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
