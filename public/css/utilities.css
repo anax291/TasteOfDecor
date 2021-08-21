@@ -1,8 +1,9 @@
+/* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Questrial&display=swap');
-
 @import url(./cart.css);
 @import url(./alerts.css);
 
+/* custom properties */
 :root {
   --clr-secondary: hsl(0, 88%, 37%);
   --btn-primary: #333;

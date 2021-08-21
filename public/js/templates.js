@@ -60,7 +60,7 @@ modal.innerHTML = `
         <h3 class="lead">All Kinds of Buildings in Chematic or Working Design</h3>
       </div>
       <div class="content">
-        <h2>Design & planning</h2>
+        <h2 class="heading"></h2>
         <p>The interior design of your dream begins with a concept that is reflected in the blueprints, project plans,
           in 3D visualizations. It is possible to make any place more interesting, attractive and functional, for this
           it is worth to trust the real professionals and then the money will not be spent in a vain.

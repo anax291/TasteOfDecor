@@ -105,7 +105,7 @@ services.addEventListener('click', (e) => {
   const target = e.target.closest('.box__link');
   if (!target) return;
   let modalElement = modal.content.firstElementChild.cloneNode(true);
-  modalElement = injectImages(modalElement, target);
+  modalElement = injectCustomInfo(modalElement, target);
   modalElement.querySelector('.cross').addEventListener('click', closeModal);
   document.body.insertBefore(modalElement, services.nextElementSibling);
   // GSAP
@@ -132,24 +132,28 @@ const closeModal = async () => {
   });
 };
 
-const injectImages = (modalElement, target) => {
+const injectCustomInfo = (modalElement, target) => {
   const boxId = parseInt(target.closest('.box').getAttribute('data-id'));
   const images = modalElement.querySelectorAll('img');
+  const heading = modalElement.querySelector('.heading');
   switch (boxId) {
     case 1:
       images[0].src = './assets/popUp/1.jpg';
       images[1].src = './assets/popUp/2.jpg';
       images[2].src = './assets/popUp/3.jpg';
+      heading.textContent = 'Design & Planning';
       break;
     case 2:
       images[0].src = './assets/popUp/4.jpg';
       images[1].src = './assets/popUp/5.jpg';
       images[2].src = './assets/popUp/6.jpg';
+      heading.textContent = 'Custom Solutions';
       break;
     case 3:
       images[0].src = './assets/popUp/7.jpg';
       images[1].src = './assets/popUp/8.jpg';
       images[2].src = './assets/popUp/9.jpg';
+      heading.textContent = 'Furniture & Decor';
       break;
   }
   return modalElement;
