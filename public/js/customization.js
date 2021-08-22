@@ -1,5 +1,5 @@
 const draggables = document.querySelectorAll('.draggable');
-const room = document.querySelector('.room');
+const rooms = document.querySelectorAll('.room');
 const sideBars = document.querySelectorAll(
   '.left-container .prods, .right-container .prods'
 );
@@ -12,14 +12,15 @@ draggables.forEach((draggable) => {
     draggable.classList.remove('dragging');
   });
 });
-
-room.addEventListener('dragover', (e) => {
-  const draggingElement = document.querySelector('.dragging');
-  let x = e.clientX - room.getBoundingClientRect().x;
-  let y = e.clientY - room.getBoundingClientRect().y;
-  draggingElement.style.left = `${x}px`;
-  draggingElement.style.top = `${y}px`;
-  room.appendChild(draggingElement);
+rooms.forEach((room) => {
+  room.addEventListener('dragover', (e) => {
+    const draggingElement = document.querySelector('.dragging');
+    let x = e.clientX - room.getBoundingClientRect().x;
+    let y = e.clientY - room.getBoundingClientRect().y;
+    draggingElement.style.left = `${x}px`;
+    draggingElement.style.top = `${y}px`;
+    room.appendChild(draggingElement);
+  });
 });
 
 // back to sidebars
@@ -30,12 +31,14 @@ sideBars.forEach((side) => {
   });
 });
 
-room.addEventListener('dblclick', (e) => {
-  const target = e.target.closest('img');
-  if (!target) return;
-  target.classList.add('active');
-  displayCustomizationBox(target);
-  customizationInteractivity(target);
+rooms.forEach((room) => {
+  room.addEventListener('dblclick', (e) => {
+    const target = e.target.closest('img');
+    if (!target) return;
+    target.classList.add('active');
+    displayCustomizationBox(target);
+    customizationInteractivity(target);
+  });
 });
 
 const displayCustomizationBox = async (target) => {
