@@ -2,7 +2,7 @@ body {
   animation: transitionIn 0.75s;
 }
 
-img {
+img:not(.logo-img) {
   width: 150px;
 }
 
@@ -63,7 +63,7 @@ section {
   margin: auto;
   background: #d1e1df;
   border-radius: 1rem;
-  opacity: 0.5;
+  /* opacity: 0.5; */
   z-index: 1;
 }
 

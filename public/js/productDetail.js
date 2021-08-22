@@ -144,7 +144,6 @@ const cartFunctions = async (card) => {
 };
 
 /* populate Similar Products */
-
 const populateSimilarProducts = async () => {
   // get data from db
   let url = `http://localhost:3000/categories/${categoryId}/products`;

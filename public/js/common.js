@@ -67,27 +67,6 @@ if (ids.includes(body.id)) {
   });
 }
 
-/* Footer Stuff */
-// const cursor = document.getElementById('cursor');
-// const footer = document.querySelector('.footer');
-
-// footer.addEventListener('mousemove', function (e) {
-//   cursor.style.left = e.pageX + 'px';
-//   cursor.style.top = e.pageY + 'px';
-// });
-
-// document.querySelectorAll('.wrap').forEach((wrap) => {
-//   wrap.addEventListener('mousemove', (e) => {
-//     cursor.classList.add('active');
-//   });
-// });
-
-// document.querySelectorAll('.wrap').forEach((wrap) => {
-//   wrap.addEventListener('mouseleave', (e) => {
-//     cursor.classList.remove('active');
-//   });
-// });
-
 /* Custom Footer */
 
 const template = document.createElement('template');
