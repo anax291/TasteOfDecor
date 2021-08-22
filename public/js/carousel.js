@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slide.style.left = slideWidth * index + 'px';
   });
   if (document.hasFocus) {
-    setInterval(moveToNextSlide, 3000);
+    setInterval(moveToNextSlide, 6000);
   }
 });
 
