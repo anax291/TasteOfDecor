@@ -18,6 +18,19 @@ section {
     'left terrarium right';
 }
 
+.left-container,
+.right-container {
+  height: 800px;
+  overflow: auto;
+}
+
+:is(.left-container, .right-container)::-webkit-scrollbar {
+  width: 0.25rem;
+}
+:is(.left-container, .right-container)::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+}
+
 .grid h1 {
   grid-area: head;
   text-align: center;
@@ -63,7 +76,6 @@ section {
   margin: auto;
   background: #d1e1df;
   border-radius: 1rem;
-  /* opacity: 0.5; */
   z-index: 1;
 }
 
@@ -86,6 +98,10 @@ section {
     flex-direction: row;
     flex-wrap: wrap;
   }
+  .left-container,
+  .right-container {
+    height: auto;
+  }
 }
 
 /* helper classes */
@@ -99,7 +115,7 @@ section {
 }
 
 img.active {
-  border: 3px dotted #333;
+  border: 2px dashed #333;
 }
 
 /* Customiation box */
@@ -119,7 +135,7 @@ img.active {
   margin-bottom: 0.75rem;
 }
 
-.field:nth-of-type(2) {
+.field:nth-of-type(3) {
   margin-bottom: 2rem;
 }
 
@@ -129,6 +145,7 @@ img.active {
 
 .field input {
   padding: 0.25rem 0.5rem;
+  width: 80%;
 }
 
 .field .z-index {

@@ -106,6 +106,7 @@ textarea {
 
 input[type='text'],
 input[type='email'],
+input[type='tel'],
 textarea {
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
@@ -149,6 +150,10 @@ textarea {
 
 .l-font {
   font-size: clamp(3.5rem, 2rem + 2vw, 5rem);
+}
+
+.m-font {
+  font-size: clamp(2.75rem, 1.25rem + 2vw, 4rem);
 }
 
 .material-icons,
