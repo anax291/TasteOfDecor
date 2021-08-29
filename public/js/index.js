@@ -168,11 +168,9 @@ const populateTestimonials = async () => {
   const testimonialTemplate = document.getElementById('testimonial-template');
   let url = `http://localhost:3000/messages`;
   const messages = await getDataFromDb(url);
-  console.log(messages);
   const testimonials = messages.filter(
     (message) => message.subject.toLowerCase() === 'testimonial'
   );
-  console.log(testimonials);
   createTestimonialNav(testimonialNav, testimonials);
   const testimonialElement = document.importNode(
     testimonialTemplate.content,

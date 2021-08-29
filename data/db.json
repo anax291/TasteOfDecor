@@ -49,7 +49,15 @@
         "A bedroom is a room in a house for the bed, so it's mainly used for sleeping. If your home has three bedrooms, you can describe it as a three-bedroom house"
       ],
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Siddiq Ahmed",
+          "email": "siddiqahmed882@gmail.com",
+          "ratings": "4",
+          "description": "Excellent products\n",
+          "id": 1
+        }
+      ]
     },
     {
       "id": 3,
@@ -164,9 +172,7 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 11500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod5/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod5/img1.jpg"],
       "description": [
         "Made From Metal In Grey & Brown Finish. Comes With White Linen Shade.",
         "Material: Metal",
@@ -179,9 +185,7 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 16500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod6/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod6/img1.jpg"],
       "description": [
         "Made From Marble & Metal In Classic Finish. Comes With White Linen Shade.",
         "Material: Metal & Marble",
@@ -194,9 +198,7 @@
       "categoryId": 2,
       "name": "Allure Table Lamp",
       "price": 13500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod7/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod7/img1.jpg"],
       "description": [
         "Made From Metal & Crystal. Clear Crystal Flower Body & Gold Metal Base. Comes With Oat Linen Shade.",
         "Material: Metal & Crystal",
@@ -209,9 +211,7 @@
       "categoryId": 2,
       "name": "Down Bridge Table Lamp",
       "price": 9500,
-      "imgSrc": [
-        "./assets/decorationAccessories/prod8/img1.jpg"
-      ],
+      "imgSrc": ["./assets/decorationAccessories/prod8/img1.jpg"],
       "description": [
         "Made From Metal & Wood in black colour",
         "Material: Metal & Wood",
@@ -326,9 +326,7 @@
       "categoryId": 3,
       "name": "Indoor Live Houseplant - Brussel's Bonsai",
       "price": 6700,
-      "imgSrc": [
-        "./assets/outdoor/prod2/img1.webp"
-      ],
+      "imgSrc": ["./assets/outdoor/prod2/img1.webp"],
       "description": [
         "Large jade indoor houseplant dresses up any indoor decor arrangement",
         "Lush green foliage and star-shaped leaf clusters add a pretty pop to your tabletop or desk",
@@ -343,10 +341,7 @@
       "categoryId": 3,
       "name": "3pc Swiss Cheese Plant ",
       "price": 4000,
-      "imgSrc": [
-        "./assets/outdoor/prod3/img1.webp",
-        "./assets/outdoor/prod3/img2.webp"
-      ],
+      "imgSrc": ["./assets/outdoor/prod3/img1.webp", "./assets/outdoor/prod3/img2.webp"],
       "description": [
         "Includes (3) Monstera in 4in pots",
         "Typically grown indoors as a houseplant, but can be grown outdoors in USDA hardiness zones 10-12.",
@@ -362,10 +357,7 @@
       "categoryId": 3,
       "name": "Alpine 40in Tiered Pedestal Fountain with Fish Blue",
       "price": 10000,
-      "imgSrc": [
-        "./assets/outdoor/prod4/img1.webp",
-        "./assets/outdoor/prod4/img2.webp"
-      ],
+      "imgSrc": ["./assets/outdoor/prod4/img1.webp", "./assets/outdoor/prod4/img2.webp"],
       "description": [
         "Dimensions (Overall): 40 Inches (H) x 20 Inches (W) x 20 Inches (D)",
         "Weight: 6.09 Pounds",
@@ -451,10 +443,7 @@
       "categoryId": 3,
       "name": "North States 9084 Lil' Red School House Village Collection Bird Feeder",
       "price": 12500,
-      "imgSrc": [
-        "./assets/outdoor/prod9/img1.jpeg",
-        "./assets/outdoor/prod9/img2.jpeg"
-      ],
+      "imgSrc": ["./assets/outdoor/prod9/img1.jpeg", "./assets/outdoor/prod9/img2.jpeg"],
       "description": [
         "Charming school house-themed bird feeder is made of plastic for easy cleaning",
         "Cord attached for easy hanging",
@@ -468,9 +457,7 @@
       "categoryId": 4,
       "name": "Legato White 3 Door Mirrored Wardrobe",
       "price": 70000,
-      "imgSrc": [
-        "./assets/wardrobes/prod1/img1.jpg"
-      ],
+      "imgSrc": ["./assets/wardrobes/prod1/img1.jpg"],
       "description": [
         "The Legato 3 Door Mirrored Wardrobe features a contemporary style with a unique handle-less design and a high gloss finish.",
         "Constructed from high quality components this 3 door mirrored wardrobe makes for a practical and stylish storage solution for your bedroom.",
@@ -620,5 +607,6 @@
       "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
     }
   ],
-  "cart": []
+  "cart": [],
+  "orders": []
 }

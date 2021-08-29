@@ -27,8 +27,7 @@ export const removeLoadingAnimation = (container) =>
 
 // deleting cart item animation
 export const deletingCartItemAnimation = (card) => {
-  const deletingCard =
-    cartDeletingTemplate.content.firstElementChild.cloneNode(true);
+  const deletingCard = cartDeletingTemplate.content.firstElementChild.cloneNode(true);
   const parent = card.parentElement;
   parent.replaceChild(deletingCard, card);
   setTimeout(() => {
@@ -54,14 +53,15 @@ export const postReviewToDb = async (url, reviewsArr) => {
   await fetch(url, obj);
 };
 
-/* Patch cart items */
+/* edit db content */
 export const updateData = async (url, obj) => {
   const options = {
     method: 'PATCH',
     body: JSON.stringify(obj),
     headers: { 'Content-Type': 'application/json' },
   };
-  await fetch(url, options);
+  const res = await fetch(url, options);
+  return res;
 };
 
 /* send data [testimonials, cart-items] to db */
@@ -136,11 +136,28 @@ export const validateMessage = (text) => {
   return re.test(text);
 };
 
+/* Validate Phone Number */
+export const validatePhoneNumber = (number) => {
+  const re = /\(?(\d{3})\)?[-\.\s]?(\d{3})[-\.\s]?(\d{4})/;
+  return re.test(number);
+};
+
 /* Clear Form Fields */
 export const clearFields = (...fields) => {
   fields.forEach((field) => {
     field.value = '';
   });
+};
+
+/* Throw Error */
+export const throwError = (message, element) => {
+  const err = document.createElement('span');
+  err.classList.add('err');
+  err.textContent = message;
+  element.parentElement.appendChild(err);
+  setTimeout(() => {
+    element.parentElement.removeChild(element.parentElement.lastChild);
+  }, 3000);
 };
 
 /* Add Prod to cart in database */
@@ -150,11 +167,11 @@ export const addProdToCartInDb = async (card) => {
   const cartItems = await getDataFromDb(url);
   const flag = cartItems.find((item) => item.prodId === targetId);
   if (flag) {
-    displayMsg('Product had already been added', 'warning');
+    displayMsg('Product had already been added', 'warning', 4000);
   } else {
     const success = await sendProdToCart(card, targetId);
     if (success) {
-      displayMsg('Product is successfully added', 'success');
+      displayMsg('Product is successfully added', 'success', 4000);
       updateBadge();
     }
   }
@@ -169,8 +186,7 @@ const sendProdToCart = async (prodCard, targetId) => {
     prodCard.querySelector('.name') || prodCard.querySelector('.product__name');
   prodName = prodName.textContent;
   let prodPrice =
-    prodCard.querySelector('.price') ||
-    prodCard.querySelector('.product__price');
+    prodCard.querySelector('.price') || prodCard.querySelector('.product__price');
   prodPrice = prodPrice.textContent;
   prodPrice = prodPrice.replace('Rs. ', '');
   const prodObj = {
@@ -185,15 +201,16 @@ const sendProdToCart = async (prodCard, targetId) => {
 };
 
 // displaying message
-export const displayMsg = (msg, alertType) => {
+export const displayMsg = (msg, alertType, time) => {
   const popUp = document.createElement('p');
   popUp.classList.add(`alert`);
   popUp.classList.add(alertType);
-  popUp.appendChild(document.createTextNode(msg));
+  popUp.style.animationDuration = `${time}ms`;
+  popUp.textContent = msg;
   document.body.appendChild(popUp);
   setTimeout(() => {
     document.body.removeChild(document.querySelector('.alert'));
-  }, 4000);
+  }, time);
 };
 
 /* update badge */
@@ -212,10 +229,12 @@ export const updateCart = async () => {
   const cartItems = await getDataFromDb('http://localhost:3000/cart');
   if (!cartItems.length) {
     cartContainer.querySelector('.cart-head').style.display = 'none';
+    cartContainer.querySelector('.btn.checkout').style.display = 'none';
     emptyContainer(cartContainer.querySelector('.cart-items'));
     displayEmptyCartMsg(cartContainer);
   } else {
     cartContainer.querySelector('.cart-head').style.display = '';
+    cartContainer.querySelector('.btn.checkout').style.display = '';
     populateCart(cartItems, cartContainer);
   }
 };
@@ -234,8 +253,7 @@ const populateCart = async (items, container) => {
   const cartItemsContainer = container.querySelector('.cart-items');
   emptyContainer(cartItemsContainer);
   items.forEach((item) => {
-    const cartElement =
-      cartItemTemplate.content.firstElementChild.cloneNode(true);
+    const cartElement = cartItemTemplate.content.firstElementChild.cloneNode(true);
     const prodImg = cartElement.querySelector('.item__img');
     const prodName = cartElement.querySelector('.item__name');
     const prodPrice = cartElement.querySelector('.item__price');
@@ -252,9 +270,7 @@ const populateCart = async (items, container) => {
 
 /* update price header */
 export const updateTotalPrice = async () => {
-  const priceElement = document.querySelector(
-    '.cart-container .total-price span'
-  );
+  const priceElement = document.querySelector('.cart-container .total-price span');
   const cartItems = await getDataFromDb('http://localhost:3000/cart');
   const priceArr = cartItems.map((item) => {
     return parseInt(item.price) * parseInt(item.qty);

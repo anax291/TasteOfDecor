@@ -1,3 +1,6 @@
+@import url(./formError.css);
+@import url(./checkoutAddOns.css);
+
 body {
   margin-top: 0;
   background: #f9f4f4;
@@ -76,8 +79,12 @@ input[type='tel'] {
   gap: 1rem;
 }
 
+.name__field > * {
+  width: 100%;
+}
+
 .place__order,
-.discount .btn {
+.discount-form .btn {
   display: block;
   background: #242424;
   width: max-content;
@@ -89,8 +96,8 @@ input[type='tel'] {
 
 .place__order:hover,
 .place__order:focus,
-.discount .btn:hover,
-.discount .btn:focus {
+.discount-form .btn:hover,
+.discount-form .btn:focus {
   background: #fff;
   color: #242424;
 }
@@ -113,6 +120,8 @@ input[type='tel'] {
 
 .prod__image img {
   border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
 }
 
 .prod__qty {
@@ -129,6 +138,7 @@ input[type='tel'] {
   justify-content: center;
   border-radius: 50%;
   box-shadow: 0 0 0 2px #fff;
+  user-select: none;
 }
 
 .prod__name {
@@ -142,7 +152,7 @@ input[type='tel'] {
   opacity: 0.9;
 }
 
-.discount {
+.discount-form {
   padding: 2rem 0;
   display: flex;
   gap: 1rem;
@@ -153,12 +163,13 @@ input[type='tel'] {
 }
 
 .sub-total,
-.shipping {
+.shipping,
+.discount {
   font-size: 1.125rem;
   font-weight: 900;
 }
 
-:is(.sub-total, .shipping, .total) span {
+:is(.sub-total, .shipping, .discount, .total) span {
   float: right;
 }
 

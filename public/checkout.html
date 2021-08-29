@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/utilities.css">
   <link rel="stylesheet" href="./css/checkout.css">
 
@@ -34,8 +36,8 @@
           <h2 class="contact-heading">Contact Info...</h2>
           <form class="customer__detail__form">
             <div class="form__field name__field">
-              <input type="text" name="fName" id="fName" placeholder="First Name" aria-label="first name">
-              <input type="text" name="lName" id="lName" placeholder="Last Name" aria-label="last name">
+              <div><input type="text" name="fName" id="fName" placeholder="First Name" aria-label="first name"></div>
+              <div><input type="text" name="lName" id="lName" placeholder="Last Name" aria-label="last name"></div>
             </div>
             <div class="form__field email__field">
               <input type="email" name="email" id="email" placeholder="Email Address" aria-label="Email Adress">
@@ -50,47 +52,17 @@
           </form>
         </div>
         <div class="right">
-          <div class="products">
-            <div class="product seperator">
-              <div class="prod__image">
-                <img src="./assets/outdoor/prod1/img1.webp" alt="">
-                <span class="prod__qty">5</span>
-              </div>
-              <div class="prod__info">
-                <p class="prod__name">Gucci Sweater - Cozy Blue</p>
-              </div>
-              <p class="prod__price">Rs: 380.00</p>
-            </div>
-            <div class="product seperator">
-              <div class="prod__image">
-                <img src="./assets/outdoor/prod1/img1.webp" alt="">
-                <span class="prod__qty"></span>
-              </div>
-              <div class="prod__info ">
-                <p class="prod__name">Gucci Sweater - Cozy Blue</p>
-              </div>
-              <p class="prod__price">Rs: 380.00</p>
-            </div>
-            <div class="product seperator">
-              <div class="prod__image">
-                <img src="./assets/outdoor/prod1/img1.webp" alt="">
-                <span class="prod__qty"></span>
-              </div>
-              <div class="prod__info">
-                <p class="prod__name">Gucci Sweater - Cozy Blue</p>
-              </div>
-              <p class="prod__price">Rs: 380.00</p>
-            </div>
-          </div>
-          <form class="discount seperator">
+          <div class="products"></div>
+          <form class="discount-form seperator">
             <input type="text" name="discount-code" id="discount-code" placeholder="Gift card or Discount code."
               aria-label="Discount Code">
             <input class="btn" type="submit" value="Apply">
           </form>
           <div class="checkout__details">
             <div class="seperator">
-              <p class="sub-total">Subtotal: <span class="sub-total__amount">Rs.999</span> </p>
+              <p class="sub-total">Subtotal: <span class="sub-total__amount"></span> </p>
               <p class="shipping">Shipping: <span class="shipping__charges">Calculated at next step</span> </p>
+              <p class="discount">Discount: <span class="discount__percent">No code found</span> </p>
             </div>
             <div class="seperator">
               <p class="total">Total: <span class="total__amount">Rs. 999</span></p>
@@ -101,6 +73,12 @@
     </div>
   </main>
 
+  <template id="loading">
+    <div class="overlay">
+      <div class="checkout-animation"></div>
+    </div>
+  </template>
+
   <!-- footer -->
   <custom-footer></custom-footer>
 
@@ -108,16 +86,17 @@
     <div class="product seperator">
       <div class="prod__image">
         <img src="" alt="">
-        <span class="prod__qty">5</span>
+        <span class="prod__qty"></span>
       </div>
       <div class="prod__info">
-        <p class="prod__name">Gucci Sweater - Cozy Blue</p>
+        <p class="prod__name"></p>
       </div>
-      <p class="prod__price">Rs: 380.00</p>
+      <p class="prod__price"></p>
     </div>
   </template>
 
 </body>
+
 <script src="./js/checkout.js" type="module"></script>
 
 </html>

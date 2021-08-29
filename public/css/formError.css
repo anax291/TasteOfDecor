@@ -1,0 +1,10 @@
+/* Form Errors */
+.err {
+  display: inline-block;
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 0.5rem 1.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+}

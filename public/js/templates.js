@@ -85,3 +85,31 @@ modal.innerHTML = `
     </div>
   </div>
 `;
+
+// orders = [
+//   {
+//     id: 1,
+//     name: 'Siddiq',
+//     email: 'xyz@gmail.com',
+//     tel: '999 999 999',
+//     address: '',
+//     totalPrice: 9999,
+//     disount: '',
+//     discountedPrice: '',
+//     expectedTimeForDelivery: '',
+//     hasbeenDelievered: false,
+//     items: [],
+//   },
+//   {
+//     id: 2,
+//     name: 'Siddiq',
+//     email: 'xyz@gmail.com',
+//     tel: '999 999 999',
+//     address: '',
+//     totalPrice: 9999,
+//     disount: '',
+//     discountedPrice: '',
+//     hasbeenDelievered: false,
+//     items: [],
+//   },
+// ];
