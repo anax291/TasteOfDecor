@@ -1,0 +1,619 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "furniture"
+    },
+    {
+      "id": 2,
+      "name": "decoration accessories"
+    },
+    {
+      "id": 3,
+      "name": "outdoor"
+    },
+    {
+      "id": 4,
+      "name": "wardrobes"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "categoryId": 1,
+      "name": "Fendi Casa Tables",
+      "price": 10000,
+      "imgSrc": [
+        "./assets/furniture/furniture1/img1.jpg",
+        "./assets/furniture/furniture1/img2.jpg",
+        "./assets/furniture/furniture1/img3.jpg"
+      ],
+      "description": [
+        "A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or on which to place things",
+        "A table is an item of furniture with a flat top"
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 2,
+      "categoryId": 1,
+      "name": "Sleeping Bed",
+      "price": 115700,
+      "imgSrc": [
+        "./assets/furniture/furniture2/img1.jpg",
+        "./assets/furniture/furniture2/img2.jpg",
+        "./assets/furniture/furniture2/img3.jpg"
+      ],
+      "description": [
+        "A bedroom is a room in a house for the bed, so it's mainly used for sleeping. If your home has three bedrooms, you can describe it as a three-bedroom house"
+      ],
+      "featured": true,
+      "reviews": [
+        {
+          "name": "Siddiq Ahmed",
+          "email": "siddiqahmed882@gmail.com",
+          "ratings": "4",
+          "description": "Excellent products\n",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "categoryId": 1,
+      "name": "Cupboards",
+      "price": 9999,
+      "imgSrc": [
+        "./assets/furniture/furniture3/img1.jpg",
+        "./assets/furniture/furniture3/img2.jpg",
+        "./assets/furniture/furniture3/img3.jpg"
+      ],
+      "description": [
+        "The wireless design means the Control Hub can be placed out of sight in a cupboard or on a rack."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 4,
+      "categoryId": 1,
+      "name": "Chairs",
+      "price": 550,
+      "imgSrc": [
+        "./assets/furniture/furniture4/img1.jpg",
+        "./assets/furniture/furniture4/img2.jpg",
+        "./assets/furniture/furniture4/img3.jpg"
+      ],
+      "description": [
+        "A chair is a piece of furniture for one person to sit on. Chairs have a back and four legs."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 5,
+      "categoryId": 1,
+      "name": "Sofa's",
+      "price": 110000,
+      "imgSrc": [
+        "./assets/furniture/furniture5/img1.png",
+        "./assets/furniture/furniture5/img2.png",
+        "./assets/furniture/furniture5/img3.png"
+      ],
+      "description": [
+        "A sofa is a piece of furniture that a few people can comfortably sit on together.",
+        "A sofa is similar to a couch"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 6,
+      "categoryId": 2,
+      "name": "Woody Wall Clock - 23 Inches Industrial Design",
+      "price": 5200,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod1/img1.png",
+        "./assets/decorationAccessories/prod1/img2.png",
+        "./assets/decorationAccessories/prod1/img3.png"
+      ],
+      "description": [
+        "Transform the vacant walls of your home, office, and other living spaces with a chic and stylish wall clock. Adorned in a modern flair our Woody Wall Clock is a marvellous depiction of a timepiece crafted from engineered wood. A woody outer layer and enormous yet intricate clock digits contribute to a sublime article favoured by trend lovers."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 7,
+      "categoryId": 2,
+      "name": "Moving Gear Wall Clock Black Colour",
+      "price": 3900,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod2/img1.png",
+        "./assets/decorationAccessories/prod2/img2.png"
+      ],
+      "description": [
+        "Nurture bare walls of your vicinity with our futuristic and trendy Moving Gear Wall Clock inscribed with Roman numerals. This timepiece with spice up the walls tinted in lighter colour tones due to its all-black assembly. With a central core screening the mechanical gears and contrasting white clock hands, this stylish clock is a fascination of numerous individuals."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 8,
+      "categoryId": 2,
+      "name": "Minimal Map Wall Clock Black Colour",
+      "price": 7300,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod3/img1.png",
+        "./assets/decorationAccessories/prod3/img2.png",
+        "./assets/decorationAccessories/prod3/img3.png"
+      ],
+      "description": [
+        "Contemporary and divine, our Minimal Map World Clock is intact for ornamented walls. Vain spaces and modern touch of the clock add class and elegance to a decorated wall. The sleek metallic frame is mounted with world map and delicate gold pins which spruce up the clock and augment a metropolitan appeal to the room space. A digital clock with a versatile appeal that you will adore for longer tenures."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 9,
+      "categoryId": 2,
+      "name": "Classic Love Key Wall Clock",
+      "price": 2700,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod4/img1.png",
+        "./assets/decorationAccessories/prod4/img2.png"
+      ],
+      "description": [
+        "Do you adore vintage style wall accessories? Look no more, our Classic Love Key Wall Clock is a top-notch and versatile article with an essential touch of antiquity. Adorned with creative embellishments and a rustic outlook, this wall clock is definite to diversify the setup of your interiors. Sparkled with a dusty clock face and carved with ‘love’ key ridges, it is an article not to miss out on."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 10,
+      "categoryId": 2,
+      "name": "Column Table Lamp",
+      "price": 11500,
+      "imgSrc": ["./assets/decorationAccessories/prod5/img1.jpg"],
+      "description": [
+        "Made From Metal In Grey & Brown Finish. Comes With White Linen Shade.",
+        "Material: Metal",
+        "Size: 29.5 Height (Inches)"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 11,
+      "categoryId": 2,
+      "name": "Column Table Lamp",
+      "price": 16500,
+      "imgSrc": ["./assets/decorationAccessories/prod6/img1.jpg"],
+      "description": [
+        "Made From Marble & Metal In Classic Finish. Comes With White Linen Shade.",
+        "Material: Metal & Marble",
+        "Size: 27.5 Height (Inches)"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 12,
+      "categoryId": 2,
+      "name": "Allure Table Lamp",
+      "price": 13500,
+      "imgSrc": ["./assets/decorationAccessories/prod7/img1.jpg"],
+      "description": [
+        "Made From Metal & Crystal. Clear Crystal Flower Body & Gold Metal Base. Comes With Oat Linen Shade.",
+        "Material: Metal & Crystal",
+        "Size: 27 Height (Inches)"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 13,
+      "categoryId": 2,
+      "name": "Down Bridge Table Lamp",
+      "price": 9500,
+      "imgSrc": ["./assets/decorationAccessories/prod8/img1.jpg"],
+      "description": [
+        "Made From Metal & Wood in black colour",
+        "Material: Metal & Wood",
+        "Size: 18 Height (Inches)"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 14,
+      "categoryId": 2,
+      "name": "Artificial Flower - Half Grass Ball in Paper Pot",
+      "price": 2600,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod9/img1.png",
+        "./assets/decorationAccessories/prod9/img2.png",
+        "./assets/decorationAccessories/prod9/img3.png"
+      ],
+      "description": [
+        "Type: Artificial Flower Plant",
+        "Size: 7 x 11.8 (Inches)",
+        "Colour: Green and dusty white"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 15,
+      "categoryId": 2,
+      "name": "Artificial Flower - Orchid in Cement Pot Red Color",
+      "price": 3135,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod10/img1.png",
+        "./assets/decorationAccessories/prod10/img2.png"
+      ],
+      "description": [
+        "Type: Artificial Flower Plant",
+        "Size: 7.8 x 7.8 x 16.5 (Inches)",
+        "Colour: Red"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 16,
+      "categoryId": 2,
+      "name": "Sunshine Buttercup Faux Flower Posy",
+      "price": 6000,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod11/img1.jpg",
+        "./assets/decorationAccessories/prod11/img2.jpg"
+      ],
+      "description": [
+        "Unbelievably realistic buttercup and cosmos summer stems create this lifelike faux flower arrangement held in a vintage bottle"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 17,
+      "categoryId": 2,
+      "name": "Flameless Candles Flickering LED",
+      "price": 2000,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod12/img1.jpg",
+        "./assets/decorationAccessories/prod12/img2.jpg",
+        "./assets/decorationAccessories/prod12/img3.jpg"
+      ],
+      "description": [
+        "Colour: Blue",
+        "Light Source Type: LED",
+        "Power Source: Battery Operated",
+        "Material: Real Wax"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 18,
+      "categoryId": 2,
+      "name": "Flavcharm Flameless Candles with Remote",
+      "price": 2600,
+      "imgSrc": [
+        "./assets/decorationAccessories/prod13/img1.jpg",
+        "./assets/decorationAccessories/prod13/img2.jpg",
+        "./assets/decorationAccessories/prod13/img3.jpg"
+      ],
+      "description": [
+        "Colour: Ocean Blue & Green",
+        "Light Source Type: LED",
+        "Power Source: Battery Operated",
+        "Shade Material: Glass"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 19,
+      "categoryId": 3,
+      "name": "Outdoor Wall Light",
+      "price": 9500,
+      "imgSrc": [
+        "./assets/outdoor/prod1/img1.webp",
+        "./assets/outdoor/prod1/img2.webp",
+        "./assets/outdoor/prod1/img3.webp"
+      ],
+      "description": [
+        "11 1/4\" high x 7 1/2\" wide. Extends 9\" from the wall. Weighs 2 lbs.",
+        "Backplate is 4 1/2\" high x 1 1/4\" deep. Glass is 7\" high x 3 3/4\" deep.",
+        "Uses one maximum 60 watt standard base dimmable A19 bulb (incandescent or LED). Bulb not included.",
+        "Uses one maximum 60 watt standard base dimmable A19 bulb (incandescent or LED). Bulb not included."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 20,
+      "categoryId": 3,
+      "name": "Indoor Live Houseplant - Brussel's Bonsai",
+      "price": 6700,
+      "imgSrc": ["./assets/outdoor/prod2/img1.webp"],
+      "description": [
+        "Large jade indoor houseplant dresses up any indoor decor arrangement",
+        "Lush green foliage and star-shaped leaf clusters add a pretty pop to your tabletop or desk",
+        "Easy-care plant flourishes in moderate to cool temperatures",
+        "8–10in jade bonsai plant comes in a decorative planter for easy placing"
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 21,
+      "categoryId": 3,
+      "name": "3pc Swiss Cheese Plant ",
+      "price": 4000,
+      "imgSrc": ["./assets/outdoor/prod3/img1.webp", "./assets/outdoor/prod3/img2.webp"],
+      "description": [
+        "Includes (3) Monstera in 4in pots",
+        "Typically grown indoors as a houseplant, but can be grown outdoors in USDA hardiness zones 10-12.",
+        "Mature size indoors is 30-70in tall and 6-10in wide.",
+        "Produces big, glossy leaves distinctively cut and perforated.",
+        "Performs best in part shade."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 22,
+      "categoryId": 3,
+      "name": "Alpine 40in Tiered Pedestal Fountain with Fish Blue",
+      "price": 10000,
+      "imgSrc": ["./assets/outdoor/prod4/img1.webp", "./assets/outdoor/prod4/img2.webp"],
+      "description": [
+        "Dimensions (Overall): 40 Inches (H) x 20 Inches (W) x 20 Inches (D)",
+        "Weight: 6.09 Pounds",
+        "Material: Plastic (Frame)",
+        "Placement: Ground Freestanding",
+        "Capacity (Volume): 5.4 Liter"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 23,
+      "categoryId": 3,
+      "name": "Electric Fir Wood Farmhouse Barrel with Hand Pump Water Fountain",
+      "price": 18500,
+      "imgSrc": [
+        "./assets/outdoor/prod5/img1.webp",
+        "./assets/outdoor/prod5/img2.webp",
+        "./assets/outdoor/prod5/img3.webp"
+      ],
+      "description": [
+        "Rustic wooden barrel fountain with two tiers",
+        "Constructed of fir, metal and plastic",
+        "Includes: 1 outdoor fountain and 1 submersible electric pump",
+        "Features a durable plastic liner inside the barrels for the water"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 24,
+      "categoryId": 3,
+      "name": "28in Gnome Home Tree Stump",
+      "price": 35000,
+      "imgSrc": [
+        "./assets/outdoor/prod6/img1.webp",
+        "./assets/outdoor/prod6/img2.webp",
+        "./assets/outdoor/prod6/img3.webp"
+      ],
+      "description": [
+        "Gnome Home Tree Stump Outdoor Garden Water Fountain",
+        "Two Gnomes Play Checkers As The Other Relaxes While Smoking A Pipe",
+        "Recommended For Indoor And Outdoor Use",
+        "28 Inches High By 16 Inches Wide By 14 Inches Deep"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 25,
+      "categoryId": 3,
+      "name": "Lifelike Large Todd the Tortoise Patio",
+      "price": 30000,
+      "imgSrc": [
+        "./assets/outdoor/prod7/img1.webp",
+        "./assets/outdoor/prod7/img2.webp",
+        "./assets/outdoor/prod7/img3.webp"
+      ],
+      "description": [
+        "Overall dimensions: 15.5in W x 30in D x 11in H; W: 26 lb",
+        "Durable poly-concrete material",
+        "Hand crafted",
+        "Easy to move"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 26,
+      "categoryId": 3,
+      "name": "Metal Outdoor Corner Clock",
+      "price": 7500,
+      "imgSrc": [
+        "./assets/outdoor/prod8/img1.webp",
+        "./assets/outdoor/prod8/img2.webp",
+        "./assets/outdoor/prod8/img3.jfif"
+      ],
+      "description": [
+        "Metal Outdoor corner clock lends charming flair to your outdoor space",
+        "Analog display with numeric hour markings is easy to read",
+        "Clock case swivels allowing for a 360 degree rotation and the ability to face the clock in a multitude of directions"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 27,
+      "categoryId": 3,
+      "name": "North States 9084 Lil' Red School House Village Collection Bird Feeder",
+      "price": 12500,
+      "imgSrc": ["./assets/outdoor/prod9/img1.jpeg", "./assets/outdoor/prod9/img2.jpeg"],
+      "description": [
+        "Charming school house-themed bird feeder is made of plastic for easy cleaning",
+        "Cord attached for easy hanging",
+        "Feeder top lifts to fill",
+        "Holds up to 5 lbs of seeds"
+      ],
+      "reviews": []
+    },
+    {
+      "id": 28,
+      "categoryId": 4,
+      "name": "Legato White 3 Door Mirrored Wardrobe",
+      "price": 70000,
+      "imgSrc": ["./assets/wardrobes/prod1/img1.jpg"],
+      "description": [
+        "The Legato 3 Door Mirrored Wardrobe features a contemporary style with a unique handle-less design and a high gloss finish.",
+        "Constructed from high quality components this 3 door mirrored wardrobe makes for a practical and stylish storage solution for your bedroom.",
+        "Part of the Legato range, this wardrobe is available in a variety of styles and will make the perfect addition to your living space creating a fresh new look."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 29,
+      "categoryId": 4,
+      "name": "Ethan White 4 Door Wardrobe with Mirrors",
+      "price": 85000,
+      "imgSrc": [
+        "./assets/wardrobes/prod2/img1.jpg",
+        "./assets/wardrobes/prod2/img2.jpg",
+        "./assets/wardrobes/prod2/img3.jpg"
+      ],
+      "description": [
+        "This stylish wardrobe features profiled doors with shaker style metal handles. Including high quality components and multi-adjustable hinges this wardrobe isn't just practical but features a beautifully designed grain effect finish with a crisp White coloured coat, perfect for almost any bedroom."
+      ],
+      "featured": true,
+      "reviews": [
+        {
+          "name": "Siddiq Ahmed",
+          "email": "siddiqahmed882@gmail.com",
+          "ratings": "4",
+          "description": "Okay this is nice.",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "categoryId": 4,
+      "name": "Ethan Graphite 4 Door Wardrobe with Mirrors",
+      "price": 85000,
+      "imgSrc": [
+        "./assets/wardrobes/prod3/img1.jpg",
+        "./assets/wardrobes/prod3/img2.jpg",
+        "./assets/wardrobes/prod3/img3.jpg"
+      ],
+      "description": [
+        "This stylish wardrobe features profiled doors with shaker style metal handles. Including high quality components and multi-adjustable hinges this wardrobe isn't just practical but features a beautifully designed grain effect finish with a crisp White coloured coat, perfect for almost any bedroom."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 31,
+      "categoryId": 4,
+      "name": "Nevada 4 Door 2 Drawer Oyster Mirrored Wardrobe",
+      "price": 65000,
+      "imgSrc": [
+        "./assets/wardrobes/prod4/img1.jpg",
+        "./assets/wardrobes/prod4/img2.jpg"
+      ],
+      "description": [
+        "The Nevada 4 Door 2 Drawer Mirrored Wardrobe features a contemporary design owing to the gloss finished front which contrasts perfectly with the light oak veneers. The Nevada has your storage needs covered thanks to the 2 drawers, top shelf and hanging space from the metal rail."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 32,
+      "categoryId": 4,
+      "name": "Lucy Cane Grey Gents Wardrobe",
+      "price": 70000,
+      "imgSrc": [
+        "./assets/wardrobes/prod5/img1.jpg",
+        "./assets/wardrobes/prod5/img2.jpg",
+        "./assets/wardrobes/prod5/img3.jpg"
+      ],
+      "description": [
+        "Inspired by vintage French styling, the Lucy Cane range is elegantly crafted to provide a perfect statement piece for any living space.",
+        "Finished in an aged painted colourway with natural lacquered coating, this stunning range features a woven cane design and turned legs.",
+        "Designed with a full-length hanging rail and fixed bottom shelf, this wardrobe also features dark round metal handles and smooth runners with pull-out stop for added convenience."
+      ],
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 33,
+      "categoryId": 4,
+      "name": "Lynx Walnut and Black Triple Wardrobe with 2 Drawers",
+      "price": 45000,
+      "imgSrc": [
+        "./assets/wardrobes/prod6/img1.jpg",
+        "./assets/wardrobes/prod6/img2.jpg"
+      ],
+      "description": [
+        "This sturdy and spacious wardrobe consists of an internal top shelf, hanging rail and shelving behind three doors, plus two drawers for additional storage. It combines walnut and black high gloss for a striking, modern look which is sure to stand out. This three door wardrobe features silver finish plastic handles, a mirrored panel and smooth, metal drawer runners."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 34,
+      "categoryId": 4,
+      "name": "Ellum Black Sliding Wardrobe",
+      "price": 60000,
+      "imgSrc": [
+        "./assets/wardrobes/prod7/img1.jpg",
+        "./assets/wardrobes/prod7/img2.jpg"
+      ],
+      "description": [
+        "Designed to complement contemporary interiors, the Dallas 2 Door High Gloss Sliding Wardrobe is an eye-catching storage solution for your bedroom.",
+        "This spacious wardrobe features two smooth, sliding doors with high gloss fronts.",
+        "Inside you will find two adjustable hanging rails and two adjustable shelves so you can personalise your storage space."
+      ],
+      "reviews": []
+    },
+    {
+      "id": 35,
+      "categoryId": 4,
+      "name": "Ellum Oak Sliding Wardrobe",
+      "price": 40000,
+      "imgSrc": [
+        "./assets/wardrobes/prod8/img1.jpg",
+        "./assets/wardrobes/prod8/img2.jpg",
+        "./assets/wardrobes/prod8/img3.jpg"
+      ],
+      "description": [
+        "The Ellum Oak Double Sliding Wardrobe is a spacious, stylish and practical wardrobe for your bedroom.",
+        "With adjustable shelves, a textured 3D finish and metal handles, the Ellum will have all your bedroom storage needs taken care of."
+      ],
+      "reviews": []
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "name": "Shaykh Anas",
+      "email": "anax291@gmail.com",
+      "subject": "testimonial",
+      "message": "I just love their design for all stunning details. You must know what can you do for a project before taking it, but with Archo, the sky is the limit."
+    },
+    {
+      "id": 2,
+      "name": "Syed Noman Shariq",
+      "email": "nshariq@gmail.com",
+      "subject": "testimonial",
+      "message": "Not able to tell you how happy I am with interior..."
+    },
+    {
+      "id": 3,
+      "name": "Muhammad Usama",
+      "email": "usama@gmail.com",
+      "subject": "testimonial",
+      "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
+    },
+    {
+      "name": "Shaykh Anas",
+      "email": "anax291@gmail.com",
+      "subject": "testimonials",
+      "message": "We create possibilities for the connected world.",
+      "id": 4
+    }
+  ],
+  "cart": [],
+  "orders": []
+}
