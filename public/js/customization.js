@@ -50,7 +50,9 @@ const displayCustomizationBox = async (target) => {
   customizationDiv.querySelector('#height').value = window
     .getComputedStyle(target)
     .height.replace('px', '');
-  customizationDiv.querySelector('#rotate').value = 0;
+  let temp = target.style.transform;
+  if (temp) temp = temp.slice(7, temp.length - 4);
+  customizationDiv.querySelector('#rotate').value = temp || 0;
   document.body.appendChild(customizationDiv);
 };
 
