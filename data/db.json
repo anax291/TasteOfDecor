@@ -49,7 +49,22 @@
         "A bedroom is a room in a house for the bed, so it's mainly used for sleeping. If your home has three bedrooms, you can describe it as a three-bedroom house"
       ],
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Shaykh Anas",
+          "email": "anax291@gmail.com",
+          "ratings": "5",
+          "description": "",
+          "id": 1
+        },
+        {
+          "name": "Bro",
+          "email": "anasaslam877@gmail.com",
+          "ratings": "2",
+          "description": "Hello Gee",
+          "id": 2
+        }
+      ]
     },
     {
       "id": 3,
@@ -618,7 +633,16 @@
       "email": "usama@gmail.com",
       "subject": "testimonial",
       "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me."
+    },
+    {
+      "name": "Shaykh Anas",
+      "email": "anax291@gmail.com",
+      "subject": "testimonials",
+      "message": "We create possibilities for the connected world.",
+      "id": 4
     }
   ],
-  "cart": []
+  "cart": [
+    
+  ]
 }
