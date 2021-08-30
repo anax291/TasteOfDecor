@@ -7,6 +7,8 @@ import {
   clearFields,
   displayMsg,
   getDataFromDb,
+  throwError,
+  deleteDataFromDb,
 } from './dataFunctions.js';
 
 // Grabbing UI Elements
@@ -17,7 +19,9 @@ const subjectField = document.getElementById('subject');
 const textArea = document.getElementById('message');
 
 // Submit Event
-contactForm.addEventListener('submit', async (e) => {
+contactForm.addEventListener('submit', handleFormSubmit);
+
+async function handleFormSubmit(e) {
   e.preventDefault();
   const name = nameField.value;
   const email = emailField.value;
@@ -26,18 +30,19 @@ contactForm.addEventListener('submit', async (e) => {
   if (!validateForm(name, email, subject, message)) return;
 
   subject = subject.trim().toLowerCase();
-  let isEmailAlreadyTaken = false;
+  let msgObj;
   if (subject === 'testimonial') {
-    isEmailAlreadyTaken = await checkEmail(email);
+    msgObj = await checkEmail(email);
   }
-  if (isEmailAlreadyTaken) {
-    displayMsg('Please choose another email', 'danger');
+
+  if (msgObj) {
+    replaceTestimonial(msgObj, name, message);
   } else {
     createMessageObj(name, email, subject, message);
-    displayMsg('Your message has been recorded', 'success');
+    displayMsg('Your message has been recorded', 'success', 4000);
     clearFields(nameField, emailField, subjectField, textArea);
   }
-});
+}
 
 const validateForm = (name, email, subject, message) => {
   if (!validateName(name)) {
@@ -59,33 +64,56 @@ const validateForm = (name, email, subject, message) => {
   return true;
 };
 
-const throwError = (message, element) => {
-  const err = document.createElement('span');
-  err.classList.add('err');
-  err.textContent = message;
-  element.parentElement.appendChild(err);
-  setTimeout(() => {
-    element.parentElement.removeChild(element.parentElement.lastChild);
-  }, 3000);
-};
-
-const createMessageObj = (userName, userEmail, title, desc) => {
+const createMessageObj = (userName, userEmail, title, desc, id = undefined) => {
   let obj = {
     name: userName,
     email: userEmail,
     subject: title,
     message: desc,
   };
+  if (id) obj.id = id;
   postDataToDb(obj, 'messages');
 };
 
 const checkEmail = async (email) => {
   const data = await getDataFromDb('http://localhost:3000/messages');
-  const res = data.find(
-    (obj) => obj.email === email && obj.subject === 'testimonial'
-  );
-  console.log(res);
+  const res = data.find((obj) => obj.email === email && obj.subject === 'testimonial');
+  console.log(res?.id);
   return res;
+};
+
+const replaceTestimonial = async (obj, userName, message) => {
+  displayPopup();
+  document.querySelector('.popup').addEventListener('click', async (e) => {
+    const target = e.target.closest('.replace') || e.target.closest('.cancel');
+    if (target) {
+      document.body.removeChild(document.querySelector('.popup'));
+      document.body.style.overflow = '';
+      if (target.classList.contains('replace')) {
+        const id = obj.id,
+          name = userName,
+          title = obj.subject,
+          email = obj.email,
+          desc = message;
+        const success = await deleteDataFromDb(
+          `http://localhost:3000/messages/${obj.id}`
+        );
+        if (success) {
+          createMessageObj(name, email, title, desc, id);
+          displayMsg('Your message has been replaced', 'success', 4000);
+          clearFields(nameField, emailField, subjectField, textArea);
+        }
+      }
+    }
+  });
+};
+
+const displayPopup = () => {
+  const popup = document
+    .getElementById('replace-msg')
+    .content.firstElementChild.cloneNode(true);
+  document.body.appendChild(popup);
+  document.body.style.overflow = 'hidden';
 };
 
 /* Intro js */

@@ -248,6 +248,26 @@
   width: 100%;
 }
 
+.btn.checkout {
+  display: block;
+  width: max-content;
+  margin: 1.5rem 0 0 auto;
+  background: #000;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0.65em 1.5em;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid currentColor;
+  transition: all 500ms ease;
+}
+
+.btn.checkout:hover,
+.btn.checkout:focus {
+  background: #fff;
+  color: #000;
+}
+
 @keyframes bgPos {
   0% {
     background-position: 50% 0;

@@ -52,8 +52,8 @@
           <p class="total-price">Total: <span>Rs. 95000</span></p>
           <div class="remove-all"><span class="close-icon"></span>Remove all</div>
         </div>
-        <div class="cart-items">
-        </div>
+        <div class="cart-items"></div>
+        <a href="./checkout.html" class="btn checkout">Check Out</a href="./checkout.html">
       </div>
     </nav>
   </header>
@@ -116,6 +116,19 @@
   </main>
 
   <custom-footer></custom-footer>
+
+  <template id="replace-msg">
+    <div class="popup">
+      <div class="msg">
+        <p>You have already Posted a review for us.</p>
+        <p>Do you want to replace it?</p>
+        <div class="buttons">
+          <button class="btn replace">Replace</button>
+          <button class="btn cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </template>
 </body>
 <script src="./js/googleMap.js"></script>
 <script async defer

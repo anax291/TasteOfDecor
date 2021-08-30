@@ -50,12 +50,16 @@ const displayCustomizationBox = async (target) => {
   customizationDiv.querySelector('#height').value = window
     .getComputedStyle(target)
     .height.replace('px', '');
+  let temp = target.style.transform;
+  if (temp) temp = temp.slice(7, temp.length - 4);
+  customizationDiv.querySelector('#rotate').value = temp || 0;
   document.body.appendChild(customizationDiv);
 };
 
 const customizationInteractivity = (img) => {
   const widthElement = document.getElementById('width');
   const heightElement = document.getElementById('height');
+  const degElement = document.getElementById('rotate');
   const reduceZindex = document.getElementById('reduce-z-index');
   const increaseZindex = document.getElementById('increase-z-index');
   const closeBtn = document.querySelector('.cta-close');
@@ -63,6 +67,7 @@ const customizationInteractivity = (img) => {
   widthElement.addEventListener('change', (e) => {
     changeWidth(img, e.target.value);
   });
+
   widthElement.addEventListener('keyup', (e) => {
     changeWidth(img, e.target.value);
   });
@@ -73,6 +78,14 @@ const customizationInteractivity = (img) => {
 
   heightElement.addEventListener('keyup', (e) => {
     changeHeight(img, e.target.value);
+  });
+
+  degElement.addEventListener('change', (e) => {
+    rotateImg(img, e.target.value);
+  });
+
+  degElement.addEventListener('keyup', (e) => {
+    rotateImg(img, e.target.value);
   });
 
   reduceZindex.addEventListener('click', () => {
@@ -93,6 +106,9 @@ const changeWidth = (img, width) => {
 
 const changeHeight = (img, height) => {
   img.style.width = `${height}px`;
+};
+const rotateImg = (img, deg) => {
+  img.style.transform = `rotate(${deg}deg)`;
 };
 
 const changeZindex = (img, bool) => {

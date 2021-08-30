@@ -1,3 +1,5 @@
+@import url(./formError.css);
+
 body {
   animation: transitionIn 0.75s;
 }
@@ -123,15 +125,50 @@ form .btn {
   }
 }
 
-/* Form Errors */
-.err {
-  display: inline-block;
-  color: #721c24;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  padding: 0.5rem 1.5rem;
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+}
+
+.popup .msg {
+  width: max-content;
+  padding: 3rem 2rem;
+  border-radius: 0.25rem;
+  background: #f4f4f4;
+}
+
+.popup .msg p {
+  font-size: 1.25rem;
+}
+
+.popup .msg p:nth-child(2) {
+  margin-bottom: 2rem;
+}
+
+.popup .msg .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.popup .msg .btn {
+  font-size: 1.25rem;
+  color: #fff;
+  background: #000;
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  transition: all 500ms ease;
+}
+
+.popup .msg .btn:hover,
+.popup .msg .btn:focus {
+  color: #000;
+  background: #fff;
 }
 
 /* Intro js */
