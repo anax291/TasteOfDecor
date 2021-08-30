@@ -121,10 +121,7 @@ const placeorder = async (items) => {
     );
     emptyCart();
     // add animation
-    addPostLoader();
-    setTimeout(() => {
-      window.location.href = `http://localhost:3000`;
-    }, 4000);
+    addPostInteractivity();
   });
 };
 
@@ -189,11 +186,30 @@ const emptyCart = async () => {
   });
 };
 
-const addPostLoader = async () => {
-  let loader = document.getElementById('loading');
-  loader = loader.content.firstElementChild.cloneNode(true);
+const addPostInteractivity = () => {
+  document.body.style.overflow = 'hidden';
+  document.querySelector('main.checkout').classList.add('blur');
+  // grabbing templates
+  let loader = document
+    .getElementById('loading')
+    .content.firstElementChild.cloneNode(true);
+  let checkoutMsg = document
+    .getElementById('checkout-msg-template')
+    .content.firstElementChild.cloneNode(true);
+  // adding post loader
   document.body.appendChild(loader);
+  // removing post loader and adding checkout msg
+  const container = document.querySelector('.overlay');
   setTimeout(() => {
-    document.body.removeChild(document.querySelector('.overlay'));
+    container.replaceChild(checkoutMsg, document.querySelector('.checkout-animation'));
   }, 4000);
+
+  container.addEventListener('click', (e) => {
+    const target = e.target.closest('.close__checkout-msg');
+    if (!target) return;
+    document.querySelector('.overlay').style.transform = `scale(0)`;
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000`;
+    }, 1500);
+  });
 };

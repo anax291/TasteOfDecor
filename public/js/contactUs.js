@@ -9,7 +9,6 @@ import {
   getDataFromDb,
   throwError,
   deleteDataFromDb,
-  updateData,
 } from './dataFunctions.js';
 
 // Grabbing UI Elements
@@ -84,23 +83,37 @@ const checkEmail = async (email) => {
 };
 
 const replaceTestimonial = async (obj, userName, message) => {
-  let choice = prompt(
-    'You have already posted review for us. Do you want to replace it?'
-  );
-  choice = choice.toLowerCase();
-  if (choice === 'replace') {
-    const id = obj.id,
-      name = userName,
-      title = obj.subject,
-      email = obj.email,
-      desc = message;
-    const success = await deleteDataFromDb(`http://localhost:3000/messages/${obj.id}`);
-    if (success) {
-      createMessageObj(name, email, title, desc, id);
-      displayMsg('Your message has been replaced', 'success', 4000);
-      clearFields(nameField, emailField, subjectField, textArea);
+  displayPopup();
+  document.querySelector('.popup').addEventListener('click', async (e) => {
+    const target = e.target.closest('.replace') || e.target.closest('.cancel');
+    if (target) {
+      document.body.removeChild(document.querySelector('.popup'));
+      document.body.style.overflow = '';
+      if (target.classList.contains('replace')) {
+        const id = obj.id,
+          name = userName,
+          title = obj.subject,
+          email = obj.email,
+          desc = message;
+        const success = await deleteDataFromDb(
+          `http://localhost:3000/messages/${obj.id}`
+        );
+        if (success) {
+          createMessageObj(name, email, title, desc, id);
+          displayMsg('Your message has been replaced', 'success', 4000);
+          clearFields(nameField, emailField, subjectField, textArea);
+        }
+      }
     }
-  }
+  });
+};
+
+const displayPopup = () => {
+  const popup = document
+    .getElementById('replace-msg')
+    .content.firstElementChild.cloneNode(true);
+  document.body.appendChild(popup);
+  document.body.style.overflow = 'hidden';
 };
 
 /* Intro js */

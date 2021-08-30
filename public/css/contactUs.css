@@ -125,6 +125,52 @@ form .btn {
   }
 }
 
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+}
+
+.popup .msg {
+  width: max-content;
+  padding: 3rem 2rem;
+  border-radius: 0.25rem;
+  background: #f4f4f4;
+}
+
+.popup .msg p {
+  font-size: 1.25rem;
+}
+
+.popup .msg p:nth-child(2) {
+  margin-bottom: 2rem;
+}
+
+.popup .msg .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.popup .msg .btn {
+  font-size: 1.25rem;
+  color: #fff;
+  background: #000;
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  transition: all 500ms ease;
+}
+
+.popup .msg .btn:hover,
+.popup .msg .btn:focus {
+  color: #000;
+  background: #fff;
+}
+
 /* Intro js */
 .introjs-tooltip {
   background: #000;
