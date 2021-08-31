@@ -90,7 +90,6 @@ const observer = new IntersectionObserver(
   function (entries) {
     if (entries[0].isIntersecting) {
       counterAnimation();
-      console.log(entries[0]);
       observer.unobserve(entries[0].target);
     }
   },
@@ -172,10 +171,7 @@ const populateTestimonials = async () => {
     (message) => message.subject.toLowerCase() === 'testimonial'
   );
   createTestimonialNav(testimonialNav, testimonials);
-  const testimonialElement = document.importNode(
-    testimonialTemplate.content,
-    true
-  );
+  const testimonialElement = document.importNode(testimonialTemplate.content, true);
   const quote = testimonialElement.querySelector('.testimonial__content');
   const clientName = testimonialElement.querySelector('.client__name');
   quote.textContent = testimonials[0].message;
@@ -204,17 +200,12 @@ testimonialNav.addEventListener('click', async (e) => {
   const targetId = target.getAttribute('data-nav-id');
   testimonialNav.querySelector('.current').classList.remove('current');
   target.classList.add('current');
-  testimonialContainer.removeChild(
-    testimonialContainer.querySelector('.testimonial')
-  );
+  testimonialContainer.removeChild(testimonialContainer.querySelector('.testimonial'));
   // changing testimonial
   let url = `http://localhost:3000/messages/${targetId}`;
   const testimonial = await getDataFromDb(url);
   const testimonialTemplate = document.getElementById('testimonial-template');
-  const testimonialElement = document.importNode(
-    testimonialTemplate.content,
-    true
-  );
+  const testimonialElement = document.importNode(testimonialTemplate.content, true);
   const quote = testimonialElement.querySelector('.testimonial__content');
   const clientName = testimonialElement.querySelector('.client__name');
   quote.textContent = testimonial.message;

@@ -111,10 +111,17 @@ body {
   color: #fff;
 }
 
-.add-to-wishlist {
+.buy-now {
   color: #fff;
   background: #ffbe5c;
 }
+
+.buy-now[disabled] {
+  background: #aaa;
+  color: #000;
+  pointer-events: none;
+}
+
 @media (max-width: 700px) {
   .product .grid {
     grid-template-columns: 1fr;
@@ -209,8 +216,8 @@ textarea {
 }
 
 .review-form
-  :is(.fa-star:hover, .fa-star:hover
-    ~ .fa-star, .fa-star.active, .fa-star.active ~ .fa-star) {
+  :is(.fa-star:hover, .fa-star:hover ~ .fa-star, .fa-star.active, .fa-star.active
+    ~ .fa-star) {
   color: #f8ce0b;
   font-weight: 900;
 }

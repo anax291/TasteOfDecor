@@ -179,7 +179,7 @@ export const addProdToCartInDb = async (card) => {
 };
 
 // sending cart obj to database
-const sendProdToCart = async (prodCard, targetId) => {
+export const sendProdToCart = async (prodCard, targetId) => {
   let prodImg = prodCard.querySelector('img').src;
   prodImg = prodImg.replace('http://localhost:3000', '.');
   let prodName =
@@ -237,12 +237,31 @@ export const updateCart = async () => {
     cartContainer.querySelector('.btn.checkout').style.display = '';
     populateCart(cartItems, cartContainer);
   }
+  updateBuyNowBtnState();
 };
 
 // empty cart display
 const displayEmptyCartMsg = (container) => {
   const emptyCart = emptyCartTemplate.content.firstElementChild.cloneNode(true);
   container.appendChild(emptyCart);
+};
+
+// updateBuyNowBtnState
+export const updateBuyNowBtnState = () => {
+  const id = document.body.id;
+  if (!id === 'prod-detail') return;
+  try {
+    const btn = document.querySelector('.buy-now');
+    console.log(btn);
+    console.log(document.querySelector('item'));
+    if (document.querySelector('.item')) {
+      btn.setAttribute('disabled', '');
+    } else {
+      btn.removeAttribute('disabled');
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // populating cart
