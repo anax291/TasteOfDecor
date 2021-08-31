@@ -2,7 +2,6 @@ import {
   addProdToCartInDb,
   deleteDataFromDb,
   deletingCartItemAnimation,
-  getDataFromDb,
   updateBadge,
   updateCart,
   updateData,

@@ -11,6 +11,7 @@ import {
   addProdToCartInDb,
   updateBadge,
   updateCart,
+  sendProdToCart,
 } from './dataFunctions.js';
 
 /* Running Functions on Page Load */
@@ -19,19 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
   injectProductDetails();
   changePrimaryImage();
   populateSimilarProducts();
+  buyProduct();
 });
 
 // getting id and categoryId from URL
 const productId = new URLSearchParams(window.location.search).get('id');
-const categoryId = new URLSearchParams(window.location.search).get(
-  'categoryId'
-);
+const categoryId = new URLSearchParams(window.location.search).get('categoryId');
 
 /* Update page title */
 const updatePageTitle = async () => {
-  const prod = await getDataFromDb(
-    `http://localhost:3000/products/${productId}`
-  );
+  const prod = await getDataFromDb(`http://localhost:3000/products/${productId}`);
   document.title = `Taste of Décor | ${prod.name}`;
 };
 
@@ -53,6 +51,7 @@ const injectProductDetails = async () => {
   const ratings = product.querySelector('.stars-inner');
   const reviewsNumber = product.querySelector('.reviews-number');
   const productDescription = product.querySelector('.product__description');
+  const buyNow = product.querySelector('.buy-now');
   // assigning values
   product.setAttribute('data-id', productObj.id);
   primaryImage.src = productObj.imgSrc[0];
@@ -76,6 +75,14 @@ const injectProductDetails = async () => {
   descList.forEach((li) => {
     productDescription.appendChild(li);
   });
+  const cartItems = document.querySelector('.cart-items > *');
+  console.log(cartItems);
+  if (cartItems) {
+    buyNow.setAttribute('disabled', '');
+  } else {
+    buyNow.removeAttribute('disabled');
+  }
+
   prodContainer.appendChild(product);
 };
 
@@ -122,6 +129,18 @@ const changePrimaryImage = () => {
     activeImage.classList.remove('active');
     target.classList.add('active');
     primaryImage.src = target.src;
+  });
+};
+
+const buyProduct = async () => {
+  const container = document.querySelector('.product .container');
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn.buy-now');
+    if (!btn) return;
+    sendProdToCart(document.querySelector('.product .grid'), productId);
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000/checkout.html`;
+    }, 500);
   });
 };
 
@@ -249,9 +268,7 @@ ratingsContainer.addEventListener('click', (e) => {
 form2.addEventListener('submit', (e) => {
   e.preventDefault();
   const review = document.getElementById('review');
-  const rating = ratingsContainer
-    .querySelector('.active')
-    .getAttribute('data-rating');
+  const rating = ratingsContainer.querySelector('.active').getAttribute('data-rating');
   if (rating) {
     const userReview = review.value;
     reviewObj.ratings = rating;
