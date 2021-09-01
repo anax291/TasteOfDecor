@@ -161,6 +161,13 @@ input[type='tel'] {
   gap: 1rem;
 }
 
+.discount-form input:disabled + .btn {
+  pointer-events: none;
+  background: #aaa;
+  color: #000;
+  border: #999;
+}
+
 .checkout__details > * {
   padding: 2rem;
 }

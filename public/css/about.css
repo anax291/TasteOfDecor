@@ -1,5 +1,5 @@
+@import url(./animations.css);
 /* about us */
-
 body {
   animation: transitionIn 0.75s;
 }

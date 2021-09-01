@@ -3,6 +3,7 @@ import {
   deleteDataFromDb,
   displayMsg,
   getDataFromDb,
+  numberWithCommas,
   postDataToDb,
   throwError,
   validateEmail,
@@ -43,7 +44,7 @@ const injectProductCards = async (items) => {
     img.src = item.imgSrc;
     imgBadge.textContent = item.qty;
     name.textContent = item.name;
-    price.textContent = `Rs: ${item.price}`;
+    price.textContent = `Rs: ${numberWithCommas(item.price)}`;
     // inserting card to DOM
     cardContainer.appendChild(card);
   });
@@ -63,9 +64,9 @@ const updatePrices = async (items, discount = null) => {
   if (discount) {
     totalPrice = subTotalPrice - subTotalPrice * discount;
   }
-  subTotal.textContent = `Rs: ${subTotalPrice}`;
+  subTotal.textContent = `Rs: ${numberWithCommas(subTotalPrice)}`;
   shipping.textContent = `Rs: 500`;
-  total.textContent = `Rs: ${totalPrice + 500}`;
+  total.textContent = `Rs: ${numberWithCommas(parseInt(totalPrice + 500))}`;
 };
 
 const calculateDiscount = (items) => {
@@ -169,9 +170,9 @@ const makeOrderObject = (fname, lname, email, address, tel, products) => {
     email,
     tel,
     address,
-    subtotal,
+    subtotal: `${subtotal.replaceAll(',', '')}`,
     discount,
-    totalPrice: discountedPrice,
+    totalPrice: `${discountedPrice.replaceAll(',', '')}`,
     hasBeenDelivered: false,
     items: products,
   };

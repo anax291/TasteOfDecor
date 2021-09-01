@@ -21,6 +21,18 @@ export const addLoadingAnimation = (container) => {
   container.appendChild(image);
 };
 
+/* Create Category list and inject [for index and collection page] */
+export const createCategoriesAndInject = (categories, categoryList) => {
+  categories.forEach((category) => {
+    const li = document.createElement('li');
+    li.classList.add('category');
+    li.setAttribute('data-id', category.id);
+    li.setAttribute('data-category', category.name);
+    li.appendChild(document.createTextNode(category.name));
+    categoryList.appendChild(li);
+  });
+};
+
 // function to remove loading animation
 export const removeLoadingAnimation = (container) =>
   container.removeChild(container.firstChild);
@@ -82,6 +94,11 @@ export const deleteDataFromDb = async (url) => {
   return true;
 };
 
+/* Number With Commas */
+export const numberWithCommas = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 /* Inject Prodouct Cards */
 export const injectProducts = (cardTemplate, products, productContainer) => {
   products.forEach((product) => {
@@ -98,7 +115,7 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
       name.textContent = product.name;
     });
     prices.forEach((price) => {
-      price.textContent = `Rs. ${product.price}`;
+      price.textContent = `Rs. ${numberWithCommas(product.price)}`;
     });
     const prodDesc = product.description;
     prodDesc.forEach((desc) => {
@@ -189,6 +206,7 @@ export const sendProdToCart = async (prodCard, targetId) => {
     prodCard.querySelector('.price') || prodCard.querySelector('.product__price');
   prodPrice = prodPrice.textContent;
   prodPrice = prodPrice.replace('Rs. ', '');
+  prodPrice = prodPrice.replaceAll(',', '');
   const prodObj = {
     prodId: targetId,
     name: prodName,
@@ -252,8 +270,6 @@ export const updateBuyNowBtnState = () => {
   if (!id === 'prod-detail') return;
   try {
     const btn = document.querySelector('.buy-now');
-    console.log(btn);
-    console.log(document.querySelector('item'));
     if (document.querySelector('.item')) {
       btn.setAttribute('disabled', '');
     } else {
@@ -281,7 +297,7 @@ const populateCart = async (items, container) => {
     prodImg.src = item.imgSrc;
     prodName.textContent = item.name;
     prodQty.textContent = item.qty;
-    prodPrice.textContent = `Rs. ${item.price}`;
+    prodPrice.textContent = `Rs. ${numberWithCommas(item.price)}`;
     cartItemsContainer.appendChild(cartElement);
   });
   updateTotalPrice();
@@ -297,5 +313,5 @@ export const updateTotalPrice = async () => {
   const totalPrice = priceArr.reduce((total, price) => {
     return (total += price);
   }, 0);
-  priceElement.textContent = totalPrice;
+  priceElement.textContent = `Rs. ${numberWithCommas(totalPrice)}`;
 };

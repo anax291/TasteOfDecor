@@ -1,4 +1,5 @@
 @import url(./formError.css);
+@import url(./animations.css);
 
 body {
   animation: transitionIn 0.75s;

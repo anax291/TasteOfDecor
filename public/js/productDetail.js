@@ -12,6 +12,7 @@ import {
   updateBadge,
   updateCart,
   sendProdToCart,
+  numberWithCommas,
 } from './dataFunctions.js';
 
 /* Running Functions on Page Load */
@@ -62,7 +63,7 @@ const injectProductDetails = async () => {
     imageGrid.appendChild(image);
   });
   prodName.textContent = productObj.name;
-  prodPrice.textContent = `Rs. ${productObj.price}`;
+  prodPrice.textContent = `Rs. ${numberWithCommas(productObj.price)}`;
   if (productObj.reviews.length) {
     const ratingsInfo = getRatingsInfo(productObj.reviews);
     reviewsNumber.textContent = `${productObj.reviews.length} reviews (${ratingsInfo[1]} avg. ratings)`;
@@ -145,7 +146,6 @@ const buyProduct = async () => {
 };
 
 /* Add prod to cart from prod details */
-
 const prodContainer = document.querySelector('main.product .container');
 prodContainer.addEventListener('click', (e) => {
   const cardBtn = e.target.closest('.add-to-cart');
