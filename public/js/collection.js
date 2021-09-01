@@ -5,7 +5,10 @@ import {
   removeLoadingAnimation,
   getDataFromDb,
   injectProducts,
+  createCategoriesAndInject,
 } from './dataFunctions.js';
+
+const query = new URLSearchParams(window.location.search).get('q') || null;
 
 // On page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,16 +26,15 @@ const populateCategories = async () => {
   defaultLi.setAttribute('data-category', 'all');
   defaultLi.appendChild(document.createTextNode('all'));
   categoryList.appendChild(defaultLi);
-  categories.forEach((category) => {
-    const li = document.createElement('li');
-    li.classList.add('category');
-    li.setAttribute('data-id', category.id);
-    li.setAttribute('data-category', category.name);
-    li.appendChild(document.createTextNode(category.name));
-    categoryList.appendChild(li);
-  });
-  const defaultSelectedElement = categoryList.querySelector('li:nth-child(2)');
-  defaultSelectedElement.classList.add('active');
+  createCategoriesAndInject(categories, categoryList);
+  if (query) {
+    categoryList
+      .querySelector('[data-category="decoration accessories"]')
+      .classList.add('active');
+  } else {
+    const defaultSelectedElement = categoryList.querySelector('li:nth-child(2)');
+    defaultSelectedElement.classList.add('active');
+  }
   selectCategory(categoryList);
   populateProducts();
 };

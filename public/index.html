@@ -19,7 +19,7 @@
 <body id="index">
 
   <!-- Startup Animation -->
-  <div class="intro">
+  <!-- <div class="intro">
     <div class="intro-container">
       <svg id="logo-animated" width="100%" height="100%" viewBox="0 0 423 476" fill="none">
         <path d="M60.768 1.78399V11.256H36.448V91H24.8V11.256H0.35199V1.78399H60.768Z" stroke="#fff" stroke-width="5" />
@@ -57,7 +57,7 @@
 
     </div>
   </div>
-  <div class="slide"></div>
+  <div class="slide"></div> -->
 
   <!-- Navigation -->
   <header class="header">
@@ -92,6 +92,7 @@
         <a href="./checkout.html" class="btn checkout">Check Out</a href="./checkout.html">
       </div>
     </nav>
+
   </header>
 
   <!-- banner -->
@@ -173,10 +174,11 @@
   <section class="section-about">
     <div class="container">
       <div class="about">
-        <div class="about__image">
+        <div class="about__image" data-animation-name="fadeIn1" data-animation-duration="1000ms">
           <img src="./assets/img/img1.jpg" alt="interior desgining">
         </div>
-        <div class="about__body flow">
+        <div class="about__body flow" data-animation-name="fadeIn1" data-animation-duration="1000ms"
+          data-animation-delay="500ms">
           <h1 class="about__title">About Company</h1>
           <p class="about__sub-title">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, nesciunt.
@@ -223,7 +225,7 @@
   <!-- Our best Products -->
   <section class="section__featured-Products mb-3">
     <div class="container">
-      <div class="flex">
+      <div class="flex" data-animation-name="fadeIn2" data-animation-duration="800ms">
         <div class="categories-container">
           <h2>Our best <span>Products</span></h2>
           <ul class="categories"></ul>
@@ -236,24 +238,24 @@
   <!-- Advertisement -->
   <section class="advertisement mb-3">
     <div class="flex">
-      <div class="ads">
+      <div class="ads" data-animation-name="fadeIn2" data-animation-duration="1000ms">
         <p class="ads__title">Cyber Monday</p>
         <p class="ads__detail"> Big sale 50% off</p>
-        <a href="#" class="ads__link">
+        <a href="./collection.html?q=decoration accessories" class="ads__link">
           View collection <i class="fas fa-caret-right"></i>
         </a>
       </div>
-      <div class="ads">
+      <div class="ads" data-animation-name="fadeIn2" data-animation-duration="1000ms">
         <p class="ads__title">Cyber Monday</p>
         <p class="ads__detail"> Big sale 50% off</p>
-        <a href="#" class="ads__link">
+        <a href="./collection.html?q=decoration accessories" class="ads__link">
           View collection <i class="fas fa-caret-right"></i>
         </a>
       </div>
-      <div class="ads">
+      <div class="ads" data-animation-name="fadeIn2" data-animation-duration="1000ms">
         <p class="ads__title">Cyber Monday</p>
         <p class="ads__detail"> Big sale 50% off</p>
-        <a href="#" class="ads__link">
+        <a href="./collection.html?q=decoration accessories" class="ads__link">
           View collection <i class="fas fa-caret-right"></i>
         </a>
       </div>
@@ -268,7 +270,7 @@
         <h2 class="main-title">What can we offer</h2>
       </div>
       <div class="layout">
-        <div class="box" data-id="1">
+        <div class="box" data-id="1" data-animation-name="scaleUp" data-animation-duration="500ms">
           <div class="box__img">
             <img src="./assets/services/img1.png" alt="">
           </div>
@@ -278,7 +280,7 @@
             <button class="box__link">Read More</button>
           </div>
         </div>
-        <div class="box" data-id="2">
+        <div class="box" data-id="2" data-animation-name="scaleUp" data-animation-duration="500ms">
           <div class="box__img">
             <img src="./assets/services/img2.png" alt="">
           </div>
@@ -288,7 +290,7 @@
             <button class="box__link">Read More</button>
           </div>
         </div>
-        <div class="box" data-id="3">
+        <div class="box" data-id="3" data-animation-name="scaleUp" data-animation-duration="500ms">
           <div class="box__img">
             <img src="./assets/services/img3.png" alt="">
           </div>
@@ -375,5 +377,6 @@
 <script src="./js/common.js" type="module"></script>
 <script src="./js/index.js" type="module"></script>
 <script src="./js/carousel.js"></script>
+<script src="./js/animation.js"></script>
 
 </html>

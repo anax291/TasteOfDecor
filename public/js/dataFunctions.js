@@ -21,6 +21,18 @@ export const addLoadingAnimation = (container) => {
   container.appendChild(image);
 };
 
+/* Create Category list and inject [for index and collection page] */
+export const createCategoriesAndInject = (categories, categoryList) => {
+  categories.forEach((category) => {
+    const li = document.createElement('li');
+    li.classList.add('category');
+    li.setAttribute('data-id', category.id);
+    li.setAttribute('data-category', category.name);
+    li.appendChild(document.createTextNode(category.name));
+    categoryList.appendChild(li);
+  });
+};
+
 // function to remove loading animation
 export const removeLoadingAnimation = (container) =>
   container.removeChild(container.firstChild);

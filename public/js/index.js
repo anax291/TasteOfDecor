@@ -5,6 +5,7 @@ import {
   removeLoadingAnimation,
   getDataFromDb,
   injectProducts,
+  createCategoriesAndInject,
 } from './dataFunctions.js';
 import { modal } from './templates.js';
 
@@ -20,14 +21,7 @@ const populateCategories = async () => {
   const categories = await getDataFromDb(url);
   const categoryList = document.querySelector('.categories');
   emptyContainer(categoryList);
-  categories.forEach((category) => {
-    const li = document.createElement('li');
-    li.classList.add('category');
-    li.setAttribute('data-id', category.id);
-    li.setAttribute('data-category', category.name);
-    li.appendChild(document.createTextNode(category.name));
-    categoryList.appendChild(li);
-  });
+  createCategoriesAndInject(categories, categoryList);
   const defaultSelectedElement = categoryList.querySelector('li:nth-child(1)');
   defaultSelectedElement.classList.add('active');
   selectCategory(categoryList);
@@ -95,7 +89,6 @@ const observer = new IntersectionObserver(
   },
   { threshold: 0.9 }
 );
-
 observer.observe(factsContainer);
 
 /* Modal */
@@ -110,8 +103,7 @@ services.addEventListener('click', (e) => {
   // GSAP
   const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } });
   timeline.to('body', { overflow: 'hidden' });
-  timeline.to('.popup-overlay', { width: '100%', duration: 0.25 });
-  timeline.to('.popup-overlay', { height: '100%', duration: 0.25 }, '-=0.25');
+  timeline.to('.popup-overlay', { scale: 1, duration: 0.25 });
   timeline.to('.popup-overlay', { borderRadius: 0, duration: 0.2 });
   timeline.to('.popup', { y: 0, duration: 0.75 }, '-=0.2');
 });
@@ -214,23 +206,23 @@ testimonialNav.addEventListener('click', async (e) => {
 });
 
 /* Start Up animation */
-let logos = document.querySelectorAll('#logo-animated path');
-logos.forEach((logo) => {
-  const temp = logo.getTotalLength();
-  logo.style.cssText = `
-    stroke-dasharray: ${temp}px;
-    stroke-dashoffset: ${temp}px;
-    `;
-});
+// let logos = document.querySelectorAll('#logo-animated path');
+// logos.forEach((logo) => {
+//   const temp = logo.getTotalLength();
+//   logo.style.cssText = `
+//     stroke-dasharray: ${temp}px;
+//     stroke-dashoffset: ${temp}px;
+//     `;
+// });
 
-const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
-tl.to('body', { overflow: 'hidden' });
-tl.to('#logo-animated path', {
-  strokeDashoffset: '0%',
-  duration: 2,
-  stagger: 0.5,
-});
-tl.to('#logo-animated', { fill: '#f4f4f4', duration: 1 }, '-=1');
-tl.to('.slide', { y: '-100%', duration: 1.5, delay: 0.25 });
-tl.to('.intro', { y: '-100%', duration: 1 }, '-=1');
-tl.to('body', { overflow: '' });
+// const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
+// tl.to('body', { overflow: 'hidden' });
+// tl.to('#logo-animated path', {
+//   strokeDashoffset: '0%',
+//   duration: 2,
+//   stagger: 0.5,
+// });
+// tl.to('#logo-animated', { fill: '#f4f4f4', duration: 1 }, '-=1');
+// tl.to('.slide', { y: '-100%', duration: 1.5, delay: 0.25 });
+// tl.to('.intro', { y: '-100%', duration: 1 }, '-=1');
+// tl.to('body', { overflow: '' });

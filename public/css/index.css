@@ -1,4 +1,5 @@
 @import url(./indexPageModal.css);
+@import url(./animations.css);
 
 /* Start Up animation */
 
@@ -125,8 +126,7 @@
 /* facts */
 
 .facts {
-  background: #333 url(../assets/background/bg2.webp) no-repeat center center/
-    cover;
+  background: #333 url(../assets/background/bg2.webp) no-repeat center center/ cover;
   background-blend-mode: overlay;
   padding: 5rem 2rem;
   color: #fff;
