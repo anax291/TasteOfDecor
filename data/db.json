@@ -629,5 +629,59 @@
     }
   ],
   "cart": [],
-  "orders": []
+  "orders": [
+    {
+      "name": "Zain Abidin",
+      "email": "zchxvr@gmail.com",
+      "tel": "03232370266",
+      "address": "RS 36 / ST 12 North Nazimabad",
+      "subtotal": "144799",
+      "discount": "No code found",
+      "totalPrice": "145299",
+      "hasBeenDelivered": false,
+      "items": [
+        {
+          "prodId": "1",
+          "name": "Fendi Casa Tables",
+          "imgSrc": "./assets/furniture/furniture1/img1.jpg",
+          "price": "10000",
+          "qty": 1,
+          "id": 1
+        },
+        {
+          "prodId": "2",
+          "name": "Sleeping Bed",
+          "imgSrc": "./assets/furniture/furniture2/img1.jpg",
+          "price": "115700",
+          "qty": 1,
+          "id": 2
+        },
+        {
+          "prodId": "3",
+          "name": "Cupboards",
+          "imgSrc": "./assets/furniture/furniture3/img1.jpg",
+          "price": "9999",
+          "qty": 1,
+          "id": 3
+        },
+        {
+          "prodId": "6",
+          "name": "Woody Wall Clock - 23 Inches Industrial Design",
+          "imgSrc": "./assets/decorationAccessories/prod1/img1.png",
+          "price": "5200",
+          "qty": 1,
+          "id": 4
+        },
+        {
+          "prodId": "7",
+          "name": "Moving Gear Wall Clock Black Colour",
+          "imgSrc": "./assets/decorationAccessories/prod2/img1.png",
+          "price": "3900",
+          "qty": 1,
+          "id": 5
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

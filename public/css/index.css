@@ -1,6 +1,10 @@
 @import url(./indexPageModal.css);
 @import url(./animations.css);
 
+body {
+  animation: none;
+}
+
 /* Start Up animation */
 
 .intro {

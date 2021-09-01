@@ -206,23 +206,23 @@ testimonialNav.addEventListener('click', async (e) => {
 });
 
 /* Start Up animation */
-// let logos = document.querySelectorAll('#logo-animated path');
-// logos.forEach((logo) => {
-//   const temp = logo.getTotalLength();
-//   logo.style.cssText = `
-//     stroke-dasharray: ${temp}px;
-//     stroke-dashoffset: ${temp}px;
-//     `;
-// });
+let logos = document.querySelectorAll('#logo-animated path');
+logos.forEach((logo) => {
+  const temp = logo.getTotalLength();
+  logo.style.cssText = `
+    stroke-dasharray: ${temp}px;
+    stroke-dashoffset: ${temp}px;
+    `;
+});
 
-// const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
-// tl.to('body', { overflow: 'hidden' });
-// tl.to('#logo-animated path', {
-//   strokeDashoffset: '0%',
-//   duration: 2,
-//   stagger: 0.5,
-// });
-// tl.to('#logo-animated', { fill: '#f4f4f4', duration: 1 }, '-=1');
-// tl.to('.slide', { y: '-100%', duration: 1.5, delay: 0.25 });
-// tl.to('.intro', { y: '-100%', duration: 1 }, '-=1');
-// tl.to('body', { overflow: '' });
+const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
+tl.to('body', { overflow: 'hidden' });
+tl.to('#logo-animated path', {
+  strokeDashoffset: '0%',
+  duration: 2,
+  stagger: 0.5,
+});
+tl.to('#logo-animated', { fill: '#f4f4f4', duration: 1 }, '-=1');
+tl.to('.slide', { y: '-100%', duration: 1.5, delay: 0.25 });
+tl.to('.intro', { y: '-100%', duration: 1 }, '-=1');
+tl.to('body', { overflow: '' });

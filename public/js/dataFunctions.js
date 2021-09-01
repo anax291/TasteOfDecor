@@ -94,6 +94,11 @@ export const deleteDataFromDb = async (url) => {
   return true;
 };
 
+/* Number With Commas */
+export const numberWithCommas = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 /* Inject Prodouct Cards */
 export const injectProducts = (cardTemplate, products, productContainer) => {
   products.forEach((product) => {
@@ -110,7 +115,7 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
       name.textContent = product.name;
     });
     prices.forEach((price) => {
-      price.textContent = `Rs. ${product.price}`;
+      price.textContent = `Rs. ${numberWithCommas(product.price)}`;
     });
     const prodDesc = product.description;
     prodDesc.forEach((desc) => {
@@ -201,6 +206,7 @@ export const sendProdToCart = async (prodCard, targetId) => {
     prodCard.querySelector('.price') || prodCard.querySelector('.product__price');
   prodPrice = prodPrice.textContent;
   prodPrice = prodPrice.replace('Rs. ', '');
+  prodPrice = prodPrice.replaceAll(',', '');
   const prodObj = {
     prodId: targetId,
     name: prodName,
@@ -293,7 +299,7 @@ const populateCart = async (items, container) => {
     prodImg.src = item.imgSrc;
     prodName.textContent = item.name;
     prodQty.textContent = item.qty;
-    prodPrice.textContent = `Rs. ${item.price}`;
+    prodPrice.textContent = `Rs. ${numberWithCommas(item.price)}`;
     cartItemsContainer.appendChild(cartElement);
   });
   updateTotalPrice();
@@ -309,5 +315,5 @@ export const updateTotalPrice = async () => {
   const totalPrice = priceArr.reduce((total, price) => {
     return (total += price);
   }, 0);
-  priceElement.textContent = totalPrice;
+  priceElement.textContent = `Rs. ${numberWithCommas(totalPrice)}`;
 };
