@@ -117,7 +117,8 @@ const displayPopup = () => {
 };
 
 /* Intro js */
-introJs()
+setTimeout(() => {
+  introJs()
   .setOptions({
     steps: [
       {
@@ -133,3 +134,5 @@ introJs()
     ],
   })
   .start();
+
+}, 2500)
