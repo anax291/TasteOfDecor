@@ -1,3 +1,6 @@
+const id = document.body.id;
+const date = new Date();
+const year = date.getFullYear();
 const template = document.createElement('template');
 template.innerHTML = `
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -14,13 +17,13 @@ template.innerHTML = `
         </div>
         <div class="col col2">
           <h3 class="col-title">Explore</h3>
-          <a href="#" class="wrap">
+          <a href=${id == 'index' ? '#' : './index.html'} class="wrap">
             <div class="inner">
               <div class="top">Home</div>
               <div class="bottom">Home</div>
             </div>
           </a>
-          <a href="#" class="wrap">
+          <a href=${id == 'about' ? '#' : './about.html'} class="wrap">
             <div class="inner">
               <div class="top">About</div>
               <div class="bottom">About</div>
@@ -41,13 +44,13 @@ template.innerHTML = `
         </div>
         <div class="col col3">
           <h3 class="col-title">Visit</h3>
-          <a href="#" class="wrap">
+          <a href="tel:+923333107559" class="wrap">
             <div class="inner">
               <div class="top">03333107559</div>
               <div class="bottom">03333107559</div>
             </div>
           </a>
-          <a href="#" class="wrap">
+          <a href="mailto:support@tod.com" class="wrap">
             <div class="inner">
               <div class="top">support@tod.com</div>
               <div class="bottom">support@tod.com</div>
@@ -83,22 +86,25 @@ template.innerHTML = `
         </div>
       </div>
       <div class="social-links">
-        <a href="#" class="icon facebook">
+        <a href="https://www.facebook.com/" class="icon facebook" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="#" class="icon whatsapp">
+        <a href="https://web.whatsapp.com/" class="icon whatsapp" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="#" class="icon instagram">
+        <a href="https://www.instagram.com/" class="icon instagram" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="#" class="icon linkedin">
+        <a href="https://www.linkedin.com/" class="icon linkedin" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="#" class="icon youtube">
+        <a href="https://www.youtube.com/" class="icon youtube" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-youtube"></i>
         </a>
-        </div>
+      </div>
+    </div>
+    <div class="copy-right__info">
+      <p>All rights reserved &copy; ${year} Taste Of Decor</p>
     </div>
   </footer>
 `;
@@ -137,11 +143,9 @@ export class CustomFooter extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot
-      .querySelector('.footer')
-      .addEventListener('mousemove', (e) => {
-        this.updateCursorPosition(e);
-      });
+    this.shadowRoot.querySelector('.footer').addEventListener('mousemove', (e) => {
+      this.updateCursorPosition(e);
+    });
     this.shadowRoot.querySelectorAll('.wrap').forEach((wrap) => {
       wrap.addEventListener('mouseenter', (e) => {
         this.addClass();

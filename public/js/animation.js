@@ -8,7 +8,6 @@ const observer = new IntersectionObserver(
         const animDuration = entry.target.dataset.animationDuration;
         const animDelay = entry.target.dataset.animationDelay || '10ms';
         entry.target.style.animation = `${animName} 2000ms ease ${animDelay} forwards`;
-        console.log(entry.target);
         observer.unobserve(entry.target);
       }
     });

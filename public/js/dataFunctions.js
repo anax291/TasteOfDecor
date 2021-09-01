@@ -270,8 +270,6 @@ export const updateBuyNowBtnState = () => {
   if (!id === 'prod-detail') return;
   try {
     const btn = document.querySelector('.buy-now');
-    console.log(btn);
-    console.log(document.querySelector('item'));
     if (document.querySelector('.item')) {
       btn.setAttribute('disabled', '');
     } else {
