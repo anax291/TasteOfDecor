@@ -52,6 +52,9 @@ body {
   border: 1px solid #333;
   border-radius: 0.75rem;
   padding: 0.5rem 1rem;
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: faqFadeDown 2000ms forwards;
 }
 
 .faq-item__btn {
@@ -83,4 +86,14 @@ body {
 .faq-item__content ul {
   list-style: revert;
   margin-left: 3rem;
+}
+
+@keyframes faqFadeDown {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

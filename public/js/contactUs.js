@@ -117,22 +117,23 @@ const displayPopup = () => {
 };
 
 /* Intro js */
-setTimeout(() => {
+const showHint = () => {
   introJs()
-  .setOptions({
-    steps: [
-      {
-        element: subjectField,
-        intro: `
+    .setOptions({
+      steps: [
+        {
+          element: document.querySelector('.subject-container'),
+          intro: `
           <h2 style="margin-bottom: 0.75rem">Want to post a review for us???</h2>
           <p style="margin-bottom: 0.75rem"> Make "testimonial" the subject of your form and then submit</p>
           <p style="margin-bottom: 0.75rem"> Like this </p>
           <input style="padding: 0.5rem 1rem; margin-bottom: 0.75rem" type="text" value="Testimonial">
           <h3 style="margin-bottom: 0.75rem">Thank You </h3>
       `,
-      },
-    ],
-  })
-  .start();
+        },
+      ],
+    })
+    .start();
+};
 
-}, 2500)
+document.querySelector('.info').addEventListener('click', showHint);

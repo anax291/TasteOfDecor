@@ -59,8 +59,7 @@ const faqs = [
     },
   },
   {
-    question:
-      'How do I decide between wood, tile, carpet, and other flooring options?',
+    question: 'How do I decide between wood, tile, carpet, and other flooring options?',
     answer: {
       p: 'An in-depth consultation with an interior designer about your desires, goals, and lifestyle will yield important answers.  As a result, you will be able to determine what flooring, wallcoverings, window treatments, and furnishings will best suit your needs.',
     },
@@ -87,8 +86,8 @@ const faqContainer = document.querySelector('.faqs');
 
 const populateAccordions = () => {
   const template = document.getElementById('faq-template');
-  faqs.forEach((faq) => {
-    const faqItem = document.importNode(template.content, true);
+  faqs.forEach((faq, index) => {
+    const faqItem = template.content.firstElementChild.cloneNode(true);
     const question = faqItem.querySelector('.faq-item__btn span');
     const content = faqItem.querySelector('.faq-item__content');
     question.textContent = faq.question;

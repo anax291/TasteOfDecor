@@ -1,4 +1,5 @@
 @import url(./formError.css);
+@import url(./animations.css);
 body {
   animation: transitionIn 0.75s;
 }
@@ -109,12 +110,25 @@ body {
 }
 
 .field-wrapper :is(input[type='text'], input[type='email'], textarea) {
-  padding: 0.45rem 1rem;
   font-size: inherit;
+  outline: none;
+  border: none;
 }
 
 form .btn {
   background: #ccc;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #222;
+  border-radius: 0.25rem;
+  padding: 0.65rem 1rem;
+}
+
+.input-container .info {
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
