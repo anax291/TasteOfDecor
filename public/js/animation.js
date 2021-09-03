@@ -5,9 +5,9 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const animName = entry.target.dataset.animationName;
-        const animDuration = entry.target.dataset.animationDuration;
+        const animDuration = entry.target.dataset.animationDuration || '2000ms';
         const animDelay = entry.target.dataset.animationDelay || '10ms';
-        entry.target.style.animation = `${animName} 2000ms ease ${animDelay} forwards`;
+        entry.target.style.animation = `${animName} ${animDuration} ease ${animDelay} forwards`;
         observer.unobserve(entry.target);
       }
     });

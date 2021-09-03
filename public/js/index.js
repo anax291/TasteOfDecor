@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // populate categories
 const populateCategories = async () => {
-  const url = 'http://localhost:3000/categories';
-  const categories = await getDataFromDb(url);
+  const uri = 'http://localhost:3000/categories';
+  const categories = await getDataFromDb(uri);
   const categoryList = document.querySelector('.categories');
   emptyContainer(categoryList);
   createCategoriesAndInject(categories, categoryList);
@@ -33,7 +33,7 @@ const selectCategory = async (categoryList) => {
   categoryList.addEventListener('click', (e) => {
     const targetElement = e.target.closest('li');
     if (!targetElement) return;
-    // remove active class from old element
+    // remove active class from old element and add to the new one
     categoryList.querySelector('.active').classList.remove('active');
     targetElement.classList.add('active');
     populateProducts();
@@ -49,8 +49,8 @@ const populateProducts = async () => {
   emptyContainer(productContainer);
   // add loading animation
   addLoadingAnimation(productContainer);
-  let url = `http://localhost:3000/categories/${selectedCategoryId}/products?featured=true`;
-  const products = await getDataFromDb(url);
+  let uri = `http://localhost:3000/categories/${selectedCategoryId}/products?featured=true`;
+  const products = await getDataFromDb(uri);
   // remove loading animation and injecting products
   setTimeout(() => {
     removeLoadingAnimation(productContainer);
@@ -157,11 +157,8 @@ const testimonialNav = testimonialContainer.querySelector('.testimonial__nav');
 
 const populateTestimonials = async () => {
   const testimonialTemplate = document.getElementById('testimonial-template');
-  let url = `http://localhost:3000/messages`;
-  const messages = await getDataFromDb(url);
-  const testimonials = messages.filter(
-    (message) => message.subject.toLowerCase() === 'testimonial'
-  );
+  let uri = `http://localhost:3000/messages?subject=testimonial`;
+  const testimonials = await getDataFromDb(uri);
   createTestimonialNav(testimonialNav, testimonials);
   const testimonialElement = document.importNode(testimonialTemplate.content, true);
   const quote = testimonialElement.querySelector('.testimonial__content');
@@ -194,10 +191,11 @@ testimonialNav.addEventListener('click', async (e) => {
   target.classList.add('current');
   testimonialContainer.removeChild(testimonialContainer.querySelector('.testimonial'));
   // changing testimonial
-  let url = `http://localhost:3000/messages/${targetId}`;
-  const testimonial = await getDataFromDb(url);
+  let uri = `http://localhost:3000/messages/${targetId}`;
+  const testimonial = await getDataFromDb(uri);
   const testimonialTemplate = document.getElementById('testimonial-template');
-  const testimonialElement = document.importNode(testimonialTemplate.content, true);
+  const testimonialElement =
+    testimonialTemplate.content.firstElementChild.cloneNode(true);
   const quote = testimonialElement.querySelector('.testimonial__content');
   const clientName = testimonialElement.querySelector('.client__name');
   quote.textContent = testimonial.message;
