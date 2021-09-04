@@ -106,14 +106,23 @@ body {
   font-size: clamp(1.5rem, 0.8rem + 1vw, 2.5rem);
 }
 
+.delivery__details > * {
+  font-weight: 800;
+}
+
+.grid .btn {
+  padding: 0.7em 1.25em;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
 .add-to-cart {
-  background: #3b5161;
+  background: #252525;
   color: #fff;
 }
 
 .buy-now {
-  color: #fff;
-  background: #ffbe5c;
+  color: #000;
+  background: #f9a917;
 }
 
 .buy-now[disabled] {
@@ -199,7 +208,17 @@ textarea {
 }
 
 .review-form .btn {
-  background: #ccc;
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+}
+
+.review-form :is(.btn:hover, .btn:focus) {
+  background: #fff;
+  color: var(--btn-primary);
 }
 
 .review-form .ratings {

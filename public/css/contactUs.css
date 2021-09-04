@@ -116,7 +116,17 @@ body {
 }
 
 form .btn {
-  background: #ccc;
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+}
+
+form :is(.btn:hover, .btn:focus) {
+  background: #fff;
+  color: var(--btn-primary);
 }
 
 .input-container {

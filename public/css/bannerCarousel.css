@@ -137,11 +137,14 @@
 }
 
 .banner .btn {
-  background: #eee;
+  background: #fff;
+  padding: 0.7em 1.25em;
+  box-shadow: 1px 1px 2px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid currentColor;
+  transition: 500ms ease;
 }
 .banner .btn:hover {
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid #eee;
   color: #f4f4f4;
 }
 
