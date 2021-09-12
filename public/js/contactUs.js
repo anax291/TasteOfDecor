@@ -1,15 +1,18 @@
 import {
+  postDataToDb,
+  throwError,
+  displayMsg,
+  getDataFromDb,
+  deleteDataFromDb,
+} from './dataFunctions.js';
+
+import {
   validateName,
   validateEmail,
   validateSubject,
   validateMessage,
-  postDataToDb,
   clearFields,
-  displayMsg,
-  getDataFromDb,
-  throwError,
-  deleteDataFromDb,
-} from './dataFunctions.js';
+} from './formValidations.js';
 
 // Grabbing UI Elements
 const contactForm = document.getElementById('contact-form');

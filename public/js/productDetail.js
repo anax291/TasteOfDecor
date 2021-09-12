@@ -5,15 +5,18 @@ import {
   addLoadingAnimation,
   removeLoadingAnimation,
   injectProducts,
-  validateEmail,
   postReviewToDb,
-  clearFields,
   addProdToCartInDb,
   updateBadge,
   updateCart,
   sendProdToCart,
   numberWithCommas,
+  getNameInitials,
+  getRandomNumber,
+  getFutureDate,
 } from './dataFunctions.js';
+
+import { clearFields, validateEmail } from './formValidations.js';
 
 /* Running Functions on Page Load */
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,8 +40,7 @@ const updatePageTitle = async () => {
 /* injecting prod details */
 const injectProductDetails = async () => {
   //get data from db
-  let url = `http://localhost:3000/products/${productId}`;
-  const productObj = await getDataFromDb(url);
+  const productObj = await getDataFromDb(`http://localhost:3000/products/${productId}`);
   // grabbing UI elements
   const prodContainer = document.querySelector('main.product .container');
   emptyContainer(prodContainer);
@@ -53,42 +55,26 @@ const injectProductDetails = async () => {
   const reviewsNumber = product.querySelector('.reviews-number');
   const productDescription = product.querySelector('.product__description');
   const buyNow = product.querySelector('.buy-now');
+  const deliveryDetails = product.querySelector('.delivery__details p span');
   // assigning values
   product.setAttribute('data-id', productObj.id);
   primaryImage.src = productObj.imgSrc[0];
   imageGrid.appendChild(primaryImage);
-  let imageList = [];
-  imageList = injectAllImages(productObj.imgSrc, imageList);
-  imageList.forEach((image) => {
-    imageGrid.appendChild(image);
-  });
+  const imageList = injectAllImages(productObj.imgSrc);
+  imageList.forEach((image) => imageGrid.appendChild(image));
   prodName.textContent = productObj.name;
   prodPrice.textContent = `Rs. ${numberWithCommas(productObj.price)}`;
-  if (productObj.reviews.length) {
-    const ratingsInfo = getRatingsInfo(productObj.reviews);
-    reviewsNumber.textContent = `${productObj.reviews.length} reviews (${ratingsInfo[1]} avg. ratings)`;
-    ratings.style.width = ratingsInfo[0];
-  } else {
-    reviewsNumber.textContent = `No reviews`;
-  }
-  let descList = [];
-  descList = injectDetails(productObj.description, descList);
-  descList.forEach((li) => {
-    productDescription.appendChild(li);
-  });
-  const cartItems = document.querySelector('.cart-items > *');
-  console.log(cartItems);
-  if (cartItems) {
-    buyNow.setAttribute('disabled', '');
-  } else {
-    buyNow.removeAttribute('disabled');
-  }
-
+  addRatingInfo(reviewsNumber, ratings, productObj);
+  const descList = injectDetails(productObj.description);
+  descList.forEach((li) => productDescription.appendChild(li));
+  setButtonState(buyNow);
+  addDeliveryDetails(deliveryDetails);
   prodContainer.appendChild(product);
 };
 
 /* necessary functions for product detail section */
-const injectAllImages = (imgs, imageList) => {
+const injectAllImages = (imgs) => {
+  const imageList = [];
   imgs.forEach((img) => {
     const imageElement = document.createElement('img');
     imageElement.classList.add('prod-image');
@@ -109,13 +95,38 @@ const getRatingsInfo = (reviews) => {
   return [starPercentage, avgRating.toFixed(1)];
 };
 
-const injectDetails = (details, descList) => {
+const injectDetails = (details) => {
+  const descList = [];
   details.forEach((detail) => {
     const li = document.createElement('li');
     li.textContent = detail;
     descList.push(li);
   });
   return descList;
+};
+
+const addRatingInfo = (reviewsNumber, ratings, productObj) => {
+  if (productObj.reviews.length) {
+    const ratingsInfo = getRatingsInfo(productObj.reviews);
+    reviewsNumber.textContent = `${productObj.reviews.length} reviews (${ratingsInfo[1]} avg. ratings)`;
+    ratings.style.width = ratingsInfo[0];
+  } else {
+    reviewsNumber.textContent = `No reviews`;
+  }
+};
+
+const setButtonState = (buyNow) => {
+  const cartItems = document.querySelector('.cart-items > *');
+  if (cartItems) {
+    buyNow.setAttribute('disabled', '');
+  } else {
+    buyNow.removeAttribute('disabled');
+  }
+};
+
+const addDeliveryDetails = (deliveryDetails) => {
+  const dateObj = getFutureDate(3);
+  deliveryDetails.textContent = `Delivered by ${dateObj.date} ${dateObj.month}, ${dateObj.day} | Sale`;
 };
 
 // image interaction
@@ -203,7 +214,8 @@ const populateReviews = async () => {
         // inserting values
         userName.textContent = review.name;
         userEmail.textContent = review.email;
-        userImg.src = `https://i.pravatar.cc/75?img=${review.id}`;
+        userImg.textContent = `${getNameInitials(review.name)}`;
+        userImg.style.backgroundColor = `hsl(${getRandomNumber()}, 50%, 50%)`;
         userRatings.style.width = `${(review.ratings / 5) * 100}%`;
         reviewBody.textContent = review.description;
         reviewsContainer.appendChild(reviewElement);
@@ -269,17 +281,14 @@ form2.addEventListener('submit', (e) => {
   e.preventDefault();
   const review = document.getElementById('review');
   const rating = ratingsContainer.querySelector('.active').getAttribute('data-rating');
-  if (rating) {
-    const userReview = review.value;
-    reviewObj.ratings = rating;
-    reviewObj.description = userReview;
-    postReview(reviewObj);
-    formsContainer.style.animation = `slideOut 2000ms ease-out forwards`;
-    clearFields(review);
-    ratingsContainer.querySelector('.active').classList.remove('active');
-  } else {
-    window.alert('please rate the prod');
-  }
+  if (!rating) return window.alert('please rate the prod');
+  const userReview = review.value;
+  reviewObj.ratings = rating;
+  reviewObj.description = userReview;
+  postReview(reviewObj);
+  formsContainer.style.animation = `slideOut 2000ms ease-out forwards`;
+  clearFields(review);
+  ratingsContainer.querySelector('.active').classList.remove('active');
 });
 
 // Make reqd changes and post review to db

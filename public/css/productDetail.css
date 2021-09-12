@@ -243,6 +243,10 @@ textarea {
 
 /* Reviews */
 
+.display-reviews .container {
+  padding: 0;
+}
+
 .review-title {
   font-size: clamp(2rem, 1rem + 3vw, 4rem);
   text-align: center;
@@ -268,12 +272,23 @@ textarea {
 }
 
 .user-image {
-  border-radius: 50%;
+  min-width: 5rem;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: clamp(1.5rem, 1rem + 1vw, 5rem);
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: clamp(1rem, 0.5rem + 1vw, 2rem);
   margin-right: 1rem;
+  border-radius: 50%;
 }
 
 .user-name {
   font-size: clamp(1.5rem, 0.8rem + 1vw, 2.5rem);
+  text-transform: capitalize;
 }
 .user-email {
   user-select: none;
@@ -324,5 +339,15 @@ textarea {
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 400px) {
+  .reviews {
+    grid-template-columns: 1fr;
+  }
+  .user-image {
+    margin-right: 0.75rem;
+    min-width: 4rem;
   }
 }

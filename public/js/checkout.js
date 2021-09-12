@@ -6,9 +6,14 @@ import {
   numberWithCommas,
   postDataToDb,
   throwError,
-  validateEmail,
-  validatePhoneNumber,
 } from './dataFunctions.js';
+
+import {
+  validateName,
+  validateEmail,
+  validateAddress,
+  validatePhoneNumber,
+} from './formValidations.js';
 
 const discountCodes = [
   { code: 'code1', discount: 0.1 },
@@ -133,19 +138,19 @@ const checkForCodeValidity = (code) => {
 };
 
 const checkForCustomerDetailsValidity = (fname, lname, email, address, tel) => {
-  if (fname.value == '') {
+  if (!validateName(fname)) {
     throwError('Please enter a valid first name', fname);
     return false;
   }
-  if (lname.value == '') {
-    throwError('Please enter a valid first name', lname);
+  if (!validateName(lname)) {
+    throwError('Please enter a valid last name', lname);
     return false;
   }
   if (!validateEmail(email.value)) {
     throwError('please enter a valid email', email);
     return false;
   }
-  if (address.value == '') {
+  if (!validateAddress(address)) {
     throwError('please enter a valid home address', address);
     return false;
   }

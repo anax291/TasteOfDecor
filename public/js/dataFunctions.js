@@ -21,6 +21,49 @@ export const addLoadingAnimation = (container) => {
   container.appendChild(image);
 };
 
+// function to get random number
+export const getRandomNumber = (min = 0, max = 359) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const getFutureDate = (daysAhead = 0) => {
+  const reqdDate = new Date();
+  reqdDate.setDate(reqdDate.getDate() + daysAhead);
+  const date = reqdDate.getDate();
+  const month = reqdDate.getMonth();
+  const year = reqdDate.getFullYear();
+  const day = reqdDate.getDay();
+  return formatDate(date, month, year, day);
+};
+const formatDate = (date, month, year, day) => {
+  const mapMonth = {
+    0: 'January',
+    1: 'February',
+    2: 'March',
+    3: 'April',
+    4: 'May',
+    5: 'June',
+    6: 'July',
+    7: 'August',
+    8: 'September',
+    9: 'October',
+    10: 'November',
+    11: 'December',
+  };
+  const mapDay = {
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday',
+  };
+  return { date: date, month: mapMonth[month], year: year, day: mapDay[day] };
+};
+
 /* Create Category list and inject [for index and collection page] */
 export const createCategoriesAndInject = (categories, categoryList) => {
   categories.forEach((category) => {
@@ -99,6 +142,19 @@ export const numberWithCommas = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+/* Name Initials */
+export const getNameInitials = (name) => {
+  let initials = name.split(' ');
+  if (initials.length == 1) {
+    initials = initials[0].charAt(0).toUpperCase();
+  } else {
+    initials =
+      initials[0].charAt(0).toUpperCase() +
+      initials[initials.length - 1].charAt(0).toUpperCase();
+  }
+  return initials;
+};
+
 /* Inject Prodouct Cards */
 export const injectProducts = (cardTemplate, products, productContainer) => {
   products.forEach((product) => {
@@ -128,52 +184,15 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
   });
 };
 
-/* Email validation */
-export const validateEmail = (email) => {
-  const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-};
-
-/* Name Validation */
-export const validateName = (name) => {
-  const re = /^[A-Za-z. ]{3,20}$/;
-  return re.test(name);
-};
-
-/* Subject Validation */
-export const validateSubject = (text) => {
-  const re = /^[A-Za-z. ]{3,}$/;
-  return re.test(text);
-};
-
-/* Validte Message */
-export const validateMessage = (text) => {
-  const re = /^[A-Za-z. ]{5,}$/;
-  return re.test(text);
-};
-
-/* Validate Phone Number */
-export const validatePhoneNumber = (number) => {
-  const re = /\(?(\d{3})\)?[-\.\s]?(\d{3})[-\.\s]?(\d{4})/;
-  return re.test(number);
-};
-
-/* Clear Form Fields */
-export const clearFields = (...fields) => {
-  fields.forEach((field) => {
-    field.value = '';
-  });
-};
-
 /* Throw Error */
 export const throwError = (message, element) => {
+  const elementWrapper = element.closest('.field-wrapper');
   const err = document.createElement('span');
   err.classList.add('err');
   err.textContent = message;
-  element.parentElement.appendChild(err);
+  elementWrapper.appendChild(err);
   setTimeout(() => {
-    element.parentElement.removeChild(element.parentElement.lastChild);
+    elementWrapper.removeChild(elementWrapper.lastChild);
   }, 3000);
 };
 

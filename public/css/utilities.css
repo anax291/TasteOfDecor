@@ -200,6 +200,7 @@ header {
 .navbar .logo img {
   height: 60px;
 }
+
 .hamburger {
   display: none;
   width: 3rem;
@@ -214,9 +215,11 @@ header {
   cursor: pointer;
   z-index: 101;
 }
+
 .hamburger:focus {
   outline: none;
 }
+
 .hamburger .inner,
 .hamburger .inner::before,
 .hamburger .inner::after {
@@ -227,21 +230,25 @@ header {
   display: block;
   transition: top 0.2s 0.2s, transform 0.2s, background-color 0.4s 0.2s;
 }
+
 .hamburger .inner {
   width: 78%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .hamburger .inner::before,
 .hamburger .inner::after {
   content: '';
   left: 0;
   width: 100%;
 }
+
 .hamburger .inner::before {
   top: -0.75rem;
 }
+
 .hamburger .inner::after {
   top: 0.75rem;
 }
@@ -251,12 +258,14 @@ header {
   background-color: transparent;
   transform: backgorund-color 0.2s;
 }
+
 .hamburger.hamburger.menu-active .inner::before {
   transform: rotate(-45deg);
   top: 0;
   transition: top 0.2s, transform 0.2s 0.14s;
   background: #f4f4f4;
 }
+
 .hamburger.hamburger.menu-active .inner::after {
   transform: rotate(45deg);
   top: 0;
@@ -351,6 +360,7 @@ header {
     color: #f4f4f4;
     transition: transform 250ms ease;
   }
+
   .nav__link:hover,
   .nav__link:focus {
     opacity: 0.8;

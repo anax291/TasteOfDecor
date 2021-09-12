@@ -33,7 +33,36 @@
         "A table is an item of furniture with a flat top"
       ],
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Siddiq Ahmed",
+          "email": "siddiqahmed882@outlook.com",
+          "ratings": "4",
+          "description": "Best products\n",
+          "id": 1
+        },
+        {
+          "name": "Anas",
+          "email": "anax291@gmail.com",
+          "ratings": "5",
+          "description": "",
+          "id": 2
+        },
+        {
+          "name": "ibrahim imaduddin",
+          "email": "ibrahimimaduddin82@gmail.com",
+          "ratings": "3",
+          "description": "",
+          "id": 3
+        },
+        {
+          "name": "Syed Noman Shariq",
+          "email": "nomanshariq123@hotmail.com",
+          "ratings": "5",
+          "description": "",
+          "id": 4
+        }
+      ]
     },
     {
       "id": 2,
@@ -636,5 +665,27 @@
     }
   ],
   "cart": [],
-  "orders": []
+  "orders": [
+    {
+      "name": "Zain Abidin",
+      "email": "zchxvr@gmail.com",
+      "tel": "03232370266",
+      "address": "RS 36 / ST 12 North Nazimabad",
+      "subtotal": "115700",
+      "discount": "No code found",
+      "totalPrice": "116200",
+      "hasBeenDelivered": false,
+      "items": [
+        {
+          "prodId": "2",
+          "name": "Sleeping Bed",
+          "imgSrc": "./assets/furniture/furniture2/img1.jpg",
+          "price": "115700",
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

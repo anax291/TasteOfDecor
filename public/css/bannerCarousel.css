@@ -143,6 +143,7 @@
   border: 1px solid currentColor;
   transition: 500ms ease;
 }
+
 .banner .btn:hover {
   background: rgba(0, 0, 0, 0.3);
   color: #f4f4f4;
@@ -161,6 +162,7 @@
   animation: slidein-right 1000ms ease 1600ms forwards;
   opacity: 0;
 }
+
 @keyframes slidein-right {
   0% {
     opacity: 0;
@@ -175,6 +177,7 @@
     transform: 0;
   }
 }
+
 @keyframes slidein-left {
   0% {
     opacity: 0;
