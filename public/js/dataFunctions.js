@@ -28,6 +28,7 @@ export const getRandomNumber = (min = 0, max = 359) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+// get Future Date
 export const getFutureDate = (daysAhead = 0) => {
   const reqdDate = new Date();
   reqdDate.setDate(reqdDate.getDate() + daysAhead);
@@ -62,6 +63,18 @@ const formatDate = (date, month, year, day) => {
     6: 'Saturday',
   };
   return { date: date, month: mapMonth[month], year: year, day: mapDay[day] };
+};
+
+// Shuffle Array
+export const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Generate random number
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 };
 
 /* Create Category list and inject [for index and collection page] */

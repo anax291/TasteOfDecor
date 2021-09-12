@@ -53,7 +53,7 @@ html {
 body {
   line-height: 1.5;
   color: #333;
-  margin-top: 90px;
+  margin-top: 7rem;
   overflow-x: hidden;
   font-family: 'Nanum Myeongjo', serif;
   animation: transitionIn 750ms;

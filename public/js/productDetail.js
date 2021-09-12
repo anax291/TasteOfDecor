@@ -14,6 +14,7 @@ import {
   getNameInitials,
   getRandomNumber,
   getFutureDate,
+  shuffleArray,
 } from './dataFunctions.js';
 
 import { clearFields, validateEmail } from './formValidations.js';
@@ -179,7 +180,7 @@ const populateSimilarProducts = async () => {
   let url = `http://localhost:3000/categories/${categoryId}/products`;
   let products = await getDataFromDb(url);
   products = products.filter((product) => product.id != productId);
-  products.sort(() => 0.5 - Math.random());
+  products = shuffleArray(products);
   products.length = 4;
   // getting UI elements
   const cardTemplate = document.getElementById('card-template');

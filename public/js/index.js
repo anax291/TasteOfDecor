@@ -6,6 +6,7 @@ import {
   getDataFromDb,
   injectProducts,
   createCategoriesAndInject,
+  shuffleArray,
 } from './dataFunctions.js';
 import { modal } from './templates.js';
 
@@ -50,7 +51,9 @@ const populateProducts = async () => {
   // add loading animation
   addLoadingAnimation(productContainer);
   let uri = `http://localhost:3000/categories/${selectedCategoryId}/products?featured=true`;
-  const products = await getDataFromDb(uri);
+  let products = await getDataFromDb(uri);
+  products = shuffleArray(products);
+  products.length = 3;
   // remove loading animation and injecting products
   setTimeout(() => {
     removeLoadingAnimation(productContainer);

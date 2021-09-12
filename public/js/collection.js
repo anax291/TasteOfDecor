@@ -6,6 +6,7 @@ import {
   getDataFromDb,
   injectProducts,
   createCategoriesAndInject,
+  shuffleArray,
 } from './dataFunctions.js';
 
 const query = new URLSearchParams(window.location.search).get('q') || null;
@@ -66,7 +67,8 @@ const populateProducts = async () => {
   } else {
     url = `${url}/products`;
   }
-  const products = await getDataFromDb(url);
+  let products = await getDataFromDb(url);
+  products = shuffleArray(products);
   // remove loading animation and injecting products
   setTimeout(() => {
     removeLoadingAnimation(productContainer);
