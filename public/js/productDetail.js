@@ -126,8 +126,8 @@ const setButtonState = (buyNow) => {
 };
 
 const addDeliveryDetails = (deliveryDetails) => {
-  const dateObj = getFutureDate(3);
-  deliveryDetails.textContent = `Delivered by ${dateObj.date} ${dateObj.month}, ${dateObj.day} | Sale`;
+  const { date, month, day } = getFutureDate(3);
+  deliveryDetails.textContent = `Delivered by ${date} ${month}, ${day} | Sale`;
 };
 
 // image interaction

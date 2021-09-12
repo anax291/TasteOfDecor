@@ -249,44 +249,6 @@ body {
   font-size: clamp(1rem, 0.5rem + 1vw, 1.5rem);
 }
 
-/* services */
-.services {
-  --flow-space: 1rem;
-  padding: 2rem 0;
-}
-
-.services .heading {
-  font-size: clamp(2rem, 1rem + 3vw, 4rem);
-  text-align: center;
-}
-
-.services .lead {
-  font-size: clamp(1rem, 0.4rem + 1vw, 2rem);
-  text-align: center;
-}
-.main-card {
-  padding: 1rem 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.items {
-  --flow-space: 1rem;
-  background-color: burlywood;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 2rem;
-  transition: 0.3s ease-in;
-}
-
-.items:hover {
-  box-shadow: -1px 4px 16px -7px rgba(0, 0, 0, 0.68);
-  -webkit-box-shadow: -1px 4px 16px -7px rgba(0, 0, 0, 0.68);
-  -moz-box-shadow: -1px 4px 16px -7px rgba(0, 0, 0, 0.68);
-}
-
 @media (max-width: 800px) {
   .our-legacy .grid {
     grid-template-columns:

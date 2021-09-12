@@ -284,6 +284,7 @@ textarea {
   padding: clamp(1rem, 0.5rem + 1vw, 2rem);
   margin-right: 1rem;
   border-radius: 50%;
+  user-select: none;
 }
 
 .user-name {
