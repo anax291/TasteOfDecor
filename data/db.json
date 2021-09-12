@@ -49,15 +49,7 @@
         "A bedroom is a room in a house for the bed, so it's mainly used for sleeping. If your home has three bedrooms, you can describe it as a three-bedroom house"
       ],
       "featured": true,
-      "reviews": [
-        {
-          "name": "Siddiq Ahmed",
-          "email": "siddiqahmed882@gmail.com",
-          "ratings": "4",
-          "description": "Excellent products\n",
-          "id": 1
-        }
-      ]
+      "reviews": []
     },
     {
       "id": 3,
@@ -645,27 +637,5 @@
     }
   ],
   "cart": [],
-  "orders": [
-    {
-      "name": "Zain Abidin",
-      "email": "zchxvr@gmail.com",
-      "tel": "03232370266",
-      "address": "RS 36 / ST 12 North Nazimabad",
-      "subtotal": "115700",
-      "discount": "No code found",
-      "totalPrice": "116200",
-      "hasBeenDelivered": false,
-      "items": [
-        {
-          "prodId": "2",
-          "name": "Sleeping Bed",
-          "imgSrc": "./assets/furniture/furniture2/img1.jpg",
-          "price": "115700",
-          "qty": 1,
-          "id": 1
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "orders": []
 }
