@@ -81,15 +81,7 @@
         "A chair is a piece of furniture for one person to sit on. Chairs have a back and four legs."
       ],
       "featured": true,
-      "reviews": [
-        {
-          "name": "Siddiq Ahmed",
-          "email": "siddiqahmed882@outlook.com",
-          "ratings": "5",
-          "description": "",
-          "id": 1
-        }
-      ]
+      "reviews": []
     },
     {
       "id": 5,
