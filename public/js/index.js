@@ -211,9 +211,9 @@ let logos = document.querySelectorAll('#logo-animated path');
 logos.forEach((logo) => {
   const temp = logo.getTotalLength();
   logo.style.cssText = `
-    stroke-dasharray: ${temp}px;
-    stroke-dashoffset: ${temp}px;
-    `;
+      stroke-dasharray: ${temp}px;
+      stroke-dashoffset: ${temp}px;
+      `;
 });
 
 const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
