@@ -2,7 +2,7 @@
 
 - Clone the repository or download the zip file and extract it
 - Run `npm install` in the terminal to download all the dependencied
-- Run `npm json:server` in the terminal. It will run the project on the localhost port 3000. Then you can view it by [clicking here](http://localhost:3000)
+- Run `npm json:server` in the terminal. It will run the project on the localhost port 3000. Then you can view it by [http://localhost:3000](http://localhost:3000)
 
 # Taste Of Decor
 
