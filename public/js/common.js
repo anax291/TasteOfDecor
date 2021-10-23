@@ -127,17 +127,15 @@ const deleteItem = async (e) => {
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
   let url = `http://localhost:3000/cart/${targetId}`;
-  const success = await deleteDataFromDb(url);
+  await deleteDataFromDb(url);
   deletingCartItemAnimation(targetCard);
   setTimeout(() => {
-    if (success) {
-      if (document.querySelector('.cart-items > *')) {
-        updateTotalPrice();
-      } else {
-        updateCart();
-      }
-      updateBadge();
+    if (document.querySelector('.cart-items > *')) {
+      updateTotalPrice();
+    } else {
+      updateCart();
     }
+    updateBadge();
   }, 2000);
 };
 

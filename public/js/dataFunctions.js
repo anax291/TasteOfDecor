@@ -105,9 +105,9 @@ export const deletingCartItemAnimation = (card) => {
 
 /* fetch functions */
 export const getDataFromDb = async (url) => {
-  let res = await fetch(url);
-  let categories = await res.json();
-  return categories;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
 };
 
 /* patch Reviews function */

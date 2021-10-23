@@ -224,6 +224,10 @@
   font-weight: 700;
 }
 
+.empty-cart.empty-cart img {
+  width: 100%;
+}
+
 /* cart Item deleting */
 .item.deleting img {
   height: 100%;
