@@ -1,8 +1,8 @@
 ### To run this project
 
 - Clone the repository or download the zip file and extract it
-- Run `npm install` in the terminal to download all the dependencied
-- Run `npm json:server` in the terminal. It will run the project on the localhost port 3000. Then you can view it by [http://localhost:3000](http://localhost:3000)
+- Run `npm install` in the terminal to download all the dependencies
+- Run `npm json:server` in the terminal. It will run the project on the localhost port 3000. Then you can view it by clicking here [http://localhost:3000](http://localhost:3000)
 
 # Taste Of Decor
 
@@ -16,7 +16,7 @@ However to get a taste of backend, this websites uses **JSON-SERVER**. It can pr
 
 ---
 
-Please [click here](https://www.npmjs.com/package/json-server) for reading more about json server.
+Please [click here](https://www.npmjs.com/package/json-server) to read more about json server.
 
 ---
 
@@ -30,12 +30,10 @@ With json-server we:
 ### Some JS Libraries Used In The Project
 
 1. [GSAP](https://greensock.com/gsap/). A very popular javascript library that is used for our intro animation and some modal animations.
-   ![Intro Of Our Website!](./public/assets/readme/gsap.png)
+   ![Intro Of Our Website](./public/assets/readme/gsap.png)
 
-<br>
-
-2.[INTROJS](https://introjs.com/). This is not so popular yet a very useful library. It is used to guide the users, how the can write testimonials for us.
-![IntroJs guiding how to write testimonial for us](./public/assets/readme/introjs.png)
+2. [INTROJS](https://introjs.com/). This is not so popular yet a very useful library. It is used to guide the users, how the can write testimonials for us.
+   ![IntroJs guiding how to write testimonial for us](./public/assets/readme/introjs.png)
 
 ---
 
@@ -45,11 +43,13 @@ With json-server we:
 
 2. [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). _The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport._ <br> It is used to trigger animations of different elements as they get into viewport (or as the user scroll)
 
-3. [Shadow DOM API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and [Custom Elements API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements). They are used in conjunction with each other and help us create a custom element of footer that encapsulates all the markup, style and functionality in it. It was used to create footer component so we don't have to repeat code in every file which is redundant and also makes it difficult to make changes (imagine making same changes in multiple files)
+3. [Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). This API was used to create the page of customization.
+
+4. [Shadow DOM API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and [Custom Elements API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements). They are used in conjunction with each other and help us create a custom element of footer that encapsulates all the markup, style and functionality in it. It was used to create footer component so we don't have to repeat code in every file which is redundant and also makes it difficult to make changes (imagine making same changes in multiple files)
 
    - Open any html file. You can find it at the bottom of markup <br> `<custom-footer></custom-footer>`
 
-4. [Google Map API](https://developers.google.com/maps). It is used to implement google map in our contact page.
+5. [Google Map API](https://developers.google.com/maps). It is used to implement google map in our contact page.
 
 ---
 
