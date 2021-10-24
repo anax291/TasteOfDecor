@@ -8,11 +8,10 @@
 
 This is an e-commerce website built with html, css and vanilla javascript utilizing many of the modern syntaxes and latest features. This is a static website (no backend) and therefore it lacks many of the features like
 
-- you can not create an account.
 - No sign in / sign up features
 - No admin panel
 
-However to get a taste of backend, this websites uses **JSON-SERVER**. It can provide us a fake rest api to work with. IT is great for mocking a backend and prototyping.
+However to get a taste of backend, this websites uses **JSON-SERVER**. It can provide us a fake rest api to work with. It is great for mocking a backend and prototyping.
 
 ---
 
@@ -32,7 +31,7 @@ With json-server we:
 1. [GSAP](https://greensock.com/gsap/). A very popular javascript library that is used for our intro animation and some modal animations.
    ![Intro Of Our Website](./public/assets/readme/gsap.png)
 
-2. [INTROJS](https://introjs.com/). This is not so popular yet a very useful library. It is used to guide the users, how the can write testimonials for us.
+2. [INTROJS](https://introjs.com/). This is not so popular yet a very useful library. It is used to guide the users, how they can write testimonials for us.
    ![IntroJs guiding how to write testimonial for us](./public/assets/readme/introjs.png)
 
 ---
@@ -41,7 +40,7 @@ With json-server we:
 
 1. [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). Web API which is used to fetch data from our localhost
 
-2. [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). _The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport._ <br> It is used to trigger animations of different elements as they get into viewport (or as the user scroll)
+2. [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). It is used to trigger animations of different elements as they get into viewport (or as the user scroll)
 
 3. [Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). This API was used to create the page of customization.
 
