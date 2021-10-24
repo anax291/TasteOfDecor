@@ -52,4 +52,4 @@ With json-server we:
 
 ---
 
-> In the end I would just like to say, It was a great experience working on this project. We come to learn so many new things, as mentioned above. We implemented all these things for the first time in our project.
+> In the end I would just like to say, It was a great experience working on this project. We came to learn so many new things, as mentioned above. We implemented many of the things for the first time in our project.
