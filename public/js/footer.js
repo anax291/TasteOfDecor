@@ -11,34 +11,39 @@ template.innerHTML = `
     <div class="container">
       <div class="grid">
         <div class="col col1">
-          <h1 class="name">Taste Of Decor</h1>
+          <a href=${id == 'index' ? '#' : './index.html'} class="wrap name">
+            <div class="inner">
+              <div class="top">Taste Of Decor</div>
+              <div class="bottom">Taste Of Decor</div>
+            </div>
+          </a>
           <p>We create possibilities for the connected world.</p>
           <p class="tagline">Be Bold</p>
         </div>
         <div class="col col2">
           <h3 class="col-title">Explore</h3>
-          <a href=${id == 'index' ? '#' : './index.html'} class="wrap">
+          <a href=${id === 'index' ? '#' : './index.html'} class="wrap">
             <div class="inner">
               <div class="top">Home</div>
               <div class="bottom">Home</div>
             </div>
           </a>
-          <a href=${id == 'about' ? '#' : './about.html'} class="wrap">
+          <a href=${id === 'about' ? '#' : './about.html'} class="wrap">
             <div class="inner">
               <div class="top">About</div>
               <div class="bottom">About</div>
             </div>
           </a>
-          <a href="#" class="wrap">
+          <a href=${id === 'collection' ? '#' : './collection.html'} class="wrap">
             <div class="inner">
-              <div class="top">Capabilities</div>
-              <div class="bottom">Capabilities</div>
+              <div class="top">Collection</div>
+              <div class="bottom">Collection</div>
             </div>
           </a>
-          <a href="#" class="wrap">
+          <a href={${id === 'customization' ? '#' : './customization.html'}} class="wrap">
             <div class="inner">
-              <div class="top">Career</div>
-              <div class="bottom">Career</div>
+              <div class="top">Customization</div>
+              <div class="bottom">Customization</div>
             </div>
           </a>
         </div>
@@ -56,12 +61,12 @@ template.innerHTML = `
               <div class="bottom">support@tod.com</div>
             </div>
           </a>
-          <a href="#" class="wrap">
+          <div class="wrap">
             <div class="inner">
-              <div class="top">St.45/1 Italy</div>
-              <div class="bottom">St.45/1 Italy</div>
+              <div class="top">St.45/1 Karachi</div>
+              <div class="bottom">St.45/1 Karachi</div>
             </div>
-          </a>
+          </div>
         </div>
         <div class="col col4">
           <h3 class="col-title">Legal</h3>

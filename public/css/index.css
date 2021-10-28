@@ -72,6 +72,7 @@ body {
   animation: shine 5s linear infinite;
   width: fit-content;
   position: relative;
+  -webkit-animation: shine 5s linear infinite;
 }
 
 .about__title::before,

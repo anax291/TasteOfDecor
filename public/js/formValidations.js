@@ -18,8 +18,8 @@ export const validateSubject = (text) => {
 };
 
 /* Address Validation */
-export const validateAddress = () => {
-  const res = address.length == 0 ? false : true;
+export const validateAddress = (address) => {
+  const res = address.length == 10 ? false : true;
   return res;
 };
 

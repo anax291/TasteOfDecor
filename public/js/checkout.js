@@ -23,6 +23,9 @@ const discountCodes = [
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchingData();
+  document
+    .querySelector('.go-back')
+    .addEventListener('click', () => window.history.go(-1));
 });
 
 const fetchingData = async () => {
@@ -138,11 +141,11 @@ const checkForCodeValidity = (code) => {
 };
 
 const checkForCustomerDetailsValidity = (fname, lname, email, address, tel) => {
-  if (!validateName(fname)) {
+  if (!validateName(fname.value)) {
     throwError('Please enter a valid first name', fname);
     return false;
   }
-  if (!validateName(lname)) {
+  if (!validateName(lname.value)) {
     throwError('Please enter a valid last name', lname);
     return false;
   }
@@ -150,8 +153,8 @@ const checkForCustomerDetailsValidity = (fname, lname, email, address, tel) => {
     throwError('please enter a valid email', email);
     return false;
   }
-  if (!validateAddress(address)) {
-    throwError('please enter a valid home address', address);
+  if (!validateAddress(address.value)) {
+    throwError('Address must be atleast 10 characters long.', address);
     return false;
   }
   if (!validatePhoneNumber(tel.value)) {

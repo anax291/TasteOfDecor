@@ -42,7 +42,7 @@ function initMap() {
   // adding marker on map for each marker in array
   markers.forEach((marker) => addMarker(marker));
 
-  // // adding marker where user clicks
+  // adding marker where user clicks
   // google.maps.event.addListener(map, 'click', (e) => {
   //   addMarker({ coords: e.latLng });
   // });

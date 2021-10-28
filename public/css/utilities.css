@@ -97,6 +97,7 @@ button {
   background: transparent;
   font-size: inherit;
   font-family: inherit;
+  cursor: pointer;
 }
 
 label,
@@ -155,7 +156,7 @@ textarea {
 }
 
 .m-font {
-  font-size: clamp(2.75rem, 1.25rem + 2vw, 4rem);
+  font-size: clamp(2rem, 3vw, 4rem);
 }
 
 .material-icons,

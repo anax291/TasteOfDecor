@@ -199,7 +199,7 @@ export const injectProducts = (cardTemplate, products, productContainer) => {
 
 /* Throw Error */
 export const throwError = (message, element) => {
-  const elementWrapper = element.closest('.field-wrapper');
+  const elementWrapper = element.closest('.field-wrapper') || element.parentElement;
   const err = document.createElement('span');
   err.classList.add('err');
   err.textContent = message;

@@ -11,10 +11,24 @@ body {
   padding: 1rem 0;
 }
 
+.hero .container {
+  padding: 0;
+}
+
 .hero .layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 3rem;
+}
+
+.hero .fa-arrow-left {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.hero .content {
+  flex-grow: 1;
 }
 
 .hero .m-font {
@@ -30,6 +44,7 @@ body {
 
 .hero .img {
   width: 80px;
+  user-select: none;
 }
 
 .checkout .grid {
@@ -208,5 +223,34 @@ input[type='tel'] {
   .checkout :is(.left, .right) {
     height: auto;
     overflow: auto;
+  }
+}
+
+@media screen and (max-width: 38rem) {
+  .hero .layout {
+    flex-wrap: wrap;
+  }
+
+  .hero .fa-arrow-left {
+    font-size: 1.75rem;
+  }
+
+  .hero .img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .hero .img {
+    display: none;
+  }
+  .m-font {
+    font-size: 1.5rem;
+  }
+  .brand__name {
+    font-size: 1.125rem;
+  }
+  .seperator {
+    padding-inline: 0;
   }
 }
