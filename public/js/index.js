@@ -220,7 +220,7 @@ const tl = gsap.timeline({ defaults: { ease: 'power1.out' } });
 tl.to('body', { overflow: 'hidden' });
 tl.to('#logo-animated path', {
   strokeDashoffset: '0%',
-  duration: 2,
+  duration: 1,
   stagger: 0.5,
 });
 tl.to('#logo-animated', { fill: '#f4f4f4', duration: 1 }, '-=1');
