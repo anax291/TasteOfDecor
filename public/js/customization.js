@@ -42,7 +42,8 @@ rooms.forEach((room) => {
 });
 
 const displayCustomizationBox = async (target) => {
-  const template = document.getElementById('customization');
+  const template = document.getElementById('customization-template');
+  console.log(template);
   const customizationDiv = template.content.firstElementChild.cloneNode(true);
   customizationDiv.querySelector('#width').value = window
     .getComputedStyle(target)
