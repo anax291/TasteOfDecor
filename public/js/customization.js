@@ -35,6 +35,8 @@ rooms.forEach((room) => {
   room.addEventListener('dblclick', (e) => {
     const target = e.target.closest('img');
     if (!target) return;
+    if (room.querySelector('.active'))
+      closeCustomizationBox(room.querySelector('.active'));
     target.classList.add('active');
     displayCustomizationBox(target);
     customizationInteractivity(target);
