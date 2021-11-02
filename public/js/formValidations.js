@@ -7,8 +7,8 @@ export const validateEmail = (email) => {
 
 /* Name Validation */
 export const validateName = (name) => {
-  const res = name.length <= 3 ? false : true;
-  return res;
+  const re = /^[A-Z][a-z]*(([,.] |[ '-])[A-Za-z][a-z]*)*(\.?)$/;
+  return re.test(name);
 };
 
 /* Subject Validation */

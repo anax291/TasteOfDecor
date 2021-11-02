@@ -31,9 +31,14 @@ section {
   background-color: #aaa;
 }
 
-.grid h1 {
+.grid .header {
   grid-area: head;
   text-align: center;
+}
+
+.grid .header > * {
+  display: inline-block;
+  width: max-content;
 }
 
 .left-container {
@@ -97,6 +102,9 @@ section {
   :is(.left-container, .right-container) .prods {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  :is(.left-container, .right-container) .prods img{
+    width: 100px;
   }
   .left-container,
   .right-container {

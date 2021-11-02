@@ -125,3 +125,19 @@ const closeCustomizationBox = (img) => {
   const customizationDiv = document.querySelector('.customization-box');
   document.body.removeChild(customizationDiv);
 };
+
+/* Functionality to download the design */
+const downloadBtns = document.querySelectorAll('.download-design');
+downloadBtns.forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const target = btn.closest('.grid').querySelector('.terrarium');
+    const canvas = await html2canvas(target);
+
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL();
+    a.download = 'canvas-image.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+});
