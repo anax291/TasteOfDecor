@@ -1,59 +1,64 @@
 // imports
+import { getDataFromDb } from './apiCalls.js';
 import {
   emptyContainer,
   addLoadingAnimation,
   removeLoadingAnimation,
-  getDataFromDb,
   injectProducts,
   createCategoriesAndInject,
   shuffleArray,
 } from './dataFunctions.js';
 import { modal } from './templates.js';
 
+const init = async () => {
+  const categories = await getDataFromDb('categories');
+  const products = await getDataFromDb('products?featured=true');
+  const testimonials = await getDataFromDb('messages?subject=testimonial');
+  populateCategories(categories);
+  selectCategory(products);
+  populateProducts(products);
+  handleTestimonialEvents(testimonials);
+};
+
 //  On page load
-document.addEventListener('DOMContentLoaded', () => {
-  populateCategories();
-  populateTestimonials();
-});
+document.addEventListener('DOMContentLoaded', init);
 
 // populate categories
-const populateCategories = async () => {
-  const uri = 'http://localhost:3000/categories';
-  const categories = await getDataFromDb(uri);
+const populateCategories = (categories) => {
   const categoryList = document.querySelector('.categories');
   emptyContainer(categoryList);
   createCategoriesAndInject(categories, categoryList);
   const defaultSelectedElement = categoryList.querySelector('li:nth-child(1)');
   defaultSelectedElement.classList.add('active');
-  selectCategory(categoryList);
-  populateProducts();
 };
 
 // select category
-const selectCategory = async (categoryList) => {
+const selectCategory = (products) => {
+  const categoryList = document.querySelector('.categories');
   categoryList.addEventListener('click', (e) => {
     const targetElement = e.target.closest('li');
     if (!targetElement) return;
     // remove active class from old element and add to the new one
     categoryList.querySelector('.active').classList.remove('active');
     targetElement.classList.add('active');
-    populateProducts();
+    populateProducts(products);
   });
 };
 
 // populate Products
-const populateProducts = async () => {
-  const selectedCategory = document.querySelector('.categories .active');
-  const selectedCategoryId = selectedCategory.getAttribute('data-id');
+const populateProducts = async (products) => {
+  const selectedCategoryId = document
+    .querySelector('.categories .active')
+    .getAttribute('data-id');
   const productContainer = document.querySelector('.product-container');
   const cardTemplate = document.getElementById('card-template');
   emptyContainer(productContainer);
   // add loading animation
   addLoadingAnimation(productContainer);
-  let uri = `http://localhost:3000/categories/${selectedCategoryId}/products?featured=true`;
-  let products = await getDataFromDb(uri);
+  products = products.filter((prod) => prod.categoryId === +selectedCategoryId);
   products = shuffleArray(products);
   products.length = 3;
+  console.log(products);
   // remove loading animation and injecting products
   setTimeout(() => {
     removeLoadingAnimation(productContainer);
@@ -154,57 +159,54 @@ const injectCustomInfo = (modalElement, target) => {
 };
 
 /* Testimonials */
-
 const testimonialContainer = document.querySelector('.testimonials__container');
 const testimonialNav = testimonialContainer.querySelector('.testimonial__nav');
 
-const populateTestimonials = async () => {
-  const testimonialTemplate = document.getElementById('testimonial-template');
-  let uri = `http://localhost:3000/messages?subject=testimonial`;
-  const testimonials = await getDataFromDb(uri);
-  createTestimonialNav(testimonialNav, testimonials);
-  const testimonialElement = document.importNode(testimonialTemplate.content, true);
-  const quote = testimonialElement.querySelector('.testimonial__content');
-  const clientName = testimonialElement.querySelector('.client__name');
-  quote.textContent = testimonials[0].message;
-  clientName.textContent = ` - ${testimonials[0].name}`;
-  testimonialContainer.appendChild(testimonialElement);
+const handleTestimonialEvents = (testimonials) => {
+  createTestimonialNav(testimonials);
+  handleTestimonialBtnClicks(testimonials);
+  showTestimonial(testimonials);
 };
 
-const createTestimonialNav = (container, testimonials) => {
-  emptyContainer(container);
-  testimonials.forEach((testimonial) => {
-    const btn = document.createElement('button');
-    btn.classList.add('testimonial__indicator');
-    btn.setAttribute('data-nav-id', testimonial.id);
-    container.appendChild(btn);
-  });
-  container
-    .querySelector('.testimonial__indicator:nth-child(1)')
-    .classList.add('current');
-  return container.querySelector('.current').getAttribute('data-nav-id');
-};
-
-/* btn Interaction */
-testimonialNav.addEventListener('click', async (e) => {
-  const target = e.target.closest('button.testimonial__indicator');
-  if (!target) return;
-  const targetId = target.getAttribute('data-nav-id');
-  testimonialNav.querySelector('.current').classList.remove('current');
-  target.classList.add('current');
-  testimonialContainer.removeChild(testimonialContainer.querySelector('.testimonial'));
-  // changing testimonial
-  let uri = `http://localhost:3000/messages/${targetId}`;
-  const testimonial = await getDataFromDb(uri);
+const showTestimonial = (testimonials, currentTestimonialId = 0) => {
+  // remove previous testimonial if any
+  if (testimonialContainer.querySelector('.testimonial'))
+    testimonialContainer.removeChild(testimonialContainer.querySelector('.testimonial'));
+  // grabbing UI fields
   const testimonialTemplate = document.getElementById('testimonial-template');
   const testimonialElement =
     testimonialTemplate.content.firstElementChild.cloneNode(true);
   const quote = testimonialElement.querySelector('.testimonial__content');
   const clientName = testimonialElement.querySelector('.client__name');
-  quote.textContent = testimonial.message;
-  clientName.textContent = `- ${testimonial.name}`;
+  // inserting data and appending to DOM
+  quote.textContent = testimonials[currentTestimonialId].message;
+  clientName.textContent = ` - ${testimonials[currentTestimonialId].name}`;
   testimonialContainer.appendChild(testimonialElement);
-});
+};
+
+const handleTestimonialBtnClicks = (testimonials) => {
+  testimonialNav.addEventListener('click', (e) => {
+    const target = e.target.closest('button.testimonial__indicator');
+    if (!target) return;
+    const targetId = Number(target.getAttribute('data-nav-id')) - 1;
+    testimonialNav.querySelector('.current').classList.remove('current');
+    target.classList.add('current');
+    showTestimonial(testimonials, targetId);
+  });
+};
+
+const createTestimonialNav = (testimonials) => {
+  emptyContainer(testimonialNav);
+  testimonials.forEach((testimonial) => {
+    const btn = document.createElement('button');
+    btn.classList.add('testimonial__indicator');
+    btn.setAttribute('data-nav-id', testimonial.id);
+    testimonialNav.appendChild(btn);
+  });
+  testimonialNav
+    .querySelector('.testimonial__indicator:nth-child(1)')
+    .classList.add('current');
+};
 
 /* Start Up animation */
 let logos = document.querySelectorAll('#logo-animated path');

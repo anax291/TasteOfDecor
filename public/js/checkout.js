@@ -1,12 +1,11 @@
+/* Imports */
 import { CustomFooter } from './footer.js';
-import {
-  deleteDataFromDb,
-  displayMsg,
-  getDataFromDb,
-  numberWithCommas,
-  postDataToDb,
-  throwError,
-} from './dataFunctions.js';
+
+import { displayMsg, numberWithCommas, throwError } from './dataFunctions.js';
+
+import { getDataFromLS, setDataToLS } from './localStorage.js';
+
+import { postDataToDb } from './apiCalls.js';
 
 import {
   validateName,
@@ -14,6 +13,9 @@ import {
   validateAddress,
   validatePhoneNumber,
 } from './formValidations.js';
+
+/* Main Code */
+const cartKey = 'TASTE_OF_DECOR_CART';
 
 const discountCodes = [
   { code: 'code1', discount: 0.1 },
@@ -28,16 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('click', () => window.history.go(-1));
 });
 
-const fetchingData = async () => {
-  let uri = `http://localhost:3000/cart`;
-  const items = await getDataFromDb(uri);
+const fetchingData = () => {
+  const items = getDataFromLS(cartKey);
   injectProductCards(items);
   updatePrices(items);
   calculateDiscount(items);
   placeorder(items);
 };
 
-const injectProductCards = async (items) => {
+const injectProductCards = (items) => {
   const cardContainer = document.querySelector('.products');
   const cardTemplate = document.getElementById('checkout-card');
   items.forEach((item) => {
@@ -135,8 +136,8 @@ const placeorder = async (items) => {
 };
 
 const checkForCodeValidity = (code) => {
-  const result = discountCodes.findIndex((discountCode) => discountCode.code === code);
-  if (result + 1) return { status: true, code: discountCodes[result].discount };
+  const result = discountCodes.find((discountCode) => discountCode.code === code);
+  if (result) return { status: true, code: result.discount };
   return false;
 };
 
@@ -164,14 +165,13 @@ const checkForCustomerDetailsValidity = (fname, lname, email, address, tel) => {
   return true;
 };
 
-const makeOrderObject = (fname, lname, email, address, tel, products) => {
+const makeOrderObject = async (fname, lname, email, address, tel, products) => {
   // grabbing addtional fields
   let subtotal = document.querySelector('.sub-total__amount').textContent;
   subtotal = subtotal.replace('Rs: ', '');
   let discount = document.querySelector('.discount__percent').textContent;
   let discountedPrice = document.querySelector('.total__amount').textContent;
   discountedPrice = discountedPrice.replace('Rs: ', '');
-  console.log(fname, lname, email, address, tel, products);
   // making obj
   const obj = {
     name: `${fname} ${lname}`,
@@ -184,15 +184,11 @@ const makeOrderObject = (fname, lname, email, address, tel, products) => {
     hasBeenDelivered: false,
     items: products,
   };
-  postDataToDb(obj, 'orders');
+  await postDataToDb('orders', obj);
 };
 
-const emptyCart = async () => {
-  const items = document.querySelectorAll('.product');
-  items.forEach((item) => {
-    const targetId = item.getAttribute('data-cart-item-id');
-    deleteDataFromDb(`http://localhost:3000/cart/${targetId}`);
-  });
+const emptyCart = () => {
+  setDataToLS(cartKey, []);
 };
 
 const addPostInteractivity = () => {

@@ -1,11 +1,5 @@
-import {
-  postDataToDb,
-  throwError,
-  displayMsg,
-  getDataFromDb,
-  deleteDataFromDb,
-} from './dataFunctions.js';
-
+import { getDataFromDb, postDataToDb, replaceDataInDb } from './apiCalls.js';
+import { throwError, displayMsg } from './dataFunctions.js';
 import {
   validateName,
   validateEmail,
@@ -34,14 +28,12 @@ async function handleFormSubmit(e) {
 
   subject = subject.trim().toLowerCase();
   let msgObj;
-  if (subject === 'testimonial') {
-    msgObj = await checkEmail(email);
-  }
+  if (subject === 'testimonial') msgObj = await checkEmail(email);
 
   if (msgObj) {
     replaceTestimonial(msgObj, name, message);
   } else {
-    createMessageObj(name, email, subject, message);
+    createMessageObj(name, email, subject, message, undefined, 'POST');
     displayMsg('Your message has been recorded', 'success', 4000);
     clearFields(nameField, emailField, subjectField, textArea);
   }
@@ -67,21 +59,16 @@ const validateForm = (name, email, subject, message) => {
   return true;
 };
 
-const createMessageObj = (userName, userEmail, title, desc, id = undefined) => {
-  let obj = {
-    name: userName,
-    email: userEmail,
-    subject: title,
-    message: desc,
-  };
+const createMessageObj = (name, email, subject, message, id = undefined, method) => {
+  let obj = { name, email, subject, message };
   if (id) obj.id = id;
-  postDataToDb(obj, 'messages');
+  if (method === 'POST') postDataToDb('messages', obj);
+  else if (method === 'PUT') replaceDataInDb(`messages/${id}`, obj);
 };
 
 const checkEmail = async (email) => {
-  const data = await getDataFromDb('http://localhost:3000/messages');
+  const data = await getDataFromDb('messages');
   const res = data.find((obj) => obj.email === email && obj.subject === 'testimonial');
-  console.log(res?.id);
   return res;
 };
 
@@ -98,14 +85,9 @@ const replaceTestimonial = async (obj, userName, message) => {
           title = obj.subject,
           email = obj.email,
           desc = message;
-        const success = await deleteDataFromDb(
-          `http://localhost:3000/messages/${obj.id}`
-        );
-        if (success) {
-          createMessageObj(name, email, title, desc, id);
-          displayMsg('Your message has been replaced', 'success', 4000);
-          clearFields(nameField, emailField, subjectField, textArea);
-        }
+        createMessageObj(name, email, title, desc, id, 'PUT');
+        displayMsg('Your message has been replaced', 'success', 4000);
+        clearFields(nameField, emailField, subjectField, textArea);
       }
     }
   });

@@ -1,9 +1,9 @@
 // imports
+import { getDataFromDb } from './apiCalls.js';
 import {
   emptyContainer,
   addLoadingAnimation,
   removeLoadingAnimation,
-  getDataFromDb,
   injectProducts,
   createCategoriesAndInject,
   shuffleArray,
@@ -11,22 +11,22 @@ import {
 
 const query = new URLSearchParams(window.location.search).get('q') || null;
 
+const init = async () => {
+  let categories = await getDataFromDb('categories');
+  const products = await getDataFromDb('products');
+  populateCategories(categories);
+  selectCategory(products);
+  populateProducts(products);
+};
+
 // On page load
-document.addEventListener('DOMContentLoaded', () => {
-  populateCategories();
-});
+document.addEventListener('DOMContentLoaded', init);
 
 // populate categories
-const populateCategories = async () => {
-  const url = 'http://localhost:3000/categories';
-  const categories = await getDataFromDb(url);
+const populateCategories = (categories) => {
   const categoryList = document.querySelector('.categories');
   emptyContainer(categoryList);
-  const defaultLi = document.createElement('li');
-  defaultLi.classList.add('category');
-  defaultLi.setAttribute('data-category', 'all');
-  defaultLi.appendChild(document.createTextNode('all'));
-  categoryList.appendChild(defaultLi);
+  categories = [{ id: undefined, name: 'all' }, ...categories];
   createCategoriesAndInject(categories, categoryList);
   if (query) {
     categoryList
@@ -36,24 +36,23 @@ const populateCategories = async () => {
     const defaultSelectedElement = categoryList.querySelector('li:nth-child(2)');
     defaultSelectedElement.classList.add('active');
   }
-  selectCategory(categoryList);
-  populateProducts();
 };
 
 // Select Category
-const selectCategory = async (categoryList) => {
+const selectCategory = (products) => {
+  const categoryList = document.querySelector('.categories');
   categoryList.addEventListener('click', (e) => {
     const targetElement = e.target.closest('li');
     if (!targetElement) return;
     // remove active class from old element
     categoryList.querySelector('.active').classList.remove('active');
     targetElement.classList.add('active');
-    populateProducts();
+    populateProducts(products);
   });
 };
 
 // populate Products
-const populateProducts = async () => {
+const populateProducts = async (products) => {
   const selectedCategory = document.querySelector('.categories .active');
   const selectedCategoryId = selectedCategory.getAttribute('data-id');
   const productContainer = document.querySelector('.products');
@@ -61,13 +60,8 @@ const populateProducts = async () => {
   emptyContainer(productContainer);
   // add loading animation
   addLoadingAnimation(productContainer);
-  let url = `http://localhost:3000`;
-  if (selectedCategoryId) {
-    url = `${url}/categories/${selectedCategoryId}/products`;
-  } else {
-    url = `${url}/products`;
-  }
-  let products = await getDataFromDb(url);
+  if (selectedCategoryId)
+    products = products.filter((prod) => prod.categoryId === +selectedCategoryId);
   products = shuffleArray(products);
   // remove loading animation and injecting products
   setTimeout(() => {

@@ -1,19 +1,15 @@
 import {
-  addProdToCartInDb,
-  deleteDataFromDb,
-  deletingCartItemAnimation,
+  addProdToCartInLS,
   updateBadge,
   updateCart,
-  updateData,
   updateTotalPrice,
-} from './dataFunctions.js';
+  deletingCartItemAnimation,
+} from './cart.js';
 
 import { CustomFooter } from './footer.js';
+import { getDataFromLS, setDataToLS } from './localStorage.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  updateBadge();
-  updateCart();
-});
+const cartKey = 'TASTE_OF_DECOR_CART';
 
 // hamburger
 const hamburgerBtn = document.querySelector('.hamburger');
@@ -45,6 +41,22 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
+/* Cart */
+const cartIcon = document.querySelector('.cart-wrapper');
+const cartContainer = document.querySelector('.cart-container');
+
+// open cart
+cartIcon.addEventListener('click', () => {
+  cartContainer.classList.add('cart-open');
+  document.body.style = 'overflow: hidden';
+});
+
+//close cart
+cartContainer.querySelector('.close').addEventListener('click', () => {
+  cartContainer.classList.remove('cart-open');
+  document.body.style = '';
+});
+
 // Cards interaction
 const ids = ['index', 'collection', 'prod-detail'];
 if (ids.includes(body.id)) {
@@ -61,39 +73,26 @@ if (ids.includes(body.id)) {
     if (e.target.parentElement === addToCartBtn) {
       targetCard.querySelector('.bottom').classList.add('clicked');
       // adding prod to cart in data base
-      cartFunctions(targetCard);
+      sendProductToCart(targetCard);
     } else if (e.target.parentElement === removeBtn) {
       targetCard.querySelector('.bottom').classList.remove('clicked');
     }
   });
 }
 
-/* Cart */
-const cartIcon = document.querySelector('.cart-wrapper');
-const cartContainer = document.querySelector('.cart-container');
-
-// open cart
-cartIcon.addEventListener('click', (e) => {
-  openCart();
-});
-
-const openCart = () => {
-  cartContainer.classList.add('cart-open');
-  document.body.style = 'overflow: hidden';
+/* Init Function */
+const initCart = () => {
+  const cartItems = getDataFromLS(cartKey);
+  updateCart();
+  updateBadge();
 };
 
-//close cart
-cartContainer.querySelector('.close').addEventListener('click', () => {
-  cartContainer.classList.remove('cart-open');
-  document.body.style = '';
-});
+document.addEventListener('DOMContentLoaded', initCart);
 
-const cartFunctions = async (card) => {
-  const success = await addProdToCartInDb(card);
-  if (success) {
-    updateBadge();
-    updateCart();
-  }
+const sendProductToCart = (card) => {
+  addProdToCartInLS(card);
+  updateBadge();
+  updateCart();
 };
 
 /* Cart Interactions */
@@ -124,58 +123,53 @@ cart.addEventListener('click', (e) => {
 });
 
 const deleteItem = async (e) => {
+  const cartItems = getDataFromLS(cartKey);
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
-  let url = `http://localhost:3000/cart/${targetId}`;
-  await deleteDataFromDb(url);
+  const newCartItems = cartItems.filter((item) => item.id !== +targetId);
+  setDataToLS(cartKey, newCartItems);
   deletingCartItemAnimation(targetCard);
   setTimeout(() => {
-    if (document.querySelector('.cart-items > *')) {
-      updateTotalPrice();
-    } else {
-      updateCart();
-    }
+    if (document.querySelector('.cart-items > *')) updateTotalPrice();
+    else updateCart();
     updateBadge();
   }, 2000);
 };
 
-const changeProdQty = async (e, mode) => {
+const changeProdQty = (e, mode) => {
+  const cartItems = getDataFromLS(cartKey);
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
   let prodQty = targetCard.querySelector('.item__qty');
-  let obj;
+  let updatedCartItems;
   if (mode === 'increase') {
-    obj = { qty: parseInt(prodQty.textContent) + 1 };
+    updatedCartItems = cartItems.map((item) =>
+      item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) + 1 } : item
+    );
   } else {
     if (parseInt(prodQty.textContent) == 1) {
       deleteItem(e);
       return;
     } else {
-      obj = { qty: parseInt(prodQty.textContent) - 1 };
+      updatedCartItems = cartItems.map((item) =>
+        item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) - 1 } : item
+      );
     }
   }
-  let url = `http://localhost:3000/cart/${targetId}`;
-  const success = updateData(url, obj);
-  if (success) {
-    updateBadge();
-    updateCart();
-  }
+  setDataToLS(cartKey, updatedCartItems);
+  updateBadge();
+  updateCart();
 };
 
 const removeAll = async (e) => {
   const cartItems = e.target.closest('.cart-head').nextElementSibling;
   const items = Array.from(cartItems.children);
-  let success;
   items.forEach((item) => {
-    const id = item.getAttribute('data-id');
-    let url = `http://localhost:3000/cart/${id}`;
-    success = deleteDataFromDb(url);
     deletingCartItemAnimation(item);
   });
   setTimeout(() => {
-    if (success) {
-      updateCart();
-      updateBadge();
-    }
+    setDataToLS(cartKey, []);
+    updateCart();
+    updateBadge();
   }, 2000);
 };

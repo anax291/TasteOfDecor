@@ -1,15 +1,12 @@
-// imports
+/* imports */
+import { getDataFromDb, updateDataInDb } from './apiCalls.js';
+
+import { addProdToCartInLS, updateBadge, updateCart, sendProdToCart } from './cart.js';
+
 import {
   emptyContainer,
-  getDataFromDb,
   addLoadingAnimation,
-  removeLoadingAnimation,
   injectProducts,
-  postReviewToDb,
-  addProdToCartInDb,
-  updateBadge,
-  updateCart,
-  sendProdToCart,
   numberWithCommas,
   getNameInitials,
   getRandomNumber,
@@ -19,29 +16,31 @@ import {
 
 import { clearFields, validateEmail } from './formValidations.js';
 
-/* Running Functions on Page Load */
-document.addEventListener('DOMContentLoaded', () => {
-  updatePageTitle();
-  injectProductDetails();
-  changePrimaryImage();
-  populateSimilarProducts();
-  buyProduct();
-});
-
-// getting id and categoryId from URL
+/* getting id and categoryId from URL to update the page content accordingly */
 const productId = new URLSearchParams(window.location.search).get('id');
 const categoryId = new URLSearchParams(window.location.search).get('categoryId');
 
+/* Functions to be run at init */
+const init = async () => {
+  const products = await getDataFromDb(`categories/${categoryId}/products`);
+  const [currProduct] = products.filter((prod) => prod.id === +productId);
+  updatePageTitle(currProduct.name);
+  injectProductDetails(currProduct);
+  changePrimaryImage();
+  populateSimilarProducts(products);
+  buyProduct();
+};
+
+/* Initializing App on Page Load */
+document.addEventListener('DOMContentLoaded', init);
+
 /* Update page title */
-const updatePageTitle = async () => {
-  const prod = await getDataFromDb(`http://localhost:3000/products/${productId}`);
-  document.title = `Taste of Décor | ${prod.name}`;
+const updatePageTitle = async (prodName) => {
+  document.title = `Taste of Décor | ${prodName}`;
 };
 
 /* injecting prod details */
-const injectProductDetails = async () => {
-  //get data from db
-  const productObj = await getDataFromDb(`http://localhost:3000/products/${productId}`);
+const injectProductDetails = async (productObj) => {
   // grabbing UI elements
   const prodContainer = document.querySelector('main.product .container');
   emptyContainer(prodContainer);
@@ -108,9 +107,9 @@ const injectDetails = (details) => {
 
 const addRatingInfo = (reviewsNumber, ratings, productObj) => {
   if (productObj.reviews.length) {
-    const ratingsInfo = getRatingsInfo(productObj.reviews);
-    reviewsNumber.textContent = `${productObj.reviews.length} reviews (${ratingsInfo[1]} avg. ratings)`;
-    ratings.style.width = ratingsInfo[0];
+    const [starsWidth, avgRating] = getRatingsInfo(productObj.reviews);
+    reviewsNumber.textContent = `${productObj.reviews.length} reviews (${avgRating} avg. ratings)`;
+    ratings.style.width = starsWidth;
   } else {
     reviewsNumber.textContent = `No reviews`;
   }
@@ -166,19 +165,14 @@ prodContainer.addEventListener('click', (e) => {
   cartFunctions(card);
 });
 
-const cartFunctions = async (card) => {
-  const success = await addProdToCartInDb(card);
-  if (success) {
-    updateBadge();
-    updateCart();
-  }
+const cartFunctions = (card) => {
+  addProdToCartInLS(card);
+  updateBadge();
+  updateCart();
 };
 
 /* populate Similar Products */
-const populateSimilarProducts = async () => {
-  // get data from db
-  let url = `http://localhost:3000/categories/${categoryId}/products`;
-  let products = await getDataFromDb(url);
+const populateSimilarProducts = (products) => {
   products = products.filter((product) => product.id != productId);
   products = shuffleArray(products);
   products.length = 4;
@@ -192,9 +186,8 @@ const populateSimilarProducts = async () => {
 /* Populate Reviews If Any */
 const reviewsContainer = document.querySelector('.reviews');
 const populateReviews = async () => {
-  let url = `http://localhost:3000/products/${productId}`;
-  const prodObj = await getDataFromDb(url);
-  const reviews = prodObj.reviews;
+  let url = `products/${productId}`;
+  const { reviews } = await getDataFromDb(url);
   addLoadingAnimation(reviewsContainer);
   setTimeout(() => {
     emptyContainer(reviewsContainer);
@@ -229,7 +222,6 @@ const observer = new IntersectionObserver(
   function (entries) {
     if (entries[0].isIntersecting && window.scrollY > 0) {
       populateReviews();
-      console.log(entries[0]);
       observer.unobserve(entries[0].target);
     }
   },
@@ -270,9 +262,7 @@ ratingsContainer.addEventListener('click', (e) => {
   if (!target) return;
   const stars = Array.from(ratingsContainer.children);
   stars.forEach((star) => {
-    if (star.classList.contains('active')) {
-      star.classList.remove('active');
-    }
+    if (star.classList.contains('active')) star.classList.remove('active');
   });
   target.classList.add('active');
 });
@@ -294,10 +284,10 @@ form2.addEventListener('submit', (e) => {
 
 // Make reqd changes and post review to db
 const postReview = async (reviewObj) => {
-  let url = `http://localhost:3000/products/${productId}`;
-  const prodObj = await getDataFromDb(url);
-  const prodReviews = prodObj.reviews;
+  let url = `products/${productId}`;
+  let { reviews: prodReviews } = await getDataFromDb(url);
   reviewObj.id = prodReviews.length + 1;
-  prodReviews.push(reviewObj);
-  postReviewToDb(url, prodReviews);
+  prodReviews = [...prodReviews, reviewObj];
+  const data = { reviews: prodReviews };
+  updateDataInDb(`products/${productId}`, data);
 };
