@@ -35,7 +35,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-*:focus {
+*:focus-visible {
   outline: none;
 }
 
@@ -217,7 +217,7 @@ header {
   z-index: 101;
 }
 
-.hamburger:focus {
+.hamburger:focus-visible {
   outline: none;
 }
 
@@ -313,13 +313,13 @@ header {
 }
 
 .nav__link:hover,
-.nav__link:focus,
+.nav__link:focus-visible,
 .nav__link.active {
   opacity: 1;
 }
 
 .nav__link:hover::after,
-.nav__link:focus::after,
+.nav__link:focus-visible::after,
 .nav__link.active::after {
   transform: scaleX(1);
   transform-origin: left;
@@ -363,7 +363,7 @@ header {
   }
 
   .nav__link:hover,
-  .nav__link:focus {
+  .nav__link:focus-visible {
     opacity: 0.8;
     transform: translateX(1rem);
   }

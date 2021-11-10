@@ -82,7 +82,7 @@ body {
   transition: background 500ms ease;
 }
 
-.about__container :is(.btn:hover, .btn:focus) {
+.about__container :is(.btn:hover, .btn:focus-visible) {
   background: #fff;
   color: var(--btn-primary);
 }

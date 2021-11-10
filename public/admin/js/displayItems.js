@@ -71,13 +71,24 @@ export const showOrder = async () => {
   const ordersContainer = document.querySelector('.app');
   const headerTemplate = document.querySelector('[data-order-header]');
   const header = headerTemplate.content.firstElementChild.cloneNode(true);
-  const itemTemplate = document.querySelector('[data-order-item]');
-  const ul = document.createElement('ul');
-  ul.classList.add('order__table');
   // clearing the div
   emptyContainer(ordersContainer);
   // injecting header
   ordersContainer.appendChild(header);
+  // if there are no order
+  if (orders.length === 0) {
+    const p = document.createElement('p');
+    p.style.fontSize = '3rem';
+    p.style.textAlign = 'center';
+    p.textContent = 'No Orders to show...';
+    ordersContainer.appendChild(p);
+    return;
+  }
+  // if there are any orders
+  const itemTemplate = document.querySelector('[data-order-item]');
+  const ul = document.createElement('ul');
+  ul.classList.add('order__table');
+
   // injecting orders
   for (const order of orders) {
     const qty = order.items.reduce((total, curr) => (total += curr.qty), 0);

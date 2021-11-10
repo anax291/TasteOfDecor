@@ -115,7 +115,7 @@
 }
 
 .mark-as-deliver:hover,
-.mark-as-deliver:focus {
+.mark-as-deliver:focus-visible {
   background: #fff;
   color: var(--btn-primary);
 }

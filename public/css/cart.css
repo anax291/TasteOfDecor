@@ -267,7 +267,7 @@
 }
 
 .btn.checkout:hover,
-.btn.checkout:focus {
+.btn.checkout:focus-visible {
   background: #fff;
   color: #000;
 }

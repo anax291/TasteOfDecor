@@ -13,8 +13,8 @@ const collectionCartKey = 'COLLECTION_CART';
 const room = document.querySelector('.room');
 const leftSideBar = document.querySelector('.products');
 const rightSideBar = document.querySelector('.right-container');
-const productPrices = rightSideBar.querySelector('.product__price');
-const totalPrice = rightSideBar.querySelector('.total__price');
+// const productPrices = rightSideBar.querySelector('.product__price');
+// const totalPrice = rightSideBar.querySelector('.total__price');
 const filterForm = document.getElementById('category-filter');
 const categoriesDropDown = filterForm.querySelector('select');
 
@@ -40,9 +40,14 @@ const createOptionElement = (category) => {
 };
 
 const injectProducts = () => {
-  emptyContainer(leftSideBar);
   const selectedCategory = categoriesDropDown.value;
   let prods = products.filter((product) => product.category === selectedCategory);
+  const addedProducts = Array.from(room.children);
+  if (addedProducts) {
+    const addedProductsIds = addedProducts.map((prod) => prod.dataset.id);
+    prods = prods.filter((prod) => !addedProductsIds.includes(prod.id) && prod);
+  }
+  emptyContainer(leftSideBar);
   prods.forEach((prod) => leftSideBar.appendChild(createImageElement(prod)));
 };
 
@@ -103,22 +108,32 @@ const addProductsToMainCart = () => {
 const addProductPriceElementToDOM = () => {
   const prods = getDataFromLS(customizationCartKey);
   const total = prods.reduce((total, prod) => (total += Number(prod.price)), 0);
-  emptyContainer(productPrices);
-  prods.forEach((prod) => {
-    const li = document.createElement('li');
-    li.setAttribute('data-id', prod.prodId);
-    li.textContent = `${prod.name}: Rs. ${numberWithCommas(prod.price)}`;
-    productPrices.appendChild(li);
-  });
-  if (!prods.length) return;
-  totalPrice.textContent = `Total: Rs. ${numberWithCommas(total)}`;
-  if (document.querySelector('.checkout__button')) return;
+  emptyContainer(rightSideBar);
+  if (prods.length === 0) return;
+  const fragment = document.createDocumentFragment();
+  const ul = document.createElement('ul');
+  ul.classList.add('product__price');
+  const lis = prods.map((prod) => createProductPriceListItem(prod));
+  lis.forEach((li) => ul.appendChild(li));
+  fragment.appendChild(ul);
+  const para = document.createElement('p');
+  para.classList.add('total__price');
+  para.textContent = `Total: Rs. ${numberWithCommas(total)}`;
+  fragment.appendChild(para);
   const button = document.createElement('button');
   button.classList.add('checkout__button');
   button.classList.add('btn');
   button.addEventListener('click', addProductsToMainCart);
   button.textContent = 'Send to cart...';
-  rightSideBar.appendChild(button);
+  fragment.appendChild(button);
+  rightSideBar.appendChild(fragment);
+};
+
+const createProductPriceListItem = (prod) => {
+  const li = document.createElement('li');
+  li.setAttribute('data-id', prod.prodId);
+  li.textContent = `${prod.name}: Rs. ${numberWithCommas(prod.price)}`;
+  return li;
 };
 
 leftSideBar.addEventListener('dragover', () => {
@@ -136,9 +151,9 @@ room.addEventListener('dblclick', (e) => {
 });
 
 const displayCustomizationBox = async (target) => {
-  const template = document.getElementById('customization-template');
-  console.log(template);
-  const customizationDiv = template.content.firstElementChild.cloneNode(true);
+  const customizationDiv = document
+    .getElementById('customization-template')
+    .content.firstElementChild.cloneNode(true);
   customizationDiv.querySelector('#width').value = window
     .getComputedStyle(target)
     .width.replace('px', '');
@@ -148,7 +163,16 @@ const displayCustomizationBox = async (target) => {
   let temp = target.style.transform;
   if (temp) temp = temp.slice(7, temp.length - 4);
   customizationDiv.querySelector('#rotate').value = temp || 0;
+  customizationDiv.addEventListener('dragend', moveCustomizationDiv);
   document.body.appendChild(customizationDiv);
+};
+
+const moveCustomizationDiv = (e) => {
+  let x = e.clientX;
+  let y = e.clientY;
+  e.target.style.left = `${x}px`;
+  e.target.style.top = `${y}px`;
+  console.log(e);
 };
 
 const customizationInteractivity = (img) => {

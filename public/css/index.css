@@ -123,7 +123,7 @@ body {
 }
 
 .about .btn:hover,
-.about .btn:focus {
+.about .btn:focus-visible {
   background: #fff;
   color: var(--btn-primary);
 }
@@ -208,7 +208,7 @@ body {
   font-size: 1.15rem;
 }
 
-.category:is(:hover, :focus) {
+.category:is(:hover, :focus-visible) {
   background: #aaa;
 }
 .category.active {
@@ -286,7 +286,7 @@ body {
   font-size: clamp(0.9rem, 0.25rem + 2vw, 1.15rem);
   color: #555;
 }
-.ads__link:is(:hover, :focus) {
+.ads__link:is(:hover, :focus-visible) {
   color: red;
 }
 .advertisement .ads i {

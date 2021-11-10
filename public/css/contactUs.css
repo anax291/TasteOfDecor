@@ -124,7 +124,7 @@ form .btn {
   transition: background 500ms ease;
 }
 
-form :is(.btn:hover, .btn:focus) {
+form :is(.btn:hover, .btn:focus-visible) {
   background: #fff;
   color: var(--btn-primary);
 }
@@ -189,7 +189,7 @@ form :is(.btn:hover, .btn:focus) {
 }
 
 .popup .msg .btn:hover,
-.popup .msg .btn:focus {
+.popup .msg .btn:focus-visible {
   color: #000;
   background: #fff;
 }

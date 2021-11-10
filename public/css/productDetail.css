@@ -216,7 +216,7 @@ textarea {
   transition: background 500ms ease;
 }
 
-.review-form :is(.btn:hover, .btn:focus) {
+.review-form :is(.btn:hover, .btn:focus-visible) {
   background: #fff;
   color: var(--btn-primary);
 }

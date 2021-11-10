@@ -111,11 +111,11 @@ input[type='tel'] {
 }
 
 .place__order:hover,
-.place__order:focus,
+.place__order:focus-visible,
 .discount-form .btn:hover,
-.discount-form .btn:focus,
+.discount-form .btn:focus-visible,
 .close__checkout-msg:hover,
-.close__checkout-msg:focus {
+.close__checkout-msg:focus-visible {
   background: #fff;
   color: #242424;
 }

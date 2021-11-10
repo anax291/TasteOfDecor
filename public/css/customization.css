@@ -109,9 +109,9 @@ img:not(.logo-img) {
 }
 
 .checkout__button:hover,
-.checkout__button:focus,
+.checkout__button:focus-visible,
 .download-design:hover,
-.download-design:focus {
+.download-design:focus-visible {
   background: #fff;
   color: var(--btn-primary);
 }
@@ -223,7 +223,7 @@ img.active {
   transition: transform 150ms ease;
 }
 
-.field .z-index :is(button:hover, button:focus) {
+.field .z-index :is(button:hover, button:focus-visible) {
   transform: scale(1.05);
 }
 
@@ -239,7 +239,7 @@ img.active {
 }
 
 .cta-close:hover,
-.cta-close:focus {
+.cta-close:focus-visible {
   color: #fff;
   background: #333;
 }

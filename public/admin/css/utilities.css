@@ -29,7 +29,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-*:focus {
+*:focus-visible {
   outline: none;
 }
 

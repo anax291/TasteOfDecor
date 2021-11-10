@@ -128,12 +128,12 @@ const deleteItem = async (e) => {
   const collectionCartItems = getDataFromLS(collectionCartKey);
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
-  const newCartItems = cartItems.filter((item) => item.id !== +targetId);
+  const newCartItems = cartItems.filter((item) => item.id.toString() !== targetId);
   const newCollectionCartItems = collectionCartItems.filter(
-    (item) => item.id !== +targetId
+    (item) => item.id.toString() !== targetId
   );
   setDataToLS(cartKey, newCartItems);
-  setDataToLS(collectionCartItems, newCollectionCartItems);
+  setDataToLS(collectionCartKey, newCollectionCartItems);
   deletingCartItemAnimation(targetCard);
   setTimeout(() => {
     if (document.querySelector('.cart-items > *')) updateTotalPrice();
@@ -151,10 +151,14 @@ const changeProdQty = (e, mode) => {
   let updatedCartItems, updatedCollectionCartItems;
   if (mode === 'increase') {
     updatedCartItems = cartItems.map((item) =>
-      item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) + 1 } : item
+      item.id.toString() === targetId
+        ? { ...item, qty: parseInt(prodQty.textContent) + 1 }
+        : item
     );
     updatedCollectionCartItems = collectionCartItems.map((item) =>
-      item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) + 1 } : item
+      item.id.toString() === targetId
+        ? { ...item, qty: parseInt(prodQty.textContent) + 1 }
+        : item
     );
   } else {
     if (parseInt(prodQty.textContent) == 1) {
@@ -162,10 +166,14 @@ const changeProdQty = (e, mode) => {
       return;
     } else {
       updatedCartItems = cartItems.map((item) =>
-        item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) - 1 } : item
+        item.id.toString() === targetId
+          ? { ...item, qty: parseInt(prodQty.textContent) - 1 }
+          : item
       );
       updatedCollectionCartItems = collectionCartItems.map((item) =>
-        item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) - 1 } : item
+        item.id.toString() === targetId
+          ? { ...item, qty: parseInt(prodQty.textContent) - 1 }
+          : item
       );
     }
   }
