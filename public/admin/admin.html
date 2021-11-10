@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/admin.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <main class="grid-2">
+    <aside class="resources__list__container">
+      <ul class="resource__list">
+        <li class="resource__list__item active" data-value="products">Inventory</li>
+        <li class="resource__list__item" data-value="categories">Categories</li>
+        <li class="resource__list__item" data-value="orders">Orders</li>
+        <li class="resource__list__item" data-value="messages">Messages</li>
+      </ul>
+    </aside>
+    <section class="resources__details">
+      <header class="resources__details__header">
+        <h1>Inventory</h1>
+        <form class="search-form">
+          <input type="text" role="searchbox" aria-label="Search the resource details" placeholder="Search">
+        </form>
+      </header>
+      <div class="app"></div>
+    </section>
+  </main>
+
+  <!-- Inventory -->
+  <template data-resource-item-header>
+    <div class="resource__item__header">
+      <span>ID</span>
+      <span>Name</span>
+      <span>Price</span>
+      <span>Stock</span>
+      <button>View</button>
+      <button>Edit</button>
+    </div>
+  </template>
+  <template data-resource-item>
+    <li class="resource__item">
+      <span class="resource__item__id">01</span>
+      <span class="resource__item__name">Prod 1</span>
+      <span class="resource__item__price">5400</span>
+      <span class="resource__item__stock">50</span>
+      <button class="resource__item__view">View</button>
+      <button class="resource__item__edit">Edit</button>
+    </li>
+  </template>
+
+  <!-- Categories -->
+  <template data-category-header>
+    <div class="category__header">
+      <span>ID</span>
+      <span>Name</span>
+      <span>Items</span>
+      <button>Edit</button>
+    </div>
+  </template>
+  <template data-category>
+    <li class="category">
+      <span class="category__id">01</span>
+      <span class="category__name">Prod 1</span>
+      <span class="category__items">50</span>
+      <button class="resource__item__edit">Edit</button>
+    </li>
+  </template>
+
+  <!-- Order -->
+  <template data-order-header>
+    <div class="order__item__header">
+      <span>Id</span>
+      <span>User</span>
+      <span>Total</span>
+      <span>Items</span>
+      <span>View</span>
+      <span>Delivered</span>
+    </div>
+  </template>
+  <template data-order-item>
+    <li class="order__item">
+      <span class="order__item__id">01</span>
+      <span class="customer__name">Customer 1</span>
+      <span class="order__price">5400</span>
+      <span class="product__qty">5</span>
+      <a href="#" class="order__item__view">Details</a>
+      <span class="delivered-status">true</span>
+    </li>
+  </template>
+
+  <!-- message -->
+  <template data-message-template>
+    <li class="message">
+      <div class="message__content">
+        <button class="message__delete"><i class="far fa-trash-alt"></i></button>
+        <p class="message__name">Name: <span>Shaykh Anas</span></p>
+        <p class="message__subject">Subject: <span>Testimonial</span></p>
+        <p class="message__body">Message: <span>A wonderful serenity has taken possession of my entire soul, like these
+            sweet mornings
+            of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot,
+            which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the
+            exquisite sense of me.</span></p>
+      </div>
+    </li>
+  </template>
+  <template data-toggler>
+    <label class="featured-toggler-container">
+      <span>Featured</span>
+      <input id="" type="checkbox" class="featured-toggler" />
+      <span class="switch">
+        <span class="switch-handle"></span>
+      </span>
+    </label>
+  </template>
+</body>
+<script src="./js/admin.js" type="module"></script>
+
+</html>

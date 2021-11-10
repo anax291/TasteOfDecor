@@ -189,12 +189,13 @@ input[type='tel'] {
 
 .sub-total,
 .shipping,
-.discount {
+.discount-code,
+.discount-percent {
   font-size: 1.125rem;
   font-weight: 900;
 }
 
-:is(.sub-total, .shipping, .discount, .total) span {
+:is(.sub-total, .shipping, .discount-code, .discount-percent, .total) span {
   float: right;
 }
 

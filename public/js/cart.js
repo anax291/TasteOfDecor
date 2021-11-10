@@ -4,6 +4,7 @@ import {
   emptyContainer,
   updateBuyNowBtnState,
   numberWithCommas,
+  generateId,
 } from './dataFunctions.js';
 
 import {
@@ -13,6 +14,7 @@ import {
 } from './templates.js';
 
 const cartKey = 'TASTE_OF_DECOR_CART';
+const collectionCartKey = 'COLLECTION_CART';
 
 export const addProdToCartInLS = (card) => {
   const targetId = card.getAttribute('data-id');
@@ -49,8 +51,9 @@ export const sendProdToCart = (
     imgSrc: prodImg,
     price: prodPrice,
     qty: 1,
-    id: cartItems.length ? cartItems.length + 1 : 1,
+    id: generateId.next().value,
   };
+  setDataToLS(collectionCartKey, [prodObj, ...getDataFromLS(collectionCartKey)]);
   setDataToLS(cartKey, [prodObj, ...cartItems]);
 };
 

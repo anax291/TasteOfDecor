@@ -1,75 +1,80 @@
-body {
-  animation: transitionIn 0.75s;
-}
-
 img:not(.logo-img) {
   width: 150px;
 }
 
-section {
-  margin-bottom: 3rem;
-}
-
 .grid {
   display: grid;
-  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-columns: 0.5rem 30ch 1fr 30ch 0.5rem;
   grid-template-areas:
-    ' head head head '
-    'left terrarium right';
-}
-
-.left-container,
-.right-container {
-  height: 800px;
-  overflow: auto;
-}
-
-:is(.left-container, .right-container)::-webkit-scrollbar {
-  width: 0.25rem;
-}
-:is(.left-container, .right-container)::-webkit-scrollbar-thumb {
-  background-color: #aaa;
+    '. header header header .'
+    '. left terrarium right .';
 }
 
 .grid .header {
-  grid-area: head;
+  grid-area: header;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.grid .header > * {
-  display: inline-block;
-  width: max-content;
+.grid .header h1 {
+  margin-bottom: 1rem;
 }
 
 .left-container {
   grid-area: left;
-  padding: 1rem;
-  background: #f4f4f4;
-}
-
-.left-container h4 {
-  margin-bottom: 0.5rem;
-}
-
-:is(.left-container, .right-container) .prods {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-:is(.left-container, .right-container) .prod {
-  width: 150px;
-  z-index: 2;
-}
-
-:is(.left-container, .right-container) .prod:hover {
-  cursor: grab;
 }
 
 .terrarium {
   grid-area: terrarium;
-  min-height: 100vh;
+}
+
+.right-container {
+  grid-area: right;
+}
+
+.left-container,
+.right-container {
+  background: #f3f3f3;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  height: 600px;
+  overflow: auto;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+
+:where(.left-container, .right-container)::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.left-container form {
+  margin: 0 0 1rem;
+}
+
+.categories {
+  width: 100%;
+  padding: 0.25rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 100px;
+  gap: 0.25rem;
+  height: 100%;
+}
+
+.products .product {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  object-fit: fill;
+}
+
+.terrarium {
+  min-height: 600px;
   display: grid;
   place-items: center;
 }
@@ -77,38 +82,88 @@ section {
 .jar-walls {
   position: relative;
   width: 95%;
-  height: 95%;
+  height: 100%;
   margin: auto;
   background: #d1e1df;
   border-radius: 1rem;
   z-index: 1;
 }
 
-.right-container {
-  grid-area: right;
-  background: #f4f4f4;
-  padding: 1rem;
+.product__price {
+  margin-bottom: 1.5rem;
 }
 
-@media (max-width: 1000px) {
+.total__price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.checkout__button,
+.download-design {
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+}
+
+.checkout__button:hover,
+.checkout__button:focus,
+.download-design:hover,
+.download-design:focus {
+  background: #fff;
+  color: var(--btn-primary);
+}
+
+@media screen and (max-width: 1100px) {
   .grid {
+    grid-template-columns: 0.25rem 25ch 1fr 25ch 0.25rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 0.5rem 1fr 0.5rem;
     grid-template-areas:
-      ' head head head '
-      'left left left'
-      ' terrarium terrarium terrarium'
-      'right right right';
+      '. header .'
+      '. left .'
+      '. terrarium .'
+      '. right .';
   }
 
-  :is(.left-container, .right-container) .prods {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  :is(.left-container, .right-container) .prods img{
-    width: 100px;
-  }
   .left-container,
   .right-container {
+    height: 190px;
+    width: 100%;
+  }
+
+  .left-container {
+    background: none;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .left-container form {
+    padding: 0 1rem;
+  }
+
+  .products {
+    display: flex;
+    gap: 1rem;
+    background: #f3f3f3;
+    padding: 1rem;
+    overflow-y: auto;
     height: auto;
+  }
+
+  .products .product {
+    width: 100px;
+    height: 100px;
+  }
+
+  .right-container {
+    columns: 4 25ch;
   }
 }
 

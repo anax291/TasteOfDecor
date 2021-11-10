@@ -13,7 +13,7 @@ import { modal } from './templates.js';
 const init = async () => {
   const categories = await getDataFromDb('categories');
   const products = await getDataFromDb('products?featured=true');
-  const testimonials = await getDataFromDb('messages?subject=testimonial');
+  const testimonials = await getDataFromDb('messages?subject=testimonial&featured=true');
   populateCategories(categories);
   selectCategory(products);
   populateProducts(products);
@@ -168,19 +168,22 @@ const handleTestimonialEvents = (testimonials) => {
   showTestimonial(testimonials);
 };
 
-const showTestimonial = (testimonials, currentTestimonialId = 0) => {
+const showTestimonial = (testimonials) => {
   // remove previous testimonial if any
   if (testimonialContainer.querySelector('.testimonial'))
     testimonialContainer.removeChild(testimonialContainer.querySelector('.testimonial'));
   // grabbing UI fields
-  const testimonialTemplate = document.getElementById('testimonial-template');
-  const testimonialElement =
-    testimonialTemplate.content.firstElementChild.cloneNode(true);
+  const testimonialElement = document
+    .getElementById('testimonial-template')
+    .content.firstElementChild.cloneNode(true);
   const quote = testimonialElement.querySelector('.testimonial__content');
   const clientName = testimonialElement.querySelector('.client__name');
+  // grabbing the id of testimonial to be displayed and filtering through the array
+  const id = testimonialNav.querySelector('.current').dataset.navId;
+  const [currTestimonial] = testimonials.filter((testimonial) => testimonial.id === +id);
   // inserting data and appending to DOM
-  quote.textContent = testimonials[currentTestimonialId].message;
-  clientName.textContent = ` - ${testimonials[currentTestimonialId].name}`;
+  quote.textContent = currTestimonial.message;
+  clientName.textContent = ` - ${currTestimonial.name}`;
   testimonialContainer.appendChild(testimonialElement);
 };
 
@@ -191,7 +194,7 @@ const handleTestimonialBtnClicks = (testimonials) => {
     const targetId = Number(target.getAttribute('data-nav-id')) - 1;
     testimonialNav.querySelector('.current').classList.remove('current');
     target.classList.add('current');
-    showTestimonial(testimonials, targetId);
+    showTestimonial(testimonials);
   });
 };
 

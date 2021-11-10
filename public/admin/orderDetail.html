@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/orderDetail.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <main class="root"></main>
+
+  <!-- tamplates -->
+  <template data-header>
+    <header class="order__id">
+      <h1>Order 01</h1>
+    </header>
+  </template>
+
+  <template data-shipping>
+    <section class="shipping__information">
+      <h2>Shipping</h2>
+      <ul class="user__info">
+        <li class="user__name">Name: <span></span></li>
+        <li class="user__email">Email: <a href="#"></a></li>
+        <li class="user__cell">Phone: <a href="#"></a></li>
+        <li class="user__address">Address: <span></span>
+        </li>
+      </ul>
+      <p class="delivered__status">Delivered on: 16th Nov, 2021</p>
+    </section>
+  </template>
+
+  <template data-order-items>
+    <section class="order__items">
+      <h2>Order items</h2>
+      <ul class="items"></ul>
+    </section>
+  </template>
+
+  <template data-order-item>
+    <li class="item">
+      <img src="../assets/decorationAccessories/prod1/img1.png" alt="">
+      <span class="item__name">Prod 1</span>
+      <span class="item__price">Rs200</span>
+    </li>
+  </template>
+
+  <template data-summary>
+    <section class="order__summary">
+      <h2>Order Summary</h2>
+      <article class="summary">
+        <p class="order__total">Items: <span>Rs. 36500</span></p>
+        <p class="order__discount-code">Discount code: <span>code0</span></p>
+        <p class="order__discount">Discount: <span>10%</span></p>
+        <p class="order__final-price">Total: <span>Rs. 5000</span></p>
+      </article>
+    </section>
+  </template>
+
+</body>
+<script src="./js/orderDetail.js" type="module"></script>
+
+</html>

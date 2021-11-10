@@ -172,3 +172,12 @@ export const updateBuyNowBtnState = () => {
     console.log(error);
   }
 };
+
+/* Generator Function For Collection Ids */
+function* generator() {
+  let i = 1;
+  while (true) {
+    yield i++;
+  }
+}
+export const generateId = generator();

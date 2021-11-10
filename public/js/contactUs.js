@@ -61,7 +61,8 @@ const validateForm = (name, email, subject, message) => {
 
 const createMessageObj = (name, email, subject, message, id = undefined, method) => {
   let obj = { name, email, subject, message };
-  if (id) obj.id = id;
+  if (id) obj = { ...obj, id };
+  obj = { ...obj, featured: subject === 'testimonial' ? false : 'N/A' };
   if (method === 'POST') postDataToDb('messages', obj);
   else if (method === 'PUT') replaceDataInDb(`messages/${id}`, obj);
 };

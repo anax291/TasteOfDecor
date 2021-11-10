@@ -14,8 +14,10 @@ import {
   validatePhoneNumber,
 } from './formValidations.js';
 
-/* Main Code */
+/* Constants */
+const customizationCartKey = 'CUSTOMIZATION_CART';
 const cartKey = 'TASTE_OF_DECOR_CART';
+const collectionCartKey = 'COLLECTION_CART';
 
 const discountCodes = [
   { code: 'code1', discount: 0.1 },
@@ -61,7 +63,6 @@ const injectProductCards = (items) => {
 
 const updatePrices = async (items, discount = null) => {
   const subTotal = document.querySelector('.sub-total__amount');
-  const shipping = document.querySelector('.shipping__charges');
   const total = document.querySelector('.total__amount');
   const priceArr = items.map((item) => {
     return parseInt(item.price) * parseInt(item.qty);
@@ -74,8 +75,7 @@ const updatePrices = async (items, discount = null) => {
     totalPrice = subTotalPrice - subTotalPrice * discount;
   }
   subTotal.textContent = `Rs: ${numberWithCommas(subTotalPrice)}`;
-  shipping.textContent = `Rs: 500`;
-  total.textContent = `Rs: ${numberWithCommas(parseInt(totalPrice + 500))}`;
+  total.textContent = `Rs: ${numberWithCommas(parseInt(totalPrice))}`;
 };
 
 const calculateDiscount = (items) => {
@@ -87,9 +87,12 @@ const calculateDiscount = (items) => {
     const isValid = checkForCodeValidity(code);
     if (isValid) {
       displayMsg('discount code applied successfully', 'success', 8000);
-      document.querySelector('.discount__percent').textContent = `${isValid.code * 100}%`;
+      document.querySelector('.discount-percent span').textContent = `${
+        isValid.discount * 100
+      }%`;
+      document.querySelector('.discount-code span').textContent = `${isValid.code}`;
       discountField.disabled = true;
-      updatePrices(items, isValid.code);
+      updatePrices(items, isValid.discount);
     } else {
       displayMsg(
         'Discount Code is invalid. Please try again with a valide code',
@@ -137,7 +140,7 @@ const placeorder = async (items) => {
 
 const checkForCodeValidity = (code) => {
   const result = discountCodes.find((discountCode) => discountCode.code === code);
-  if (result) return { status: true, code: result.discount };
+  if (result) return { status: true, ...result };
   return false;
 };
 
@@ -169,7 +172,8 @@ const makeOrderObject = async (fname, lname, email, address, tel, products) => {
   // grabbing addtional fields
   let subtotal = document.querySelector('.sub-total__amount').textContent;
   subtotal = subtotal.replace('Rs: ', '');
-  let discount = document.querySelector('.discount__percent').textContent;
+  let discountCode = document.querySelector('.discount-code span').textContent;
+  let discountPercent = document.querySelector('.discount-percent span').textContent;
   let discountedPrice = document.querySelector('.total__amount').textContent;
   discountedPrice = discountedPrice.replace('Rs: ', '');
   // making obj
@@ -179,9 +183,11 @@ const makeOrderObject = async (fname, lname, email, address, tel, products) => {
     tel,
     address,
     subtotal: `${subtotal.replaceAll(',', '')}`,
-    discount,
+    discountCode,
+    discountPercent,
     totalPrice: `${discountedPrice.replaceAll(',', '')}`,
     hasBeenDelivered: false,
+    deliveryDateTime: null,
     items: products,
   };
   await postDataToDb('orders', obj);
@@ -189,6 +195,8 @@ const makeOrderObject = async (fname, lname, email, address, tel, products) => {
 
 const emptyCart = () => {
   setDataToLS(cartKey, []);
+  setDataToLS(customizationCartKey, []);
+  setDataToLS(collectionCartKey, []);
 };
 
 const addPostInteractivity = () => {

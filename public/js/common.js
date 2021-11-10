@@ -10,6 +10,7 @@ import { CustomFooter } from './footer.js';
 import { getDataFromLS, setDataToLS } from './localStorage.js';
 
 const cartKey = 'TASTE_OF_DECOR_CART';
+const collectionCartKey = 'COLLECTION_CART';
 
 // hamburger
 const hamburgerBtn = document.querySelector('.hamburger');
@@ -124,10 +125,15 @@ cart.addEventListener('click', (e) => {
 
 const deleteItem = async (e) => {
   const cartItems = getDataFromLS(cartKey);
+  const collectionCartItems = getDataFromLS(collectionCartKey);
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
   const newCartItems = cartItems.filter((item) => item.id !== +targetId);
+  const newCollectionCartItems = collectionCartItems.filter(
+    (item) => item.id !== +targetId
+  );
   setDataToLS(cartKey, newCartItems);
+  setDataToLS(collectionCartItems, newCollectionCartItems);
   deletingCartItemAnimation(targetCard);
   setTimeout(() => {
     if (document.querySelector('.cart-items > *')) updateTotalPrice();
@@ -138,12 +144,16 @@ const deleteItem = async (e) => {
 
 const changeProdQty = (e, mode) => {
   const cartItems = getDataFromLS(cartKey);
+  const collectionCartItems = getDataFromLS(collectionCartKey);
   const targetCard = e.target.closest('.item');
   const targetId = targetCard.getAttribute('data-id');
   let prodQty = targetCard.querySelector('.item__qty');
-  let updatedCartItems;
+  let updatedCartItems, updatedCollectionCartItems;
   if (mode === 'increase') {
     updatedCartItems = cartItems.map((item) =>
+      item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) + 1 } : item
+    );
+    updatedCollectionCartItems = collectionCartItems.map((item) =>
       item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) + 1 } : item
     );
   } else {
@@ -154,9 +164,13 @@ const changeProdQty = (e, mode) => {
       updatedCartItems = cartItems.map((item) =>
         item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) - 1 } : item
       );
+      updatedCollectionCartItems = collectionCartItems.map((item) =>
+        item.id == targetId ? { ...item, qty: parseInt(prodQty.textContent) - 1 } : item
+      );
     }
   }
   setDataToLS(cartKey, updatedCartItems);
+  setDataToLS(collectionCartKey, updatedCollectionCartItems);
   updateBadge();
   updateCart();
 };
@@ -169,6 +183,7 @@ const removeAll = async (e) => {
   });
   setTimeout(() => {
     setDataToLS(cartKey, []);
+    setDataToLS(collectionCartKey, []);
     updateCart();
     updateBadge();
   }, 2000);

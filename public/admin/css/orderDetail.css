@@ -1,0 +1,142 @@
+* {
+  transition: all 200ms ease;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(70ch, 2fr) minmax(35ch, 2fr) minmax(
+      1rem,
+      1fr
+    );
+  grid-template-areas:
+    '. header header .'
+    '. shipping summary .'
+    '. items summary .';
+  gap: 1rem 2rem;
+}
+
+.order__id {
+  grid-area: header;
+  font-size: clamp(1.75rem, 2.5vw, 4rem);
+}
+
+.shipping__information {
+  grid-area: shipping;
+}
+
+.order__items {
+  grid-area: items;
+}
+
+.order__summary {
+  grid-area: summary;
+}
+
+:where(.shipping__information, .order__items, .order__summary) h2 {
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.user__info,
+.items,
+.delivered__status {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.user__info a,
+.items a {
+  font-style: italic;
+}
+
+.user__info a:hover,
+.items a:hover {
+  text-decoration: underline;
+}
+
+.user__info > *:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
+.delivered__status {
+  padding: 0.5rem 1rem;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 4rem 20ch 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.item__name {
+  width: 20ch;
+}
+
+.item__price {
+  opacity: 0.95;
+}
+
+.item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.75rem;
+  height: 1px;
+  background: #ccc;
+}
+
+.order__summary p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+}
+
+.summary {
+  margin-bottom: 1rem;
+}
+
+.mark-as-deliver {
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+  width: 100%;
+}
+
+.mark-as-deliver:hover,
+.mark-as-deliver:focus {
+  background: #fff;
+  color: var(--btn-primary);
+}
+
+@media screen and (max-width: 920px) {
+  .app {
+    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-areas:
+      '. header .'
+      '. shipping .'
+      '. summary .'
+      '. items .';
+    gap: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 0.85rem;
+  }
+  .app {
+    grid-template-columns: 0.5rem 1fr 0.5rem;
+  }
+}
