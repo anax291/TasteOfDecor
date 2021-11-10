@@ -59,7 +59,8 @@ export const replaceDataInDb = async (endpoint, data) => {
 };
 
 /* Delete data from db */
-export const deleteDataFromDb = async (url) => {
+export const deleteDataFromDb = async (endpoint) => {
+  const url = `${API_URL}/${endpoint}`;
   const optionObj = { method: 'DELETE' };
   await fetch(url, optionObj);
 };
