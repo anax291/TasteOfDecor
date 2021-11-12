@@ -49,11 +49,11 @@ const validateForm = (name, email, subject, message) => {
     return false;
   }
   if (!validateSubject(subject)) {
-    throwError('Please enter a valid subject', subjectField);
+    throwError('Subject should be atleast 6 characters long...', subjectField);
     return false;
   }
   if (!validateMessage(message)) {
-    throwError('please enter a proper message', textArea);
+    throwError('Subject should be atleast 4 characters long...', textArea);
     return false;
   }
   return true;

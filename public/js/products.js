@@ -3,7 +3,6 @@ const products = [
     id: 'customization-prod-1',
     category: 'beds',
     name: 'bedOne',
-    name: 'bedOne',
     src: './assets/customization/beds/bed1.png',
     price: 98600,
   },

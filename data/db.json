@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": 1,
-      "name": "furniture"
+      "name": "furnitures"
     },
     {
       "id": 2,
@@ -629,16 +629,8 @@
       "email": "anasaslam877@gmail.com",
       "subject": "testimonial",
       "message": "fgfdhgfhyfbkjytngyghnghfjhhjhg",
-      "featured": true,
+      "featured": false,
       "id": 4
-    },
-    {
-      "name": "Siddiq",
-      "email": "anasaslam877@gmail.com",
-      "subject": "testshghghg",
-      "message": "c vcbvfxgfcbv bvchgfh",
-      "featured": "N/A",
-      "id": 5
     }
   ],
   "orders": [

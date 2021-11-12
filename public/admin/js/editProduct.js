@@ -48,7 +48,8 @@ const handleFormSubmit = async (e) => {
     description,
   };
   await updateDataInDb(`products/${productId}`, product);
-  // TODO: display message that producta has been updated and redirect the user to the view of the product.
+  displayMsg('Product has been updated successfully...', 'success', 4000);
+  setTimeout(() => (window.location.href = `./productView.html?id=${productId}`), 4000);
 };
 
 document.addEventListener('DOMContentLoaded', init);

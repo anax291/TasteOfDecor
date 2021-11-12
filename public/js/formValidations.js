@@ -25,7 +25,7 @@ export const validateAddress = (address) => {
 
 /* Validte Message */
 export const validateMessage = (text) => {
-  const res = text.length == 0 ? false : true;
+  const res = text.length < 4 ? false : true;
   return res;
 };
 
