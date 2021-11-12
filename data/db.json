@@ -623,6 +623,22 @@
       "subject": "testimonial",
       "message": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of me.",
       "featured": false
+    },
+    {
+      "name": "Bro",
+      "email": "anasaslam877@gmail.com",
+      "subject": "testimonial",
+      "message": "fgfdhgfhyfbkjytngyghnghfjhhjhg",
+      "featured": true,
+      "id": 4
+    },
+    {
+      "name": "Siddiq",
+      "email": "anasaslam877@gmail.com",
+      "subject": "testshghghg",
+      "message": "c vcbvfxgfcbv bvchgfh",
+      "featured": "N/A",
+      "id": 5
     }
   ],
   "orders": [
@@ -656,6 +672,69 @@
         }
       ],
       "id": 1
+    },
+    {
+      "name": "Syed Aslam",
+      "email": "ifra@gmail.com",
+      "tel": "03333107559",
+      "address": "R-74 Sec 7D-2",
+      "subtotal": "334799",
+      "discountCode": "No code found",
+      "discountPercent": "0%",
+      "totalPrice": "334799",
+      "hasBeenDelivered": true,
+      "deliveryDateTime": "2021-11-12T19:48:39.637Z",
+      "items": [
+        {
+          "prodId": "3",
+          "name": "Cupboards",
+          "imgSrc": "./assets/furniture/furniture3/img1.jpg",
+          "price": "9999",
+          "qty": 1,
+          "id": 3
+        },
+        {
+          "prodId": "1",
+          "name": "Fendi Casa Tables",
+          "imgSrc": "./assets/furniture/furniture1/img1.jpg",
+          "price": "10000",
+          "qty": 1,
+          "id": 2
+        },
+        {
+          "prodId": "4",
+          "name": "Chairs",
+          "imgSrc": "./assets/furniture/furniture4/img1.jpg",
+          "price": "24800",
+          "qty": 1,
+          "id": 1
+        },
+        {
+          "prodId": "customization-prod-4",
+          "name": "bedFour",
+          "imgSrc": "./assets/customization/beds/bed4.png",
+          "price": "70000",
+          "qty": 1,
+          "id": "customizationProd4"
+        },
+        {
+          "prodId": "customization-prod-5",
+          "name": "bedFive",
+          "imgSrc": "./assets/customization/beds/bed5.png",
+          "price": "90000",
+          "qty": 1,
+          "id": "customizationProd5"
+        },
+        {
+          "prodId": "customization-prod-7",
+          "name": "bedSeven",
+          "imgSrc": "./assets/customization/beds/bed7.png",
+          "price": "130000",
+          "qty": 1,
+          "id": "customizationProd6"
+        }
+      ],
+      "id": 2
     }
   ]
 }
