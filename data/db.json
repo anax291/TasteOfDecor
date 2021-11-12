@@ -33,29 +33,7 @@
         "A table is an item of furniture with a flat top"
       ],
       "featured": true,
-      "reviews": [
-        {
-          "name": "Siddiq Ahmed",
-          "email": "zchxvr@gmail.com",
-          "ratings": "3",
-          "description": "",
-          "id": 1
-        },
-        {
-          "name": "Anas",
-          "email": "zchxvr@gmail.com",
-          "ratings": "3",
-          "description": "good\n",
-          "id": 2
-        },
-        {
-          "name": "Siddiq Ahmed",
-          "email": "siddiqahmed882@gmail.com",
-          "ratings": "1",
-          "description": "",
-          "id": 3
-        }
-      ]
+      "reviews": []
     },
     {
       "id": 2,
@@ -108,7 +86,7 @@
     {
       "id": 5,
       "categoryId": 1,
-      "name": "Sofa's",
+      "name": "Sofas",
       "price": 110000,
       "imgSrc": [
         "./assets/furniture/furniture5/img1.png",
@@ -187,7 +165,9 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 11500,
-      "imgSrc": ["./assets/decorationAccessories/prod5/img1.jpg"],
+      "imgSrc": [
+        "./assets/decorationAccessories/prod5/img1.jpg"
+      ],
       "description": [
         "Made From Metal In Grey & Brown Finish. Comes With White Linen Shade.",
         "Material: Metal",
@@ -200,7 +180,9 @@
       "categoryId": 2,
       "name": "Column Table Lamp",
       "price": 16500,
-      "imgSrc": ["./assets/decorationAccessories/prod6/img1.jpg"],
+      "imgSrc": [
+        "./assets/decorationAccessories/prod6/img1.jpg"
+      ],
       "description": [
         "Made From Marble & Metal In Classic Finish. Comes With White Linen Shade.",
         "Material: Metal & Marble",
@@ -213,7 +195,9 @@
       "categoryId": 2,
       "name": "Allure Table Lamp",
       "price": 13500,
-      "imgSrc": ["./assets/decorationAccessories/prod7/img1.jpg"],
+      "imgSrc": [
+        "./assets/decorationAccessories/prod7/img1.jpg"
+      ],
       "description": [
         "Made From Metal & Crystal. Clear Crystal Flower Body & Gold Metal Base. Comes With Oat Linen Shade.",
         "Material: Metal & Crystal",
@@ -226,7 +210,9 @@
       "categoryId": 2,
       "name": "Down Bridge Table Lamp",
       "price": 9500,
-      "imgSrc": ["./assets/decorationAccessories/prod8/img1.jpg"],
+      "imgSrc": [
+        "./assets/decorationAccessories/prod8/img1.jpg"
+      ],
       "description": [
         "Made From Metal & Wood in black colour",
         "Material: Metal & Wood",
@@ -341,7 +327,9 @@
       "categoryId": 3,
       "name": "Indoor Live Houseplant - Brussel's Bonsai",
       "price": 6700,
-      "imgSrc": ["./assets/outdoor/prod2/img1.webp"],
+      "imgSrc": [
+        "./assets/outdoor/prod2/img1.webp"
+      ],
       "description": [
         "Large jade indoor houseplant dresses up any indoor decor arrangement",
         "Lush green foliage and star-shaped leaf clusters add a pretty pop to your tabletop or desk",
@@ -356,7 +344,10 @@
       "categoryId": 3,
       "name": "3pc Swiss Cheese Plant ",
       "price": 4000,
-      "imgSrc": ["./assets/outdoor/prod3/img1.webp", "./assets/outdoor/prod3/img2.webp"],
+      "imgSrc": [
+        "./assets/outdoor/prod3/img1.webp",
+        "./assets/outdoor/prod3/img2.webp"
+      ],
       "description": [
         "Includes (3) Monstera in 4in pots",
         "Typically grown indoors as a houseplant, but can be grown outdoors in USDA hardiness zones 10-12.",
@@ -372,7 +363,10 @@
       "categoryId": 3,
       "name": "Alpine 40in Tiered Pedestal Fountain with Fish Blue",
       "price": 10000,
-      "imgSrc": ["./assets/outdoor/prod4/img1.webp", "./assets/outdoor/prod4/img2.webp"],
+      "imgSrc": [
+        "./assets/outdoor/prod4/img1.webp",
+        "./assets/outdoor/prod4/img2.webp"
+      ],
       "description": [
         "Dimensions (Overall): 40 Inches (H) x 20 Inches (W) x 20 Inches (D)",
         "Weight: 6.09 Pounds",
@@ -458,7 +452,10 @@
       "categoryId": 3,
       "name": "North States 9084 Lil' Red School House Village Collection Bird Feeder",
       "price": 12500,
-      "imgSrc": ["./assets/outdoor/prod9/img1.jpeg", "./assets/outdoor/prod9/img2.jpeg"],
+      "imgSrc": [
+        "./assets/outdoor/prod9/img1.jpeg",
+        "./assets/outdoor/prod9/img2.jpeg"
+      ],
       "description": [
         "Charming school house-themed bird feeder is made of plastic for easy cleaning",
         "Cord attached for easy hanging",
@@ -472,7 +469,9 @@
       "categoryId": 4,
       "name": "Legato White 3 Door Mirrored Wardrobe",
       "price": 70000,
-      "imgSrc": ["./assets/wardrobes/prod1/img1.jpg"],
+      "imgSrc": [
+        "./assets/wardrobes/prod1/img1.jpg"
+      ],
       "description": [
         "The Legato 3 Door Mirrored Wardrobe features a contemporary style with a unique handle-less design and a high gloss finish.",
         "Constructed from high quality components this 3 door mirrored wardrobe makes for a practical and stylish storage solution for your bedroom.",
@@ -578,7 +577,8 @@
       "description": [
         "Designed to complement contemporary interiors, the Dallas 2 Door High Gloss Sliding Wardrobe is an eye-catching storage solution for your bedroom.",
         "This spacious wardrobe features two smooth, sliding doors with high gloss fronts.",
-        "Inside you will find two adjustable hanging rails and two adjustable shelves so you can personalise your storage space."
+        "Inside you will find two adjustable hanging rails and two adjustable shelves so you can personalise your storage space.",
+        ""
       ],
       "reviews": []
     },
@@ -625,5 +625,37 @@
       "featured": false
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "name": "Zain Abidin",
+      "email": "zchxvr@gmail.com",
+      "tel": "03232370266",
+      "address": "RS 36 / ST 12 North Nazimabad",
+      "subtotal": "59000",
+      "discountCode": "No code found",
+      "discountPercent": "0%",
+      "totalPrice": "59000",
+      "hasBeenDelivered": true,
+      "deliveryDateTime": "2021-11-11T19:56:50.824Z",
+      "items": [
+        {
+          "prodId": "customization-prod-14",
+          "name": "sofaOne",
+          "imgSrc": "./assets/customization/sofas/sofa1.png",
+          "price": "15000",
+          "qty": 1,
+          "id": "customizationProd2"
+        },
+        {
+          "prodId": "customization-prod-15",
+          "name": "sofaTwo",
+          "imgSrc": "./assets/customization/sofas/sofa2.png",
+          "price": "44000",
+          "qty": 1,
+          "id": "customizationProd3"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

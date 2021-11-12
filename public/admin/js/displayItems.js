@@ -29,7 +29,12 @@ export const showProducts = async () => {
     resourceItem.querySelector(
       '.resource__item__price'
     ).textContent = `Rs. ${numberWithCommas(product.price)}`;
-    resourceItem.querySelector('.resource__item__stock').textContent = '50';
+    resourceItem.querySelector(
+      '.resource__item__edit'
+    ).href = `./editProduct.html?id=${product.id}`;
+    resourceItem.querySelector(
+      '.resource__item__view'
+    ).href = `./productView.html?id=${product.id}`;
     ul.appendChild(resourceItem);
   }
   productsContainer.appendChild(ul);
@@ -61,6 +66,9 @@ export const showCategories = async () => {
     item.querySelector('.category__id').textContent = category.id;
     item.querySelector('.category__name').textContent = category.name;
     item.querySelector('.category__items').textContent = productsQuantity[category.id];
+    item.querySelector(
+      '.resource__item__edit'
+    ).href = `./editCategory.html?id=${category.id}`;
     ul.appendChild(item);
   }
   categoriesContainer.appendChild(ul);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="./css/editProduct.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <main class="root">
+    <div class="app">
+      <h1>Edit Product</h1>
+      <form class="edit-product">
+        <div class="wrapper">
+          <label for="product-name">Product Name:</label>
+          <input type="text" name="product-name" id="product-name">
+        </div>
+        <div class="wrapper">
+          <label for="product-price">Product Price:</label>
+          <input type="number" name="product-price" id="product-price">
+        </div>
+        <div class="wrapper">
+          <label for="category-list">Category:</label>
+          <select name="category-list" id="category-list">
+          </select>
+        </div>
+        <div class="wrapper">
+          <label for="product-description">Description</label>
+          <textarea name="product-description" rows="10" id="product-description"></textarea>
+        </div>
+        <input class="btn update-product" type="submit" value="Update...">
+      </form>
+    </div>
+  </main>
+</body>
+<script src="./js/editProduct.js" type="module"></script>
+
+</html>

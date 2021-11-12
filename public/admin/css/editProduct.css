@@ -1,0 +1,58 @@
+@import url(../../css/alerts.css);
+
+body {
+  background: #eee;
+}
+
+.app {
+  width: min(700px, 90vw);
+  margin: 2rem auto 0;
+}
+
+.app h1 {
+  font-size: clamp(3rem, 4vw, 5rem);
+  margin-bottom: 1rem;
+}
+
+.edit-product {
+  width: 100%;
+}
+
+.wrapper {
+  margin-bottom: 0.75rem;
+}
+
+.wrapper label {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+.wrapper input,
+.wrapper select,
+.wrapper option,
+.wrapper textarea {
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.125rem;
+}
+
+.wrapper textarea {
+  resize: vertical;
+}
+
+.update-product {
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+  /* width: 100%; */
+}
+
+.update-product:hover,
+.update-product:focus-visible {
+  background: #fff;
+  color: var(--btn-primary);
+}

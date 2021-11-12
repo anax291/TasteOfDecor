@@ -1,0 +1,109 @@
+body {
+  background: #eee;
+}
+
+.app {
+  width: min(500px, 90vw);
+  margin: 2rem auto;
+}
+
+.app h1 {
+  font-size: clamp(3rem, 4vw, 5rem);
+  margin-bottom: 1rem;
+}
+
+.edit-category {
+  width: 100%;
+  margin-bottom: 1.75rem;
+}
+
+.wrapper {
+  margin-bottom: 0.75rem;
+}
+
+.wrapper label {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+.wrapper input {
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.125rem;
+}
+
+.app h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.items {
+  margin-bottom: 1.75rem;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 5rem 1fr 2rem;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.item:after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #ccc;
+}
+
+.item__image {
+  width: 5rem;
+  height: 5rem;
+  object-fit: fill;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.item__name {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.item__delete-btn {
+  transition: color 200ms ease;
+  -webkit-transition: color 200ms ease;
+  -moz-transition: color 200ms ease;
+  -ms-transition: color 200ms ease;
+  -o-transition: color 200ms ease;
+}
+
+.item__delete-btn:hover,
+.item__delete-btn:focus-visible {
+  color: var(--clr-secondary);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.update-category {
+  color: #fff;
+  background: var(--btn-primary);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  border: 1px solid currentColor;
+  transition: background 500ms ease;
+}
+
+.update-category:hover,
+.update-category:focus-visible {
+  background: #fff;
+  color: var(--btn-primary);
+}

@@ -40,7 +40,7 @@ template.innerHTML = `
               <div class="bottom">Collection</div>
             </div>
           </a>
-          <a href={${id === 'customization' ? '#' : './customization.html'}} class="wrap">
+          <a href=${id === 'customization' ? '#' : './customization.html'} class="wrap">
             <div class="inner">
               <div class="top">Customization</div>
               <div class="bottom">Customization</div>

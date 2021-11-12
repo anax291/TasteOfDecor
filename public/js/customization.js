@@ -254,7 +254,10 @@ document.addEventListener('DOMContentLoaded', init);
 const downloadBtn = document.querySelector('.download-design');
 downloadBtn.addEventListener('click', async () => {
   const target = document.querySelector('.terrarium');
-  const canvas = await html2canvas(target);
+  const canvas = await html2canvas(target, {
+    scale: 2,
+    useCORS: true,
+  });
   const a = document.createElement('a');
   a.href = canvas.toDataURL();
   a.download = 'canvas-image.png';
