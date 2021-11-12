@@ -9,9 +9,10 @@
 This is an e-commerce website built with html, css and vanilla javascript utilizing many of the modern syntaxes and latest features. This is a static website (no backend) and therefore it lacks many of the features like
 
 - No sign in / sign up features
-- No admin panel
+- No proper admin panel
+- No protection for admin pages
 
-However to get a taste of backend, this websites uses **JSON-SERVER**. It can provide us a fake rest api to work with. It is great for mocking a backend and prototyping.
+However to get a taste of backend, this websites uses **JSON-SERVER**. It can provide us with a fake rest api to work with. It is great for mocking a backend and prototyping.
 
 ---
 
@@ -22,7 +23,7 @@ Please [click here](https://www.npmjs.com/package/json-server) to read more abou
 With json-server we:
 
 - Saved all information about our products in a json file from where json-server reads it and renders on our web page. It greatly helps us to scale our project. We can add the necessary details of as many products and categories in our json file and all the pages will be created automatically. **No Need To Create HTML Pages for each and every product**
-- We managed our cart, orders, and user messages all through json-server. All the details get saved into json format in that file and from there we can use it.
+- We managed categories, products, orders, and user messages all through json-server. All the details get saved into json format in that file and from there we can use it.
 
 ---
 
@@ -33,6 +34,8 @@ With json-server we:
 
 2. [INTROJS](https://introjs.com/). This is not so popular yet a very useful library. It is used to guide the users, how they can write testimonials for us.
    ![IntroJs guiding how to write testimonial for us](./public/assets/readme/introjs.png)
+
+3. [html2canvas](https://www.npmjs.com/package/html2canvas). It is used to take screenshot of our design in customization page
 
 ---
 

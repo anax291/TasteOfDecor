@@ -606,7 +606,7 @@
       "email": "anax291@gmail.com",
       "subject": "testimonial",
       "message": "I just love their design for all stunning details. You must know what can you do for a project before taking it, but with Archo, the sky is the limit.",
-      "featured": "true"
+      "featured": true
     },
     {
       "id": 2,
@@ -614,7 +614,7 @@
       "email": "nshariq@gmail.com",
       "subject": "testimonial",
       "message": "Not able to tell you how happy I am with interior...",
-      "featured": "true"
+      "featured": true
     },
     {
       "id": 3,
@@ -644,7 +644,7 @@
       "discountPercent": "0%",
       "totalPrice": "59000",
       "hasBeenDelivered": true,
-      "deliveryDateTime": "2021-11-11T19:56:50.824Z",
+      "deliveryDateTime": "2021-11-12T21:24:27.856Z",
       "items": [
         {
           "prodId": "customization-prod-14",

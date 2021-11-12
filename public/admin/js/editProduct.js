@@ -40,7 +40,10 @@ const createOptionElement = ({ id, name }, categoryId) => {
 
 const handleFormSubmit = async (e) => {
   e.preventDefault();
-  const description = productDescription.value.split('\n');
+  const description = productDescription.value
+    .split('\n')
+    .map((desc) => desc.trim())
+    .filter((desc) => desc.length !== 0);
   const product = {
     categoryId: Number(categoryList.value),
     name: productNameField.value,

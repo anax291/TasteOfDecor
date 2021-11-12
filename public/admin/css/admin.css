@@ -1,5 +1,7 @@
 /* Main Styles */
-
+body {
+  overflow: hidden;
+}
 button {
   text-align: start;
 }
@@ -210,4 +212,29 @@ button {
   -moz-transform: translateX(36px);
   -ms-transform: translateX(36px);
   -o-transform: translateX(36px);
+}
+
+@media screen and (max-width: 800px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .resources__list__container {
+    height: auto;
+    padding: 0.75rem;
+  }
+
+  .resource__list {
+    display: flex;
+  }
+
+  .resources__details {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  :root {
+    font-size: 0.8rem;
+  }
 }

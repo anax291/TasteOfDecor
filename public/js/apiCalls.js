@@ -8,24 +8,6 @@ export const getDataFromDb = async (endpoint) => {
   return data;
 };
 
-/* Post data to database */
-// const postDataToDb = async (endpoint, data, errMsg = null) => {
-//   const url = `${API_URL}/${endpoint}`;
-//   const optionObj = {
-//     method: 'POST',
-//     body: JSON.stringify(data),
-//     headers: { 'Content-Type': 'application/json' },
-//   };
-//   try{
-//     const res = await fetch(url, optionObj);
-//     if(!res.ok) throw Error('Please Reload the app...');
-//   } catch (err) {
-//     errMsg = err.message
-//   } finally {
-//     errMsg
-//   }
-// };
-
 export const postDataToDb = async (endpoint, data) => {
   const url = `${API_URL}/${endpoint}`;
   const optionObj = {

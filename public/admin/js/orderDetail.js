@@ -90,27 +90,14 @@ const showMarkAsDeliverBtn = () => {
   button.classList.add('btn');
   button.classList.add('mark-as-deliver');
   button.textContent = 'Mark as Delivered';
-  button.addEventListener('click', () => {
-    markOrderAsDelivered();
-    updateDeliveryStatus();
-  });
+  button.addEventListener('click', markOrderAsDelivered);
   return button;
 };
 
 const markOrderAsDelivered = async () => {
   const obj = { hasBeenDelivered: true, deliveryDateTime: new Date() };
   await updateDataInDb(`orders/${orderId}`, obj);
-  document
-    .querySelector('.order__summary')
-    .removeChild(document.querySelector('.mark-as-deliver'));
-};
-
-const updateDeliveryStatus = async () => {
-  const orderObject = await getDataFromDb(`orders/${orderId}`);
-  const deliveredBox = document.querySelector('.delivered__status');
-  deliveredBox.classList.remove('not-delivered');
-  deliveredBox.classList.add('delivered');
-  deliveredBox.textContent = `Deliverd at: ${orderObject.deliveryDateTime}`;
+  window.location.reload();
 };
 
 document.addEventListener('DOMContentLoaded', init);
