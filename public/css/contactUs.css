@@ -8,6 +8,7 @@ body {
   text-align: center;
   text-transform: capitalize;
   font-size: clamp(1.5rem, 1rem + 3vw, 4rem);
+  width: max-content;
   width: fit-content;
   margin: 0 auto 2rem;
   color: rgba(65, 43, 43, 0.3);
