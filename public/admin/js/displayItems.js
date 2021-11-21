@@ -75,7 +75,7 @@ export const showCategories = async () => {
 };
 
 export const showOrder = async () => {
-  const orders = await getDataFromDb('orders');
+  const orders = (await getDataFromDb('orders')).reverse();
   const ordersContainer = document.querySelector('.app');
   const headerTemplate = document.querySelector('[data-order-header]');
   const header = headerTemplate.content.firstElementChild.cloneNode(true);
@@ -116,7 +116,7 @@ export const showOrder = async () => {
 };
 
 export const showMessages = async () => {
-  const messages = await getDataFromDb('messages');
+  const messages = (await getDataFromDb('messages')).reverse();
   const messageContainer = document.querySelector('.app');
   const messageTemplate = document.querySelector('[data-message-template]');
   const ul = document.createElement('ul');
