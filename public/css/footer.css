@@ -201,4 +201,7 @@ a.wrap:hover .bottom {
   .social-links {
     margin: 1.5rem auto 0;
   }
+  :root {
+    font-size: 0.8rem;
+  }
 }

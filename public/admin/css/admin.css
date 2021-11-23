@@ -214,6 +214,10 @@ button {
   -o-transform: translateX(36px);
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 800px) {
   .grid-2 {
     grid-template-columns: 1fr;
